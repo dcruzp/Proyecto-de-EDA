@@ -1,8 +1,0 @@
-\documentclass{article} 
-\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
-\begin{document}
-    \title{\textcolor{blue}{\textbf{Proyecto de EDA}}\\}
-    \author{Daniel de la Cruz Prieto C211\\ David Orlando De Quesada Oliva C211\\Javier Dominguez C212} 
-    \date{}
-    \maketitle
-\end{document}
