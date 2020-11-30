@@ -1,0 +1,31 @@
+\documentclass{article}
+
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+
+\begin{document}
+    \title{\textcolor{blue}{\textbf{Problema 1 }}\\}
+    \author{Daniel de la Cruz Prieto C211\\ David Orlando De Quesada Oliva C211\\Javier Dominguez C212} 
+    \date{}
+    \maketitle  
+
+    \section*{Orden del problema} 
+
+    Sean n casas en un vecindario y m tuber\'ias. Las tuber\'ias de agua subterr\'aneas conectan estas casas. Cada
+    tuberı\'ia tiene cierta direcci\'on (el agua puede fluir solo en esta direcci\'on y no al rev\'es) y di\'ametro (que caracteriza
+    la cantidad m\'axima de agua que puede manejar).
+    \\[10pt]
+    \noindent Para cada casa, hay como m\'aximo una tuber\'ia entrando y como m\'aximo una tuber\'ia saliendo de ella. Se quiere
+    instalar tanques y grifos en las casas. Para cada casa con una tuber\'ia de agua saliente y sin una tuber\'ia de agua
+    entrante, se debe instalar un tanque de agua en esa casa. Por cada casa con una tuber\'ia de agua entrante y
+    sin una tuber\'ia de agua saliente, se debe instalar un grifo de agua en esa casa. Cada casa tanque transportar\'a
+    agua a todas las casas que tengan una secuencia de tuber\'ias desde el tanque hasta ella. En consecuencia, cada
+    casa de grifo recibir\'a agua procedente de alguna casa de tanque.
+    \\[10pt]
+    \noindent Para evitar que las tuber\'ias exploten una semana después tambi\'en se debe considerar el di\'ametro de las tuber\'ias.
+    La cantidad de agua que transporta cada tanque no debe exceder el di\'ametro de las tuber\'ias que conectan un
+    tanque a su correspondiente grifo. Se quiere encontrar la cantidad m\'axima de agua que se puede transportar de
+    forma segura desde cada tanque hasta su grifo correspondiente. Dise\~ne un algoritmo que devuelva la cantidad
+    m\'axima de agua que se puede trasnportar de forma segura desde cada tanque hasta su grifo correspondiente.
+    La complejidad temporal de su algoritmo debe ser de \textit{O(n + m)}.
+
+\end{document}

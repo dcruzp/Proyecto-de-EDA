@@ -1,0 +1,25 @@
+\documentclass{article}
+
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+
+\begin{document}
+    \title{\textcolor{blue}{\textbf{Problema 3 }}\\}
+    \author{Daniel de la Cruz Prieto C211\\ David Orlando De Quesada Oliva C211\\Javier Dominguez C212} 
+    \date{}
+    \maketitle  
+
+    \section*{Orden del problema} 
+
+    Sea $G = <V,E>$ un grafo no dirigido y conexo con pesos positivos en las aristas, y un v\'ertice $s \in V$ . Un \'arbol de 
+    caminos de costo m\'inimos con ra\'iz en s es un subgrafo $T = <V^{'} , E^{'}> $ donde $V^{'} \subseteq  V $     y $E^{'} \subseteq  E $ tal que: 
+    
+    \begin{itemize}
+        \item $V^{'}$ es el conjunto de v\'ertices alcanzables desde s en $G$
+        \item $T$ es un \'arbol con raiz en $s$
+        \item Para todo $v \in V^{'}$ el \'unico camino simple de $s$ a $v$ en $T$ es un camino de costo minimo de $s$ a $v$ en $G$ .
+    \end{itemize}
+
+    \noindent Dise\~ne un algoritmo que encuentre en el grafo G un \'arbol T de caminos de costo m\'inimo con ra\'iz en s tal que
+    la suma de los pesos de las aristas de T sea lo menor posible. La complejidad temporal del algoritmo debe ser
+    $O(|E|log|V|)$.
+\end{document}

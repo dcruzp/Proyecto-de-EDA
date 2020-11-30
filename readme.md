@@ -1,15 +1,15 @@
-# Proyecto de EDA 
+# Proyecto de EDA
 
-## Autores 
+## Autores
 
- * Daniel de la Cruz Prieto 
+ * Daniel de la Cruz Prieto
  * David Orlando De Quesada Oliva
- * Javier Dominguez   
+ * Javier Dominguez
 
 #### Diercion del repositorio 
 
 * link https://github.com/dcruzp/Proyecto-de-EDA
 
-### Descripcion 
+### Descripcion
 
  * Esto son 4 problemas para el proyecto final de Estrucura de Base de Datos y Algoritmos 
