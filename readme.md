@@ -3,8 +3,8 @@
 ## Autores 
 
  * Daniel de la Cruz Prieto 
- * Javier Dominguez 
- * David Orlando de Quesada 
+ * David Orlando De Quesada Oliva
+ * Javier Dominguez   
 
 #### Diercion del repositorio 
 
