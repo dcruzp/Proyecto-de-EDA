@@ -62,7 +62,7 @@
         3-\hspace*{2em}$T$ $\leftarrow$ PRIM($G,x,w$) --------- Construir un AACM de $G$ empezando en $x$. $O(E\log{V})$\\
         4-\hspace*{2em}DFS-Visit($T,x$) --------- Hallar el camino de $x$ a $y$ en $T$. $O(V + E)$\\
         5-\hspace*{2em}start $\leftarrow y$, answer $\leftarrow$ $w(\pi[y],y)$. $O(1)$\\ 
-        6-\hspace*{2em}while start != x do:  $O(V)$\\
+        6-\hspace*{2em}while start != $x$ do:  $O(V)$\\
         7-\hspace*{3em}start $\leftarrow$ $\pi$[start] $O(1)$\\
         8-\hspace*{3em}answer $\leftarrow$ m\'ax(answer,w($\pi$[start],start)) $O(1)$\\
         9-\hspace*{2em} return answer\\\\
