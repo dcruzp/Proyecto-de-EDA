@@ -9,7 +9,7 @@
     \maketitle  
 
     \section*{\begin{center}
-        Orden del Problema
+        \underline{Orden del Problema}
     \end{center}}
     
     Disene un algoritmo que dado un grafo no dirigido con costo en las aristas $G = <V, E>$ y los v\'ertices x, $y \in  V$ ,
@@ -18,7 +18,7 @@
     en $P_2$ es 4, entonces deben devolver 4. La complejidad temporal de su algoritmo debe ser de $O(|E|log(|V|))$.\\
 
     \section*{\begin{center}
-        Soluci\'on
+        \underline{Soluci\'on}
     \end{center}}
 
     Proposici\'on 1 : \\\\
@@ -52,7 +52,7 @@
     $\bullet$ Por tanto se cumple la proposici\'on 1\\\\
     \newpage
     \section*{\begin{center}
-        Pseudoc\'odigo
+        \underline{Pseudoc\'odigo}
     \end{center}}
     \begin{algorithm}
         \caption{Determinar el costo de la arista de menor costo entre las aristas de mayor costo en cada camino de $x$ a $y$ en un grafo $G$}
@@ -70,4 +70,18 @@
         l\'ineas 5-9 Quedarse con el mayor de los costo de las aristas en el camino de $x$ a $y$ en $T$
     \end{algorithm}
 
+    \section*{\begin{center}
+        \underline{Correctitud del Algoritmo}
+    \end{center}}
+
+    La correctitud del algoritmo se basa principalmente en la aplicaci\'on de la proposici\'on 1 previamente demostrada,
+    una vez verificado que $y$ es alcanzable desde $x$, construido el AACM $T$ iniciando en $x$ y encontrado el camino de
+    $x$ a $y$ en $T$, solo resta quedarse con la arista de mayor costo en dicho camino, operaci\'on que realizan las l\'ineas
+    5-9 de pseudoc\'odigo usando el array $\pi$.
+
+    \section*{\begin{center}
+        \underline{Complejidad Temporal}
+    \end{center}}
+
+    La complejidad temporal del algoritmo es $O(V + E) + O(E\log{V}) + O(V + E) + O(V) = O(max(V + E, E\log{V}, V)) = O(E\log{V})$
 \end{document}
