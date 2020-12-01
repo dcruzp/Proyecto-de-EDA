@@ -20,13 +20,13 @@
         Soluci\'on
     \end{center}}
 
-    Proposici\'on 1 : \\
+    Proposici\'on 1 : \\\\
     
-    Sea G = $<$V,E$>$ grafo con costo en las aristas, $x$, $y$ $\in V(G)$, $y$ alcanzable desde $x$, $p_1, p_2,..., p_t$ 
-    los caminos de costo m\'inimo de $x$ a $y$, $e_1, e_2,..., e_t$ las aristas de costo m\'aximo en cada uno de los caminos $p_i$, $1 \leq i \leq t$, y\\ 
-    $E'$ = \textbraceleft $e |\hspace{0.2em} w(e)$ = min \textbraceleft $w(e_i) |\hspace{0.2em} 1 \leq i \leq t$ \textbraceright \textbraceright, el conjunto
+    Sea $G = <V,E>$ grafo no dirigido con costo en las aristas, $x$, $y$ $\in V(G)$, $y$ alcanzable desde $x$, $p_1, p_2,..., p_t$ 
+    los caminos de costo m\'inimo de $x$ a $y$ en $G$, $e_1, e_2,..., e_t$ las aristas de costo m\'aximo en cada uno de los caminos $p_i$, $1 \leq i \leq t$, y
+    $E'$ = \textbraceleft $e \in E(G) |\hspace{0.2em} w(e)$ = min \textbraceleft $w(e_i) |\hspace{0.2em} 1 \leq i \leq t$ \textbraceright \textbraceright, el conjunto
     de las aristas de menor costo entre las $e_i$. Entonces el algoritmo de PRIM tomando como v\'ertice inicial $x$, devuelve un AACM T de G, tal que $\exists\hspace{0.2em}
-    e' \in E', e' \in E(T)$.\\\\
+    e' \in E', e' \in E(T)$ y el \'unico camino de $x$ a $y$ en el AACM T pasa por $e'$.\\\\
     
     Inicialmente, como es\'a descrito en conferencia en la cola con prioridad que mantiene el corte(o sea el conjunto de v\'ertices a\'un no visitados por el algoritmo)est\'an todos los 
     v\'ertices del grafo G. En cada paso del algoritmo se a\~nade una nueva arista de forma tal que siempre se mantiene un conjunto de aristas que son un subcojunto de alg\'un AACM T de G,
@@ -43,8 +43,9 @@
     de mayor costo en cada camino de $x$ a $y$ ($w(e_k) = w(e''))$, y por tanto se cumple que $e_k \in E', e_k \in E(T)$ donde $T$ es el AACM resultante al terminar el algoritmo de PRIM.\\\\
 
     $\Rightarrow$ Por tanto al finalizar el algoritmo de PRIM, ejecutado sobre  el grafo G, iniciando en el v\'ertice x, se cumple que 
-    $\exists e' \in E', e' \in E(T)$, siendo $T$ el AACM resultante al terminar el algoritmo de PRIM.
+    $\exists e' \in E', e' \in E(T)$, siendo $T$ el AACM resultante al terminar el algoritmo de PRIM.\\\\
 
-
+    Sea $e' = <u,v>$, hay un \'unico camino de $x$ a $u$ en $T$, y hay un \'unico camino de $v$ a $y$ en $T$, y como consecuencia de que esta arista est\'a en todo AACM $T$ de $G$
+    $\Rightarrow$ hay un \'unico camino de $x$ a $y$ en $T$ que pasa por la arista $e'$
 
 \end{document}
