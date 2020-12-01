@@ -12,4 +12,60 @@
     Sea $G = <V, E>$ un grafo no dirigido y conexo, se desea saber si G cumple la propiedad de que cada par de
     v\'ertices existen dos caminos disjuntos en v\'ertices entre ellos. La complejidad temporal de su algoritmo debe
     ser $O(|V| + |E|)$.
+    \newline
+    \newline
+    Lema1:\newline
+    $\forall x,y\in V(G)$ existen dos caminos disjuntos en v\'ertices $\Longleftrightarrow$ G es biconexo \newline
+    \newline
+    Demostraci\'on:\newline
+    $\Longrightarrow$\newline
+    Sea x un v\'ertice arbitrario de G. En el grafo G-x(resultado de remover el v\'ertice x del grafo G)
+    sigue habiendo un camino entre cualquier par de v\'ertices u,v pues como en G existen dos caminos disjuntos en v\'ertices
+    entre u y v si x pertenec\'ia a uno de estos dos caminos no importa pues al removerlo sigue habiendo al menos un camino 
+    entre u y v por lo que G-x ser\'ia conexo. Entonces al remover cualquier v\'ertice de G y todas las aristas incidentes a
+    \'el no desconectan el grafo . Luego G es biconexo.\newline
+    $\Longleftarrow$\newline
+    Sea G un grafo biconexo y u,v v\'ertices del mismo.Vamos a demostrar por inducci\'on en la distancia $d(u,v)$ que hay
+    dos caminos disjuntos en v\'ertices de u a v $\forall u,v \in V(G)$.
+    \newline
+    Caso Base $d(u,v)=1$:\newline
+    Si $d(u,v)=1$ entonces la arista $<u,v>$ es uno de los caminos que conectan a u con v.Como G es biconexo entonces 
+    G-u y G-v son conexos y por tanto si quitas la  arista $<u,v>$  como el grafo no se desconecta sigue existiendo
+    un camino que conecta a u con v y que no contiene a $<u,v>$ ,este ser\'ia nuestro segundo camino.\newline
+    
+    Paso Inductivo:\newline
+    Sea G un grafo donde $\forall\; u,v\in V(G)\; d(u,v)=k>1$. Entonces en G existe un camino de longitud k entre 
+    cualquier par de v\'ertices u,v.Sea z el \'ultimo v\'ertice anterior a v en el camino de de longitud k que va de
+    u a v .Obtenemos $d(u,z)=d(u,v)-1=k-1$ . Por hip\'otesis de inducci\'on existen dos caminos disjuntos en v\'ertices 
+    $P_{1},P_{2}$ de u a v.Dado que G-z es conexo pues G es biconexo ,entonces existe un camino $P_{q}$ que va de u a v
+    y no contiene a z.Si $P_{q}$ no intercepta con $P_{1}$ o con $P_{2}$,tenemos los dos caminos disjuntos en v\'ertices
+    de u a v:$P_{q}$ y $P_{1}$ o $P_{2}$(uno de los 2 con el que no tiene intercepci\'on) + $<u,v>$.Si $P_{q}$ intercepta 
+    con $P_{1}$ y con $P_{2}$ vamos a crear un camino que comienza en v sigue por Q hasta la primera intercepci\'on con
+    $P_{1}$ o $P_{2}$ y sigue por uno de estos dos hasta u,este camino no contiene a z. Ahora crea que otro camino que vaya 
+    desde u por $P_{q}$ hasta la primera intercepci\'on con $P_{1}$ o $P_{2}$ ,ahora sigue por $P_{1}$ o $P_{2}$ hasta z 
+    y por la arista $<z,v>$ llega a v.Encontr\'e dos caminos disjuntos en v\'ertices que van de u a v.\newline
+    Luego en G hay dos caminos disjuntos en v\'ertices de u a v $\forall u,v \in V(G)$
+    \newline
+    \newline
+    Lema2:\newline
+    G es biconexo $\Longleftrightarrow$ G no tiene puntos de articulaci\'on \newline
+    Demostraci\'on:\newline
+    $\Longleftarrow$\newline
+    Si G es biconexo entonces al quitar cualquier v\'ertice v de G y las aristas incidentes al mismo 
+    G sigue siendo conexo por lo no se divide en 2 o m\'as de componentes conexas .Por tanto G no
+    tiene puntos de articulaci\'on.\newline
+    $\Longleftarrow$\newline
+    Si G no tiene puntos de articulaci\'on entonces no existe ning\'un  v\'ertice v que quite de G que lo separe en
+    2 o m\'a  componentes conexas.Entonces G-v sigue siendo conexo.Luego G es biconexo.
+    \newline
+    \newline
+    Lema3:\newline
+    $\forall x,y\in V(G)$ existen dos caminos disjuntos en v\'ertices $\Longleftrightarrow$ G no tiene puntos de articulaci\'on\newline
+    Demostraci\'on:\newline
+    Por Lema1  $\forall x,y\in V(G)$ existen dos caminos disjuntos en v\'ertices $\Longleftrightarrow$ G es biconexo. 
+    Por Lema2 G es biconexo $\Longleftrightarrow$ G no tiene puntos de articulaci\'on.
+    Entonces por transitividad $\forall x,y\in V(G)$ existen dos caminos disjuntos en v\'ertices 
+    $\Longleftrightarrow$ G no tiene puntos de articulaci\'on
+    \newline
+
 \end{document}
