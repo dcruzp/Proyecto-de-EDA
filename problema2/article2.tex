@@ -1,5 +1,5 @@
 \documentclass{article}
-
+\usepackage{algorithmicx}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 
 \begin{document}
@@ -8,11 +8,24 @@
     \date{}
     \maketitle  
 
-    \section*{Orden del problema} 
-
+    \section*{\begin{center}
+        Orden del Problema
+    \end{center}}
+    
     Disene un algoritmo que dado un grafo no dirigido con costo en las aristas $G = <V, E>$ y los v\'ertices x, $y \in  V$ ,
     determine el costo de la arista de menor costo entre las aristas de mayor costo en cada camino de x a y. Esto
     quiere decir que si de x a y existen dos caminos $P_1$ , $P_2$ y la arista de mayor costo en $P_1$ es 5 y la de mayor costo
-    en $P_2$ es 4, entonces deben devolver 4. La complejidad temporal de su algoritmo debe ser de $O(|E|log(|V|))$.
+    en $P_2$ es 4, entonces deben devolver 4. La complejidad temporal de su algoritmo debe ser de $O(|E|log(|V|))$.\\\\
+
+    \section*{\begin{center}
+        Soluci\'on
+    \end{center}}
+
+    Proposici\'on 1 : \\
+    
+    Sea G = $<$V,E$>$ grafo con costo en las aristas, $x$, $y$ $\in V(G)$, $y$ alcanzable desde $x$, $p_1, p_2,..., p_t$ 
+    los caminos de costo m\'inimo de $x$ a $y$, $e_1, e_2,..., e_t$ las aristas de costo m\'aximo en cada uno de los caminos $p_i$, $1 \leq i \leq t$, y\\ 
+    $E$' = \textbraceleft $e |\hspace{0.2em} w(e)$ = min \textbraceleft $w(e_i) |\hspace{0.2em} 1 \leq i \leq t$ \textbraceright \textbraceright, el conjunto
+    de las aristas de menor costo entre las $e_i$. Entonces el algoritmo de PRIM tomando como v\'ertice inicial $x$, devuelve un AACM T de G, tal que $\exists!\hspace{0.2em} e' \in E', e' \in E(T)$ 
 
 \end{document}
