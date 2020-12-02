@@ -1,4 +1,5 @@
 \documentclass{article}
+\usepackage{hyperref}
 \usepackage{algpseudocode,algorithm,algorithmicx}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 
@@ -8,23 +9,19 @@
     \date{}
     \maketitle  
 
-    \section*{\begin{center}
-        \underline{Orden del Problema}
-    \end{center}}
+    \section{\underline{Orden del Problema}}
     
     Disene un algoritmo que dado un grafo no dirigido con costo en las aristas $G = <V, E>$ y los v\'ertices x, $y \in  V$ ,
     determine el costo de la arista de menor costo entre las aristas de mayor costo en cada camino de x a y. Esto
     quiere decir que si de x a y existen dos caminos $P_1$ , $P_2$ y la arista de mayor costo en $P_1$ es 5 y la de mayor costo
     en $P_2$ es 4, entonces deben devolver 4. La complejidad temporal de su algoritmo debe ser de $O(|E|log(|V|))$.\\
 
-    \section*{\begin{center}
-        \underline{Soluci\'on}
-    \end{center}}
+    \section{\underline{Soluci\'on}}
 
-    Proposici\'on 1 : \\\\
+    Proposici\'on 1 : \\
     
-    Sea $G = <V,E>$ grafo no dirigido con costo en las aristas, $x$, $y$ $\in V(G)$, $y$ alcanzable desde $x$, \textbraceleft$p_1, p_2,..., p_t$\textbraceright 
-    los caminos de costo m\'inimo de $x$ a $y$ en $G$, \textbraceleft$e_1, e_2,..., e_t$\textbraceright las aristas de costo m\'aximo en cada uno de los caminos $p_i$, $1 \leq i \leq t$, y
+    Sea $G = <V,E>$ grafo no dirigido con costo en las aristas, $x$, $y$ $\in V(G)$, $y$ alcanzable desde $x$, $p_1, p_2,..., p_t$ 
+    los caminos de costo m\'inimo de $x$ a $y$ en $G$, $e_1, e_2,..., e_t$ las aristas de costo m\'aximo en cada uno de los caminos $p_i$, $1 \leq i \leq t$, y
     $E'$ = \textbraceleft $e \in E(G) |\hspace{0.2em} w(e)$ = min \textbraceleft $w(e_i) |\hspace{0.2em} 1 \leq i \leq t$ \textbraceright \textbraceright, el conjunto
     de las aristas de menor costo entre las $e_i$. Entonces el algoritmo de PRIM tomando como v\'ertice inicial $x$, devuelve un AACM T de G, tal que $\exists\hspace{0.2em}
     e' \in E', e' \in E(T)$ y el \'unico camino de $x$ a $y$ en el AACM T pasa por $e'$.\\\\
@@ -51,9 +48,7 @@
 
     $\bullet$ Por tanto se cumple la proposici\'on 1\\\\
     \newpage
-    \section*{\begin{center}
-        \underline{Pseudoc\'odigo}
-    \end{center}}
+    \section{\underline{Pseudoc\'odigo}}
     \begin{algorithm}
         \caption{Determinar el costo de la arista de menor costo entre las aristas de mayor costo en cada camino de $x$ a $y$ en un grafo $G$ con funci\'on de costo $w$}
         \textbf{Solve($G,x,y,w$)\\} 
@@ -68,18 +63,13 @@
         l\'ineas 3-7 Quedarse con el mayor de los costos de las aristas en el camino de $x$ a $y$ en $T$
     \end{algorithm}
 
-    \section*{\begin{center}
-        \underline{Correctitud del Algoritmo}
-    \end{center}}
+    \section{\underline{Correctitud del Algoritmo}}
 
     La correctitud del algoritmo se basa principalmente en la de los algoritmos de DFS y PRIM vistos en conferencia, y en esencia en 
     la aplicaci\'on de la proposici\'on 1 previamente demostrada, una vez verificado que $y$ es alcanzable desde $x$, utilizando el array 
     $\pi$, que computa el propio algoritmo de PRIM al construir el AACM empezando en x, solo resta quedarse con la arista de mayor costo 
     en el camino de $x$ a $y$ en $T$, operaci\'on que realizan las l\'ineas 5-9 del pseudoc\'odigo usando el array $\pi$.
 
-    \section*{\begin{center}
-        \underline{Complejidad Temporal}
-    \end{center}}
-
+    \section{\underline{Complejidad Temporal}}
     La complejidad temporal del algoritmo es:\\ $O(|E|\log{|V|}) + O(|V|) = O(max(|E|\log{|V|}, |V|)) = O(|E|\log{|V|})$
 \end{document}
