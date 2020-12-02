@@ -1,5 +1,5 @@
 \documentclass{article}
-
+\usepackage{algpseudocode,algorithm,algorithmicx}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 
 \begin{document}
@@ -82,6 +82,35 @@
     de articulaci\'on que es $O(|V|+|E|)$
     \newline
     \newline
-    Pseudoc\'odigo:\newline
+    Pseudoc\'odigo:
+    
+    \begin{algorithm}
+        \caption{Determinar si un grafo G cumple $\forall x,y\in V(G)$  existen dos caminos disjuntos en v\'ertices de x a y }
+        \textbf{Solve($G,x,y,w$)\\}
+        1-\hspace*{1em}DFS-Visit-PA($G,u$) \\ 
+        2-\hspace*{2em}u $\leftarrow$ visited \\
+        3-\hspace*{2em}$time=time+1$ \\
+        4-\hspace*{2em}$d[u]=tome$\\
+        5-\hspace*{2em}$low[u]=d[u]$\\ 
+        6-\hspace*{2em}for each v $\in$ $Adj[u]$\\
+        7-\hspace*{3em}do if v not visited\\
+        9-\hspace*{4em}$\pi[v] \leftarrow u$\\
+        10-\hspace*{4em}DFS-VISIT-PA(G,v)\\
+        11-\hspace*{4em}$low[u]=min(low[u],low[v])$\\
+        12-\hspace*{4em}if $low[v]\ge d[u]$\\
+        13-\hspace*{5em}return False\\
+        14-\hspace*{3em}else if $pi[u]\ne v$\\
+        15-\hspace*{4em}$low[u]=min(low[u],d[v])$\\ 
+        15-\hspace*{2em}return True\\\\
+        17-\hspace*{1em}DFS-PA($G$)\\
+        18-\hspace*{2em}for each v $\in$ V(G)\\
+        19-\hspace*{3em}do if not visited\\
+        20-\hspace*{4em}if $deg(v)\ge 2$\\
+        21-\hspace*{5em}return False\\
+        22-\hspace*{4em}if not DFS-Visit-PA(G,v)\\
+        23-\hspace*{5em}return False\\
+        24-\hspace*{2em}return True\\---No encont\'e ningu punto de articulaci\'on y por lo tanto no se cumple que para todo par de v\'ertices existen dos caminos disjuntos en v\'ertices
+        %Me parece que seria mejor si lo agrego a una lista y despues pregunto por lista.count para no modificar mucho del codigo
+    \end{algorithm}
 
 \end{document}
