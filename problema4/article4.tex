@@ -1,19 +1,20 @@
 \documentclass{article}
 \usepackage{algpseudocode,algorithm,algorithmicx}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
-
+\usepackage{hyperref}
 \begin{document}
     \title{\textcolor{blue}{\textbf{Problema 4 }}\\}
     \author{Daniel de la Cruz Prieto C211\\ David Orlando De Quesada Oliva C211\\Javier Dominguez C212} 
     \date{}
     \maketitle  
 
-    \section*{Orden del problema} 
+    \section{Orden del problema} 
     Sea $G = <V, E>$ un grafo no dirigido y conexo, se desea saber si G cumple la propiedad de que cada par de
     v\'ertices existen dos caminos disjuntos en v\'ertices entre ellos. La complejidad temporal de su algoritmo debe
     ser $O(|V| + |E|)$.
     \newline
     \newline
+    \section{Soluci\'on} 
     Lema 1:\newline
     $\forall x,y\in V(G)$ existen dos caminos disjuntos en v\'ertices $\Longleftrightarrow$ G es biconexo \newline
     \newline
@@ -69,6 +70,7 @@
     \newline
     \newline
     \newline
+    \section{Correctitud} 
     Correctitud del problema:
     \newline
     Por lo expuesto con anterioridad en los lemas 1,2 y 3 y por la correctitud del algoritmo de detecci\'on de puntos de 
@@ -80,6 +82,7 @@
     \newline
     \newline
     \newline
+    \section{Complejidad Temporal} 
     Complejidad Temporal:\newline
     La complejidad temporal de nuestro algoritmo es la complejidad temporal del algoritmo de detecci\'on de puntos 
     de articulaci\'on que es $O(|V|+|E|)$.La modificaci\'on que hicimos del c\'odigo de conferencia no afecta la 
@@ -88,6 +91,7 @@
     es O(1) por lo que sigue siendo $O(|V|+|E|)$ la complejidad de mi algoritmo.
     \newline
     \newpage
+    \section{Pseudoc\'odigo} 
     Pseudoc\'odigo:
     
     \begin{algorithm}
@@ -122,6 +126,7 @@
         27-\hspace*{3em}return True\\
         28-\hspace*{2em}else\\
         29-\hspace*{3em}return False\\
+        
         %Me parece que seria mejor si lo agrego a una lista y despues pregunto por lista.count para no modificar mucho del codigo
         
     \end{algorithm}
