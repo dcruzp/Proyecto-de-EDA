@@ -1,6 +1,15 @@
 \documentclass{article}
 
-\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+
+\usepackage[spanish,es-noshorthands]{babel}
+\usepackage{tikz}
+\usepackage{minted}
+\usepackage[hidelinks]{hyperref} 
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage{makeidx} 
 
 \begin{document}
     \title{\textcolor{blue}{\textbf{Problema 3 }}\\}
@@ -27,20 +36,37 @@
     \section{ Explicaci\'on de la soluci\'on }
 
     \noindent La soluci\'on al problema es aplicar el algoritmo de  Dijkstra visto en conferencias.
-    Teniendo en cuenta el array $\pi$ para obtener el \'arbol abarcador con ra\'iz  en $s$.
-    Esta es la idea general del algoritmo. Solo que tenemos que demostrar que el \'arbol que 
-    nos retona el algoritmo es el \'arbol que buscamos  , un arbol $T$ de caminos de costo m\'inimos, 
-    con ra\'iz en $s$ tal que la suma de los pesos de las aristas es la menor posible    
+    Para encontrar un subgrafo $G^{'}$ que contenga todas las aristas que forman parte de algun camino de 
+    costo minimo desde $s$ hasta cualquier otro v\'ertice del grafo $G$. Luego encontramos un arbol $T$ abarcador de 
+    costo m\'inimo en $G^{'}$ , $T'$ es el arbol que estamos buscando 
 
     \section{Seudoc\'odigo del Algoritmo }
 
+    \begin{algorithm}[H]
+        \caption{Determinar el \'arbol de caminos m\'inimos desde $s$ de menor peso }
+        \begin{algorithmic}[1] 
+            \State $d[\hspace*{0.1cm}]$ $\leftarrow $ Dijkstra $\left(G,s\right)$   
+            \State $E (G^{'})$ $\leftarrow$ $\emptyset$
+            \State $V(G')$ $\leftarrow$ $V(G)$
+            \ForAll {$u \xrightarrow[]{e} v$  $\in$ $E(G)$}
+                \If {$d[u] + w(e) = d[v] $} 
+                    \State $E(G^{'}) = E(G^{'})  \cup  e $ 
+                \EndIf
+            \EndFor
+            \State $T \leftarrow  PrimAlgorithm (G^{'} , s)$
+            \State return $T$ 
+        \end{algorithmic}
+    \end{algorithm}
     
+    \section{Complejidad temporal}
 
-    \section{Complejidad temporal }
+    \noindent La complejidad temporal del algoritmo esta dada por la complejidad Temporal de algoritmo de Dijkstra 
+    que es $O(|E|\log |V|)$ , mas la complejidad de encontrar el subgrafo que tiene solo las aristas que estan en al menos 
+    un camino minimo de $s$ a algun otro v\'ertice del grafo $G$ , esto se hace en las lineas de la 4-8 , y vemos que el for se 
+    ejecuta $|E|$ veces  y a\~nadir la arista que cuple la propiedad (linea 6 )es $O(1)$ por lo que El tiempo de ejecucion del algoritmo 
+    de la linea 4-8 es $O(|E|)$ . En la linea 9 se llama al algoritmo de Prim (visto en conferencia) que tiene una complejidad temporal
+    $O(|E|\log |V|)$ . Luego por la regla de la suma la complejidad temporal del algoritmo es  $O(|E|\log |V|)$
 
     \section{Demostraci\'on  de la correctitud del algoritmo}
-
-
-
 
 \end{document}
