@@ -1,7 +1,7 @@
 \documentclass{article}
-
+\usepackage{algpseudocode,algorithm,algorithmicx}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
-
+\usepackage{hyperref}
 \begin{document}
     \title{\textcolor{blue}{\textbf{Problema 1 }}\\}
     \author{Daniel de la Cruz Prieto C211\\ David Orlando De Quesada Oliva C211\\Javier Dominguez C212} 
@@ -27,5 +27,36 @@
     forma segura desde cada tanque hasta su grifo correspondiente. Dise\~ne un algoritmo que devuelva la cantidad
     m\'axima de agua que se puede trasnportar de forma segura desde cada tanque hasta su grifo correspondiente.
     La complejidad temporal de su algoritmo debe ser de \textit{O(n + m)}.
-
+    \\\\
+    Complejidad Temporal:\\
+    La complejidad de nuestro algoritmo se basa en la complejidad del DFS $O(n+m)$.Lo \'unico que le agregamos al DFS
+    es ir actualizando  el m\'inimo de las capacidad de las aristas que participan en un camino desde un tanque hasta un 
+    grifo lo cual no afecta la complejidad temporal del mismo. Luego hacemos un recorrido por cada v\'ertice v del array max
+    para imprimir las casa que son tanque con la m\'axima capacidad correspondiente que se puede transportar de forma segura 
+    desde el mismo hasta un grifo,lo cual tiene complejidad $O(n)$.Por lo cual mi algoritmo tiene complejidad $O(n+m)$.
+    Pseudoc\'odigo:
+    
+    \begin{algorithm}
+        \caption{Calcular la capacidad máxima de agua que se puede transportar de forma segura desde cada tanque hasta su grifo correspondiente}
+        \textbf{Solve($G$)\\}
+        1-\hspace*{1em}max=[] -array donde voy tener para cada v\'ertice en caso que sea tenga la capacida m\'axima a transportar\\
+        1-\hspace*{1em}DFS-Visit($G,u,min,ficvertex)$\\ 
+        2-\hspace*{2em}u $\leftarrow$ visited \\
+        3-\hspace*{2em}$time=time+1$ \\  
+        6-\hspace*{2em}for each v $\in$ $Adj[u]$\\
+        7-\hspace*{3em}do if v not visited\\
+        9-\hspace*{4em}$\pi[v] \leftarrow u$\\
+        10-\hspace*{4em}do if $c(u,v)< min$\\
+        9-\hspace*{4em}$min=c(u,v)$\\
+        10-\hspace*{4em}DFS-Visit(G,v,min)\\
+        10-\hspace*{2em}do $if pi[u]=ficvertex$\\
+        11-\hspace*{3em}max[u]=min\\        
+        15-\hspace*{2em}return\\\\
+        27-\hspace*{1em}for i in max\\
+        28-\hspace*{2em}if $max[i] != \infty $\\
+        29-\hspace*{3em}print(i,pi[i])\\
+        
+        %Me parece que seria mejor si lo agrego a una lista y despues pregunto por lista.count para no modificar mucho del codigo
+        
+    \end{algorithm}
 \end{document}
