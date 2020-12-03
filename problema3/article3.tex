@@ -44,18 +44,27 @@
 
     \begin{algorithm}[H]
         \caption{Determinar el \'arbol de caminos m\'inimos desde $s$ de menor peso }
-        \begin{algorithmic}[1] 
-            \State $d[\hspace*{0.1cm}]$ $\leftarrow $ Dijkstra $\left(G,s\right)$   
-            \State $E (G^{'})$ $\leftarrow$ $\emptyset$
-            \State $V(G')$ $\leftarrow$ $V(G)$
-            \ForAll {$u \xrightarrow[]{e} v$  $\in$ $E(G)$}
-                \If {$d[u] + w(e) = d[v] $} 
-                    \State $E(G^{'}) = E(G^{'})  \cup  e $ 
-                \EndIf
-            \EndFor
-            \State $T \leftarrow  PrimAlgorithm (G^{'} , s)$
-            \State return $T$ 
-        \end{algorithmic}
+        %\begin{algorithmic}[1] 
+        %    \State $d[\hspace*{0.1cm}]$ $\leftarrow $ Dijkstra $\left(G,s\right)$   
+        %    \State $E (G^{'})$ $\leftarrow$ $\emptyset$
+        %    \State $V(G')$ $\leftarrow$ $V(G)$
+        %    \ForAll {$u \xrightarrow[]{e} v$  $\in$ $E(G)$}
+        %        \If {$d[u] + w(e) = d[v] $} 
+        %            \State $E(G^{'}) = E(G^{'})  \cup  e $ 
+        %        \EndIf
+        %    \EndFor
+        %    \State $T \leftarrow  PrimAlgorithm (G^{'} , s)$
+        %    \State return $T$ 
+        %\end{algorithmic}
+        \textbf{Solve($G,s$)}\\ 
+        1-\hspace*{0.5em}$d[\hspace*{0.1cm}]$ $\leftarrow $ \textit{Dijkstra} $\left(G,s\right)$ \\  
+        2-\hspace*{0.5em}$E (G^{'})$ $\leftarrow$ $\emptyset$ \\ 
+        3-\hspace*{0.5em}$V(G')$ $\leftarrow$ $V(G)$\\ 
+        4-\hspace*{0.5em} \textbf{\textit{For All }} $u \xrightarrow[]{e} v$  $\in$ $E(G)$\\ 
+        5-\hspace*{3em} \textbf{\textit{If}}$d[u] + w(e) = d[v] $\\
+        6-\hspace*{6em} $E(G^{'}) = E(G^{'})  \cup  e $ \\ 
+        7-\hspace*{0.5em} $T \leftarrow  Prim(G^{'} , s)$\\
+        8-\hspace*{0.5em} \textbf{return } $T$ 
     \end{algorithm}
     
     \section{Complejidad temporal}
@@ -121,10 +130,22 @@
         \sum_{i=1}^{k} w\left(v_{i-1},v_{i}\right) = \sum_{i=1}^{k-1} w\left(v_{i-1},v_{i}\right) + w\left(v_{k-1} , v_{k}\right) = \delta\left(s,v_{k-1}\right) + w\left(v_{k-1, v}\right) > \delta\left(s, v\right)
     \end{equation*}
 
-    \noindent Esto contradice lo que habiamos supuesto , que $\left(v_0,v_1.\dots, v_k\right)$ era un camino de costo m\'inimo en $G$ , luego queda demostrado que para un k arbitrario se cumple. 
+    \noindent Esto contradice lo que habiamos supuesto , que $\left(v_0,v_1.\dots, v_k\right)$ era un camino de costo m\'inimo en $G$ , luego queda demostrado que para un k arbitrario se cumple. (por inducci\'on )
     \\*
-    Luego por inducci\'on tenemos que un camino de costo m\'inimo de $s$ a $v$ en $G$ corresponde a un camino de $s$ a $v$ en $G'$ 
+    Luego tenemos que un camino de costo m\'inimo de $s$ a $v$ en $G$ corresponde a un camino de $s$ a $v$ en $G'$ 
     
+    \vspace*{1cm} 
 
+    \subsection*{Conclusi\'on } 
+
+    \noindent Ahora por el resultado anterior sabemos que todo \'arbol de caminos de costo m\'inimo que esta en $G$ tambi\'en esta en $G'$  y viceverza .Luego como el algoritmo de Prim nos 
+    devuelve el \'arbol abarcador de costo m\'inimo tomando como ra\'iz el v\'ertice $s$ . el cual se aplica sobre el grafo $G'$ donde todo camino desde $s$ es un camino de  costo m\'inimo.
+    Entonces tenemos que el \'arbol abarcador devuelto por el algoritmo de Prim es un \'arbol de caminos de costo m\'inimo ,(porque se aplica sobre el grafo $G'$ ) y adem\'as la suma de las aristas es la 
+    menor posible, por ser un \'arbol abarcador de costo m\'inimo de $G'$ . 
+    \\*
+    Ahora por el teorema enunciado arriba podemos afirmar que el algoritmo devuelve el \'arbol de  caminos m\'inimos con ra\'iz en $s$ tal que la suma del peso de sus aristas es la menor posible . 
+    \\
+    En generar la correctitud esta dada por el algoritmo de Dijkstra (que utilizamos para deteminar $G'$), la correctitud del algoritmo de Prim (que lo utilizamos para saber cual es el \'arbol de costo m\'inimo de $G'$) y el Teorema 1 el cual nos 
+    garantiza que todo \'arbol de caminos m\'inimo  en $G$ esta tambi\'en en $G'$ y viceversa . 
 
 \end{document}
