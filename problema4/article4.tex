@@ -97,7 +97,8 @@
     \begin{algorithm}
         \caption{Determinar si un grafo G cumple $\forall x,y\in V(G)$  existen dos caminos disjuntos en v\'ertices de x a y }
         \textbf{Solve($G$)\\}
-        answer=[] -lista para almacenar los puntos de articulaci\'on\\
+        $answer=[\;]$ -lista para almacenar los puntos de articulaci\'on\\
+        $childrens=[\;]$- array para saber cuantos hijos un v\'ertice que pertenece al \'arbol resultado de hacer DFS-Visit\\
         1-\hspace*{1em}DFS-Visit-PA($G,u$) \\ 
         2-\hspace*{2em}u $\leftarrow$ visited \\
         3-\hspace*{2em}$time=time+1$ \\
@@ -106,6 +107,7 @@
         6-\hspace*{2em}for each v $\in$ $Adj[u]$\\
         7-\hspace*{3em}do if v not visited\\
         9-\hspace*{4em}$\pi[v] \leftarrow u$\\
+        9-\hspace*{4em}$childrens[u] \leftarrow childrens[u]+1$\\
         10-\hspace*{4em}DFS-PA(G)\\
         11-\hspace*{4em}$low[u]=min(low[u],low[v])$\\
         12-\hspace*{4em}if $low[v]\ge d[u]$\\
@@ -116,16 +118,16 @@
         17-\hspace*{1em}DFS-PA($G$)\\
         18-\hspace*{2em}for each v $\in$ V(G)\\
         19-\hspace*{3em}do if not visited\\
-        20-\hspace*{4em}if $deg(v)\ge 2$\\
+        22-\hspace*{4em}DFS=DFS-Visit-PA(G,v)\\
+        20-\hspace*{4em}if $childrens[v] \ge 2$ -en caso de que la ra\'iz v de ese \'arbol de DFS sea art point \\
         21-\hspace*{5em}anwser.add(v)\\
-        22-\hspace*{4em}DFS-Visit-PA(G,v)\\
         24-\hspace*{2em}return \\\\
         25-\hspace*{1em}ArtPoint($G$)\\
         25-\hspace*{2em}DFS-PA($G$)\\
         26-\hspace*{2em}if $size(anwser) >0$\\
-        27-\hspace*{3em}return True\\
+        27-\hspace*{3em}return False\\
         28-\hspace*{2em}else\\
-        29-\hspace*{3em}return False\\
+        29-\hspace*{3em}return True\\
         
         %Me parece que seria mejor si lo agrego a una lista y despues pregunto por lista.count para no modificar mucho del codigo
         
