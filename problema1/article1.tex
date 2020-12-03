@@ -114,36 +114,65 @@
     donde cada una de dichas componentes conexas representa un \'unico camino simple que va de una casa con tanque, a su correspondiente
     casa con grifo.\\\\
 
-    \section{\underline{Complejidad Temporal}}
-    La complejidad de nuestro algoritmo se basa en la complejidad del DFS $O(n+m)$.Lo \'unico que le agregamos al DFS
-    es ir actualizando  el m\'inimo de las capacidad de las aristas que participan en un camino desde un tanque hasta un 
-    grifo lo cual no afecta la complejidad temporal del mismo. Luego hacemos un recorrido por cada v\'ertice v del array max
-    para imprimir las casa que son tanque con la m\'axima capacidad correspondiente que se puede transportar de forma segura 
-    desde el mismo hasta un grifo,lo cual tiene complejidad $O(n)$.Por lo cual mi algoritmo tiene complejidad $O(n+m)$.
+    Nuestro problema, nos pide hallar la mayor cantidad de agua que se puede transportar desde cada tanque hacia su correspondiente grifo de forma segura, o sea 
+    de forma que la cantidad de agua que transporta dicho tanque hacia su grifo, no exceda el di\'ametro de las tuber\'ias que conectan un tanque con su correspondiente
+    grifo, que esto es, en el grafo $G$ que representa nuetro vecindario, determinar para cada v\'ertice $w \in V(G)$, $indegree(w) = 0$ y $outdegree(w) = 1$, cual es la cantidad m\'axima
+    de flujo que se puede enviar hacia su correspondiente $z \in V(G), outdegree(z) = 0$ y $indegree(z) = 1$, por supuesto, sobre este grafo es imposible  aplicar el concepto de flujo,
+    pues no hay una fuente ni un destino, y es para eso que agregaremos un v\'ertice ficticio $x$, unido por un arco, a cada uno de los $u \in V(G), indegree(u) = 0$ y $outdegree(u) = 1$, y para cada 
+    $x,u \in E(G), c(x,v) = \infty$, y haremos un procedimiento parecido para los v\'ertices $v \in V(G), indegree(y) = 1$ y $outdegree(y) = 0$, que es conectarlos por un arco, a un v\'ertice ficticio $y$, y
+    $c(v,y) = \infty$. De esta forma obtenemos un grafo $G'$, como se muetra a continuaci\'on, donde si es posible aplicar el concepto de flujo estudiado en conferencias, pues dicho grafo es una red de flujo
+    dadas las restricciones del problema y las modificaciones explicadas previamente.\\
     
-    \newpage
+    \begin{figure}[h]
+        \includegraphics[scale = 0.5]{Image2Problem1.png}
+        \centering
+    \end{figure}
+
+    Dadas las caracter\'isticas del problema en cuesti\'on (hay un \'unico camino entre cada tanque y su grifo correspondiente) y por las proposiciones demostradas previamente, 
+    es posible determinar el valor m\'aximo flujo que se puede enviar desde cada tanque a su grifo correspondiente, 
+    simplemente haciendo un DFS desde el v\'ertice ficticio $x$, tendremos una lista que denotaremos max, de tama\~no $n$, donde en la posici\'on i, almacenaremos el valor 
+    m\'aximo de flujo que se puede enviar desde el tanque i hasta su grifo correspondiente y una variable $min$ que utilizaremos para calcular el flujo m\'aximo para cada 
+    tanque, de la siguiente manera. Comenzamos haciendo DFS($G'$,$x$) y por la propia estructura de $G'$ necesariamente, el algoritmo ejecutar\'a DFS-Visit($G'$,$u$), 
+    $\forall u \in V(G'), x,u \in E(G')$, ya que no hay forma de alcanzar uno de los tanques desde otro y por tanto el DFS-Visit no los marcar\'a como visitados. Ahora simplemente
+    en cada camino que vaya desde un tanque a un grifo, vamos almacenando en $min$, la menor de las capacidades de las en el camino, como las aristas ficticias que a\~nadimos tienen 
+    capacidad infinita, no afectar\'a al m\'inimo que estamos computando, una vez regresemos al v\'ertice $x$ por backtrack en el propio DFS, almacenamos en la lista max en la posici\'on 
+    que identifica al v\'ertice $u$, el valor de $min$, y reiniciamos el valor de $min$ a $\infty$ para computar el m\'inimo en el siguiente camino entre un tanque y un grifo.\\\\ 
+
     \section{\underline{Pseudoc\'odigo}}
     \begin{algorithm}
         \caption{Calcular la capacidad máxima de agua que se puede transportar de forma segura desde cada tanque hasta su grifo correspondiente}
         \textbf{Solve($G$)\\}
-        1-\hspace*{1em}max=[] -array donde voy tener para cada v\'ertice en caso que sea tenga la capacida m\'axima a transportar\\
-        2-\hspace*{1em}DFS-Visit($G,u,min,ficvertex)$\\ 
-        3-\hspace*{2em}u $\leftarrow$ visited \\
-        4-\hspace*{2em}$time=time+1$ \\  
-        5-\hspace*{2em}for each v $\in$ $Adj[u]$\\
-        6-\hspace*{3em}do if v not visited\\
-        7-\hspace*{4em}$\pi[v] \leftarrow u$\\
-        8-\hspace*{4em}do if $c(u,v)< min$\\
-        9-\hspace*{4em}$min=c(u,v)$\\
-        10-\hspace*{4em}DFS-Visit(G,v,min)\\
-        11-\hspace*{2em}do $if pi[u]=ficvertex$\\
-        12-\hspace*{3em}max[u]=min\\        
-        13-\hspace*{2em}return\\\\
-        14-\hspace*{1em}for i in max\\
-        15-\hspace*{2em}if $max[i] != \infty $\\
-        16-\hspace*{3em}print(i,pi[i])\\
+        1-\hspace*{1em}$max \leftarrow$ [] - lista donde tendremos para cada v\'ertice quee sea tanque la cantidad m\'axima de flujo que puede enviar a su grifo\\
+        2-\hspace*{1em}$min \leftarrow \infty$ - esta variable la usaremos para computar lo que nos pide el ejercicio\\
+        3-\hspace*{1em}visited $\leftarrow$ [], $\pi \leftarrow$ []\\
+        4-\hspace*{1em}DFS($G'$, $x$)\\
+        5-\hspace*{2em}$min \leftarrow \infty$\\
+        6-\hspace*{2em}foreach $u \in Ady[x]$ do:\\
+        7-\hspace*{3em}DFS-Visit($G'$, $u$)\\
+        8-\hspace*{3em}$max$[$u$] $\leftarrow min$\\
+        9-\hspace*{3em}$min \leftarrow \infty$\\
+
+        10-\hspace*{1em}DFS-Visit($G,u,ficvertex)$\\ 
+        11-\hspace*{2em}u $\leftarrow$ visited \\  
+        12-\hspace*{2em}for each v $\in$ $Adj[u]$\\
+        13-\hspace*{3em}do if v not visited\\
+        14-\hspace*{4em}$\pi[v] \leftarrow u$\\
+        15-\hspace*{4em}do if $c(u,v)< min$\\
+        16-\hspace*{4em}$min=c(u,v)$\\
+        17-\hspace*{4em}DFS-Visit($G$,$v$)\\
         
-        %Me parece que seria mejor si lo agrego a una lista y despues pregunto por lista.count para no modificar mucho del codigo
+        19-\hspace*{1em}for each $u \in V(G')$\\
+        20-\hspace*{2em}if $max$[$u$] != $\infty$\\
+        21-\hspace*{3em}print($u$,$max$[$u$])\\
         
     \end{algorithm}
+
+    \section{\underline{Complejidad Temporal}}
+    La complejidad de nuestro algoritmo se basa en la complejidad del DFS $O(n+m)$.Lo \'unico que le agregamos al DFS
+    es ir actualizando  el m\'inimo de las capacidad de las aristas que participan en un camino desde un tanque hasta un 
+    grifo lo cual no afecta la complejidad temporal del mismo. Luego hacemos un recorrido por cada v\'ertice v del array max
+    para imprimir las casas que son tanque con la m\'axima capacidad correspondiente que se puede transportar de forma segura 
+    desde el mismo hasta su grifo,lo cual tiene complejidad $O(n)$. Por lo cual nuestro algoritmo tiene complejidad $O(n + m)$.
+    
+
 \end{document}
