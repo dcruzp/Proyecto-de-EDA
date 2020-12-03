@@ -2,6 +2,8 @@
 \usepackage{algpseudocode,algorithm,algorithmicx}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 \usepackage{hyperref}
+\usepackage{graphicx}
+
 \begin{document}
     \title{\textcolor{blue}{\textbf{Problema 1 }}\\}
     \author{Daniel de la Cruz Prieto C211\\ David Orlando De Quesada Oliva C211\\Javier Dominguez C212} 
@@ -99,35 +101,47 @@
     que lleguemos al primer v\'ertice $x$ que est\'a en dicho ciclo, la arista que usamos para llegar a \'el no estaba en el ciclo y aporta 1 de $indegree$ a $x$,
      y la otra arista $y$, que cierra el ciclo en $x$ aporta 1 de $indegree$, por lo que $indegree(x) = 2$, lo que es una contradicci\'on con las restricciones del problema.\\\\
 
-    Por tanto, el \'unico camino entre $u$ y $v$ en $G$, es simple.
-    \\\\
-    Complejidad Temporal:\\
+    Por tanto, el \'unico camino entre $u$ y $v$ en $G$, es simple.\\\\
+
+    Debido a que las proposiciones previamente analizadas son ciertas, el vecindario(casas y tuber\'ias) representado utilizando un grafo dirigido $G$, quedar\'ia de la siguiente forma:\\\\
+
+    \begin{figure}[h]
+        \includegraphics[scale = 0.5]{Image1Problem1.png}
+        \centering
+    \end{figure}
+
+    O sea, el vecindario represenado utilizando un grafo dirigido $G$, queda formando varias componentes conexas en el grafo $G$,
+    donde cada una de dichas componentes conexas representa un \'unico camino simple que va de una casa con tanque, a su correspondiente
+    casa con grifo.\\\\
+
+    \section{\underline{Complejidad Temporal}}
     La complejidad de nuestro algoritmo se basa en la complejidad del DFS $O(n+m)$.Lo \'unico que le agregamos al DFS
     es ir actualizando  el m\'inimo de las capacidad de las aristas que participan en un camino desde un tanque hasta un 
     grifo lo cual no afecta la complejidad temporal del mismo. Luego hacemos un recorrido por cada v\'ertice v del array max
     para imprimir las casa que son tanque con la m\'axima capacidad correspondiente que se puede transportar de forma segura 
     desde el mismo hasta un grifo,lo cual tiene complejidad $O(n)$.Por lo cual mi algoritmo tiene complejidad $O(n+m)$.
-    Pseudoc\'odigo:
     
+    \newpage
+    \section{\underline{Pseudoc\'odigo}}
     \begin{algorithm}
         \caption{Calcular la capacidad máxima de agua que se puede transportar de forma segura desde cada tanque hasta su grifo correspondiente}
         \textbf{Solve($G$)\\}
         1-\hspace*{1em}max=[] -array donde voy tener para cada v\'ertice en caso que sea tenga la capacida m\'axima a transportar\\
-        1-\hspace*{1em}DFS-Visit($G,u,min,ficvertex)$\\ 
-        2-\hspace*{2em}u $\leftarrow$ visited \\
-        3-\hspace*{2em}$time=time+1$ \\  
-        6-\hspace*{2em}for each v $\in$ $Adj[u]$\\
-        7-\hspace*{3em}do if v not visited\\
-        9-\hspace*{4em}$\pi[v] \leftarrow u$\\
-        10-\hspace*{4em}do if $c(u,v)< min$\\
+        2-\hspace*{1em}DFS-Visit($G,u,min,ficvertex)$\\ 
+        3-\hspace*{2em}u $\leftarrow$ visited \\
+        4-\hspace*{2em}$time=time+1$ \\  
+        5-\hspace*{2em}for each v $\in$ $Adj[u]$\\
+        6-\hspace*{3em}do if v not visited\\
+        7-\hspace*{4em}$\pi[v] \leftarrow u$\\
+        8-\hspace*{4em}do if $c(u,v)< min$\\
         9-\hspace*{4em}$min=c(u,v)$\\
         10-\hspace*{4em}DFS-Visit(G,v,min)\\
-        10-\hspace*{2em}do $if pi[u]=ficvertex$\\
-        11-\hspace*{3em}max[u]=min\\        
-        15-\hspace*{2em}return\\\\
-        27-\hspace*{1em}for i in max\\
-        28-\hspace*{2em}if $max[i] != \infty $\\
-        29-\hspace*{3em}print(i,pi[i])\\
+        11-\hspace*{2em}do $if pi[u]=ficvertex$\\
+        12-\hspace*{3em}max[u]=min\\        
+        13-\hspace*{2em}return\\\\
+        14-\hspace*{1em}for i in max\\
+        15-\hspace*{2em}if $max[i] != \infty $\\
+        16-\hspace*{3em}print(i,pi[i])\\
         
         %Me parece que seria mejor si lo agrego a una lista y despues pregunto por lista.count para no modificar mucho del codigo
         
