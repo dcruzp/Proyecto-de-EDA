@@ -2,6 +2,7 @@
 \usepackage{algpseudocode,algorithm,algorithmicx}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 \usepackage{hyperref}
+\usepackage{graphicx}
 \begin{document}
     \title{\textcolor{blue}{\textbf{Problema 4 }}\\}
     \author{Daniel de la Cruz Prieto C211\\ David Orlando De Quesada Oliva C211\\Javier Dominguez C212} 
@@ -35,6 +36,10 @@
     un camino que conecta a u con v y que no contiene a $<u,v>$ ,este ser\'ia nuestro segundo camino.\newline
     
     Paso Inductivo:\newline
+    \begin{figure}[h]
+        \includegraphics[scale = 0.327]{4fig1.png}
+        \centering
+    \end{figure}
     Sea G un grafo donde $\forall\; u,v\in V(G)\; d(u,v)=k>1$. Entonces en G existe un camino de longitud k entre 
     cualquier par de v\'ertices u,v.Sea z el \'ultimo v\'ertice anterior a v en el camino de de longitud k que va de
     u a v .Obtenemos $d(u,z)=d(u,v)-1=k-1$ . Por hip\'otesis de inducci\'on existen dos caminos disjuntos en v\'ertices 
@@ -44,7 +49,7 @@
     con $P_{1}$ y con $P_{2}$ vamos a crear un camino que comienza en v sigue por $P_{q}$ hasta la primera intercepci\'on con
     $P_{1}$ o $P_{2}$ y sigue por uno de estos dos hasta u,este camino no contiene a z. Ahora creamos  otro camino que vaya 
     desde u, por el camino que que no tomamos entre $P_{1}$ y $P_{2}$ en el camino previamente construido,  hasta z y con la arista $<z,v>$ llega 
-    a v. Encontramos dos caminos disjuntos en v\'ertices que van de u a v.\newline
+    a v. Encontramos dos caminos disjuntos en v\'ertices que van de u a v$(fig4.1)$.\newline
     Luego en G hay dos caminos disjuntos en v\'ertices de u a v $\forall u,v \in V(G)$
     \newline
     \newline
