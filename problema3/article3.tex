@@ -69,4 +69,62 @@
 
     \section{Demostraci\'on  de la correctitud del algoritmo}
 
+    \noindent La correctitud del algoritmo se basa en la correctitud del algoritmo de Dijkstra visto en conferencia 
+    y en la correctitud del algorimo de Prim visto en Conferencia tambi\'en. Ademas hay que demostrar que el arbol $T$ 
+    devuelto por el algoritmo es un \'arbol de caminos de costo m\'inimo y que la suma del peso de sus aristas es la menor posible  
+    
+    \noindent \textbf{Nota } 
+
+    \begin{itemize}
+        \item Vamos a denotar $\delta\left(u,v\right)$ como la distancia m\'inima de $u$ a $v$ 
+        \item vamos a denotar a $w(u,v)$ como el peso de la arista $e= <u,v>$ 
+        \item Sea $G = <V,E>$ un Grafo  vamos a denotar a $G' = <V',E'>$ como un subgrafo de $G$ que solo contiene las aristas $ u \xrightarrow[]{e} v$ 
+        que cumplen que $\delta\left(s,u\right) + w \left(u,v\right) = \delta\left(s,v\right)$   
+    \end{itemize}
+
+    
+    \newtheorem{thm}{Teorema}
+    \begin{thm}
+        Sea $P = \left(v_0,v_1,\dots , v_k \right)$ con $v_0 = s$ y $v_k = v$ un camino simple de $s$ a $v$ .Entonces $P$ es un 
+        camino de costo m\'inimo de $s$ a $v$  en $G$ si solo si $P$ es un camino de $s$ a $v$ $G'$
+    \end{thm}
+    
+    \noindent \textbf{Demostraci\'on} 
+    
+    \noindent $ \Leftarrow $ Sea $P = \left(v_0,v_1,\dots , v_k \right)$  un camino en $G'$ . 
+    Vomos a hacer la demostraci\'on por inducci\'on en la cantidad de aristas del camino $P$ (vamos a denotar a $k$ como la cantidad de aristas en el camino $P$ )
+    \\
+    Para el caso base tenemos que si $k=0$ entonces el camino $P$ no tiene aristas por lo que es un camino de costo m\'inimo en $G$ 
+    \\
+    Para el paso inductivo vamos a suponer que se cumple que para todo camino de $k-1$ aristas que pertenece a  $G'$ es un camino de costo m\'inimo en $G$. 
+    Entonces vamos a suponer que tenemos un camino $P = \left(v_{0},\dots,v_{k}\right)$  de $k$ aristas en $G'$. En particular tenemos que el subcamino $\left(v_0,\dots,v_{k-1}\right)$ es un camino de 
+    costo m\'inimo en $G$ (por hip\'otesis de inducci\'on ). Ahora si $P$ no fuera un camino de costo m\'inimo entonces: 
+    
+    \begin{equation*}
+        \delta \left(s,v_k\right) < \sum_{i=1}^{k} w\left(v_{i-1,v_i}\right) = \sum_{i=1}^{k-1} w\left(v_{i-1}, v_{i}\right) + w\left(v_{k-1}, v_{k}\right)  = \delta\left(s,v_{k-1}\right) + w\left(v_{k-1}, v_{k}\right)
+    \end{equation*}
+
+    \noindent esto contradice que $<v_{k-1}, v_{k}> \in E'$ . Entonces un camino $P$  en $G'$ que tiene $k$ aristas es un camino de costo m\'inimo en $G$ 
+    \\
+    Luego todo camino $P = \left(v_0,v_1,\dots , v_k \right)$ donde $v_{0}=s$ y $v_{k}=v$ de $G'$ es un camino  de costo m\'inimo en $G$ de $s$ a $v$ 
+    
+    \vspace*{1cm} 
+
+    \noindent $\Rightarrow$Ahora sea $P = \left(v_0,\dots,v_k \right)$ un camino de costo m\'inimo de $v_0 = s $ a  $v_k = v$ en $G$ que tiene $k$ aristas (la demostraci\'on la vamos a hacer por inducci\'on en $k$).
+    \\
+    Si $k=0$ entonces el camino no contine aristas y por lo tanto es un camino en $G'$ que comienza en $s$ .
+    \\
+    ahora en el paso inductivo tenemos para $k>0$ .Si todos los caminos de costo m\'inimo que comienzan en $s$  que tienen $k-1$ aristas en $G$ corresponden a un camino que comienza en $s$ en $G'$ (por el paso inductivo), entonces en particular  $\left(v_0,\dots,v_{k-1}\right)$
+    pertenece a $G'$ , esto quiere decir que $<v_{i-1},v_i> \in E'$ para toda $i \in \{1,2,\dots, k-1\}$. Si el camino hasta $v$ no pertenes a $G'$ entoces esto solo puede suceder porque la arista  $<v_{k-1}, v_{k}> \notin E'$ .Entonces tenemos:
+
+    \begin{equation*}
+        \sum_{i=1}^{k} w\left(v_{i-1},v_{i}\right) = \sum_{i=1}^{k-1} w\left(v_{i-1},v_{i}\right) + w\left(v_{k-1} , v_{k}\right) = \delta\left(s,v_{k-1}\right) + w\left(v_{k-1, v}\right) > \delta\left(s, v\right)
+    \end{equation*}
+
+    \noindent Esto contradice lo que habiamos supuesto , que $\left(v_0,v_1.\dots, v_k\right)$ era un camino de costo m\'inimo en $G$ , luego queda demostrado que para un k arbitrario se cumple. 
+    \\*
+    Luego por inducci\'on tenemos que un camino de costo m\'inimo de $s$ a $v$ en $G$ corresponde a un camino de $s$ a $v$ en $G'$ 
+    
+
+
 \end{document}
