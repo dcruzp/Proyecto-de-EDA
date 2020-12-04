@@ -99,7 +99,7 @@
 
     Ahora supongamos que ese camino que denotaremos como $p_i$ no es simple, eso quiere decir que hay un ciclo en dicho camino, empezemos a recorrer $p_i$ hasta 
     que lleguemos al primer v\'ertice $x$ que est\'a en dicho ciclo, la arista que usamos para llegar a \'el no estaba en el ciclo y aporta 1 de $indegree$ a $x$,
-     y la otra arista $y$, que cierra el ciclo en $x$ aporta 1 de $indegree$, por lo que $indegree(x) = 2$, lo que es una contradicci\'on con las restricciones del problema.\\\\
+     y la otra arista, que cierra el ciclo en $x$ aporta 1 de $indegree$, por lo que $indegree(x) = 2$, lo que es una contradicci\'on con las restricciones del problema.\\\\
 
     Por tanto, el \'unico camino entre $u$ y $v$ en $G$, es simple.\\\\
 
@@ -118,9 +118,9 @@
     de forma que la cantidad de agua que transporta dicho tanque hacia su grifo, no exceda el di\'ametro de las tuber\'ias que conectan un tanque con su correspondiente
     grifo, que esto es, en el grafo $G$ que representa nuetro vecindario, determinar para cada v\'ertice $w \in V(G)$, $indegree(w) = 0$ y $outdegree(w) = 1$, cual es la cantidad m\'axima
     de flujo que se puede enviar hacia su correspondiente $z \in V(G), outdegree(z) = 0$ y $indegree(z) = 1$, por supuesto, sobre este grafo es imposible  aplicar el concepto de flujo,
-    pues no hay una fuente ni un destino, y es para eso que agregaremos un v\'ertice ficticio $x$, unido por un arco, a cada uno de los $u \in V(G), indegree(u) = 0$ y $outdegree(u) = 1$, y para cada 
-    $x,u \in E(G), c(x,v) = \infty$, y haremos un procedimiento parecido para los v\'ertices $v \in V(G), indegree(y) = 1$ y $outdegree(y) = 0$, que es conectarlos por un arco, a un v\'ertice ficticio $y$, y
-    $c(v,y) = \infty$. De esta forma obtenemos un grafo $G'$, como se muetra a continuaci\'on, donde si es posible aplicar el concepto de flujo estudiado en conferencias, pues dicho grafo es una red de flujo
+    pues no hay una fuente ni un destino, y es para eso que construiremos un nuevo grafo $G'$ de la siguiente forma: agregaremos un v\'ertice ficticio $x$, unido por un arco, a cada uno de los $u \in V(G), indegree(u) = 0$ y $outdegree(u) = 1$, y para cada 
+    $<x,u> \in E(G'), c(<x,v>) = \infty$, y haremos un procedimiento parecido para los v\'ertices $v \in V(G), indegree(v) = 1$ y $outdegree(v) = 0$, que es conectarlos por un arco, a un v\'ertice ficticio $y$, y
+    para cada $<v,y> \in E(G'), c(<v,y>) = \infty$. De esta forma obtenemos un grafo $G'$, como se muetra a continuaci\'on, donde si es posible aplicar el concepto de flujo estudiado en conferencias, pues dicho grafo es una red de flujo
     dadas las restricciones del problema y las modificaciones explicadas previamente.\\
     
     \begin{figure}[h]
@@ -133,18 +133,21 @@
     simplemente haciendo un DFS desde el v\'ertice ficticio $x$, tendremos una lista que denotaremos max, de tama\~no $n$, donde en la posici\'on i, almacenaremos el valor 
     m\'aximo de flujo que se puede enviar desde el tanque i hasta su grifo correspondiente y una variable $min$ que utilizaremos para calcular el flujo m\'aximo para cada 
     tanque, de la siguiente manera. Comenzamos haciendo DFS($G'$,$x$) y por la propia estructura de $G'$ necesariamente, el algoritmo ejecutar\'a DFS-Visit($G'$,$u$), 
-    $\forall u \in V(G'), x,u \in E(G')$, ya que no hay forma de alcanzar uno de los tanques desde otro y por tanto el DFS-Visit no los marcar\'a como visitados. Ahora simplemente
-    en cada camino que vaya desde un tanque a un grifo, vamos almacenando en $min$, la menor de las capacidades de las en el camino, como las aristas ficticias que a\~nadimos tienen 
-    capacidad infinita, no afectar\'a al m\'inimo que estamos computando, una vez regresemos al v\'ertice $x$ por backtrack en el propio DFS, almacenamos en la lista max en la posici\'on 
-    que identifica al v\'ertice $u$, el valor de $min$, y reiniciamos el valor de $min$ a $\infty$ para computar el m\'inimo en el siguiente camino entre un tanque y un grifo.\\\\ 
+    $\forall u \in V(G'), <x,u> \in E(G')$, ya que no hay forma de alcanzar uno de los tanques desde otro y por tanto el DFS-Visit no los marcar\'a como visitados. Ahora simplemente
+    en cada camino que vaya desde un tanque a un grifo, vamos almacenando en $min$, la menor de las capacidades en el camino(como las aristas ficticias que a\~nadimos tienen 
+    capacidad infinita, no afectar\'a al m\'inimo que estamos computando), una vez regresemos al v\'ertice $x$ por backtrack en el propio DFS, almacenamos en la lista max en la posici\'on 
+    que identifica al v\'ertice $u$, el valor de $min$, y reiniciamos el valor de $min$ a $\infty$ para computar el m\'inimo en el siguiente camino entre un tanque y un grifo. No es necesario
+    tener en cuenta los v\'ertices $u \in V(G), indegree(u) = 0$ y $outdegree(u) = 0$ pues dichos v\'ertices(en caso de que existan) no aportan nada al c\'omputo que estamos realizando, pues no son 
+    alcanzables desde ning\'un otro v\'ertice, ni alcanzan a ning\'un otro v\'ertice en $G$.\\\\ 
 
     \section{\underline{Pseudoc\'odigo}}
     \begin{algorithm}
         \caption{Calcular la capacidad máxima de agua que se puede transportar de forma segura desde cada tanque hasta su grifo correspondiente}
         \textbf{Solve($G$)\\}
-        1-\hspace*{1em}$max \leftarrow$ [] - lista donde tendremos para cada v\'ertice quee sea tanque la cantidad m\'axima de flujo que puede enviar a su grifo\\
+        1-\hspace*{1em}$max \leftarrow$ [$\infty]$*$|V(G')|$ - lista donde tendremos para cada v\'ertice quee sea tanque la cantidad m\'axima de flujo que puede enviar a su grifo.\\
         2-\hspace*{1em}$min \leftarrow \infty$ - esta variable la usaremos para computar lo que nos pide el ejercicio\\
-        3-\hspace*{1em}visited $\leftarrow$ [], $\pi \leftarrow$ []\\
+        3-\hspace*{1em}visited $\leftarrow$ [$false$]*$|V(G')|$, $\pi \leftarrow$ [$Null$]*$|V(G')|$\\
+        3-\hspace*{1em}$G'$ = Build\textunderscore Flow\textunderscore Network($G$) - Este m\'etodo en $O(V)$ agrega los v\'ertices fictios a $G$.\\
         4-\hspace*{1em}DFS($G'$, $x$)\\
         5-\hspace*{2em}$min \leftarrow \infty$\\
         6-\hspace*{2em}foreach $u \in Ady[x]$ do:\\
@@ -152,7 +155,7 @@
         8-\hspace*{3em}$max$[$u$] $\leftarrow min$\\
         9-\hspace*{3em}$min \leftarrow \infty$\\
 
-        10-\hspace*{1em}DFS-Visit($G,u,ficvertex)$\\ 
+        10-\hspace*{1em}DFS-Visit($G,u)$\\ 
         11-\hspace*{2em}u $\leftarrow$ visited \\  
         12-\hspace*{2em}for each v $\in$ $Adj[u]$\\
         13-\hspace*{3em}do if v not visited\\
@@ -167,12 +170,18 @@
         
     \end{algorithm}
 
+    \section{\underline{Correctitud}}
+
+    La correctitud de nuestro algoritmo, se debe al cumplimiento de las proposiciones 1, 2 y 3 previamente demostradas, y que
+    son una consecuencia de las restricciones impuestas en la orden del problema.\\
+
     \section{\underline{Complejidad Temporal}}
-    La complejidad de nuestro algoritmo se basa en la complejidad del DFS $O(n+m)$.Lo \'unico que le agregamos al DFS
+    La complejidad de nuestro algoritmo se basa en la complejidad del DFS $O(n + m)$. Lo \'unico que le agregamos al DFS
     es ir actualizando  el m\'inimo de las capacidad de las aristas que participan en un camino desde un tanque hasta un 
-    grifo lo cual no afecta la complejidad temporal del mismo. Luego hacemos un recorrido por cada v\'ertice v del array max
-    para imprimir las casas que son tanque con la m\'axima capacidad correspondiente que se puede transportar de forma segura 
-    desde el mismo hasta su grifo,lo cual tiene complejidad $O(n)$. Por lo cual nuestro algoritmo tiene complejidad $O(n + m)$.
+    grifo lo cual no afecta la complejidad temporal del mismo. Construir la red de flujo $G'$ es $O(n)$ y hacer un recorrido por el array max
+    para imprimir las casas que son tanque, con la m\'axima capacidad correspondiente que se puede transportar de forma segura 
+    desde el mismo hasta su grifo, tiene complejidad $O(n)$. La complejidad temporal de nuestro algoritmo, por tanto, quedar\'ia $O(n) + O(n + m) + O(n) 
+    = O(max(n + m, n) = O(n + m)$.
     
 
 \end{document}
