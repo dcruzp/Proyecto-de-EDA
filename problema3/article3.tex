@@ -35,7 +35,95 @@
     costo minimo desde $s$ hasta cualquier otro v\'ertice del grafo $G$. Luego encontramos un arbol $T$ abarcador de 
     costo m\'inimo en $G^{'}$ , $T'$ es el arbol que estamos buscando 
 
-    \section{Seudoc\'odigo del Algoritmo }
+
+    \section{Demostraci\'on  de la correctitud del algoritmo}
+
+    \noindent La correctitud del algoritmo se basa en la correctitud del algoritmo de Dijkstra visto en conferencia 
+    y en la correctitud del algorimo de Prim visto en Conferencia tambi\'en. Ademas hay que demostrar que el arbol $T$ 
+    devuelto por el algoritmo es un \'arbol de caminos de costo m\'inimo y que la suma del peso de sus aristas es la menor posible  
+    
+    \noindent \textbf{Nota } 
+
+    \begin{itemize}
+        \item Vamos a denotar $\delta\left(u,v\right)$ como la distancia m\'inima de $u$ a $v$ 
+        \item vamos a denotar a $w(u,v)$ como el peso de la arista $e= <u,v>$ 
+        \item Sea $G = <V,E>$ un Grafo  vamos a denotar a $G' = <V',E'>$ como un subgrafo de $G$ que solo contiene las aristas $ u \xrightarrow[]{e} v$ 
+        que cumplen que $\delta\left(s,u\right) + w \left(u,v\right) = \delta\left(s,v\right)$   
+    \end{itemize}
+
+    Lema 1:\\
+    Sean u,v v\'ertices de G .Si el costo de las aristas es positivo todo camino de costo m\'inimo de u a v es un camino simple de u a v.\\
+    \\Demostraci\'on:\\
+    Si $p_{m}$un camino de costo m\'inimo de u a v no fuera simple es porque tiene al menos un ciclo c .Como todas las aristas que participan en ese
+    camino tienen costo positivo quita el ciclo c y tendr\'ias un camino de u a v cuyo costo ser\'ia m\'as chico que el costo de $p_{m}$ lo cual generar
+    una contradicci\'on pues $p_{m}$ es un camino de costo m\'inimo de u a v.\\
+    
+    Lema 2:\\
+        \newline
+        Sea $P = \left(v_0,v_1,\dots , v_k \right)$ con $v_0 = s$ y $v_k = v$ un camino simple de $s$ a $v$ .Entonces $P$ es un 
+        camino de costo m\'inimo de $s$ a $v$  en $G$ $\Longleftrightarrow$  $P$ es un camino de $s$ a $v$ $G'$
+    \\
+    
+    \noindent \textbf{Demostraci\'on} 
+    
+    \noindent $ \Longleftarrow $\\ Sea $P = \left(v_0,v_1,\dots , v_k \right)$  un camino en $G'$ . 
+    Vomos a hacer la demostraci\'on por inducci\'on en la cantidad de aristas del camino $P$ (vamos a denotar a $k$ como la cantidad de aristas en el camino $P$ )
+    \\
+    Para el caso base tenemos que si $k=0$ entonces el camino $P$ no tiene aristas por lo que es un camino de costo m\'inimo en $G$ 
+    \\
+    Para el paso inductivo vamos a suponer que se cumple que para todo camino de $k-1$ aristas que pertenece a  $G'$ es un camino de costo m\'inimo en $G$. 
+    Entonces vamos a suponer que tenemos un camino $P = \left(v_{0},\dots,v_{k}\right)$  de $k$ aristas en $G'$. En particular tenemos que el subcamino $\left(v_0,\dots,v_{k-1}\right)$ es un camino de 
+    costo m\'inimo en $G$ (por hip\'otesis de inducci\'on ). Ahora si $P$ no fuera un camino de costo m\'inimo entonces: 
+    
+    \begin{equation*}
+        \delta \left(s,v_k\right) < \sum_{i=1}^{k} w\left(v_{i-1,v_i}\right) = \sum_{i=1}^{k-1} w\left(v_{i-1}, v_{i}\right) + w\left(v_{k-1}, v_{k}\right)  = \delta\left(s,v_{k-1}\right) + w\left(v_{k-1}, v_{k}\right)
+    \end{equation*}
+
+    \noindent esto contradice que $<v_{k-1}, v_{k}> \in E'$ . Entonces un camino $P$  en $G'$ que tiene $k$ aristas es un camino de costo m\'inimo en $G$ 
+    \\
+    Luego todo camino $P = \left(v_0,v_1,\dots , v_k \right)$ donde $v_{0}=s$ y $v_{k}=v$ de $G'$ es un camino  de costo m\'inimo en $G$ de $s$ a $v$ 
+    
+    \vspace*{1cm} 
+
+    \noindent $\Longrightarrow $\\Ahora sea $P = \left(v_0,\dots,v_k \right)$ un camino de costo m\'inimo de $v_0 = s $ a  $v_k = v$ en $G$ que tiene $k$ aristas (la demostraci\'on la vamos a hacer por inducci\'on en $k$).
+    \\
+    Si $k=0$ entonces el camino no contine aristas y por lo tanto es un camino en $G'$ que comienza en $s$ .
+    \\
+    ahora en el paso inductivo tenemos para $k>0$ .Si todos los caminos de costo m\'inimo que comienzan en $s$  que tienen $k-1$ aristas en $G$ corresponden a un camino que comienza en $s$ en $G'$ (por el paso inductivo), entonces en particular  $\left(v_0,\dots,v_{k-1}\right)$
+    pertenece a $G'$ , esto quiere decir que $<v_{i-1},v_i> \in E'$ para toda $i \in \{1,2,\dots, k-1\}$. Si el camino hasta $v$ no pertenes a $G'$ entoces esto solo puede suceder porque la arista  $<v_{k-1}, v_{k}> \notin E'$ .Entonces tenemos:
+
+    \begin{equation*}
+        \sum_{i=1}^{k} w\left(v_{i-1},v_{i}\right) = \sum_{i=1}^{k-1} w\left(v_{i-1},v_{i}\right) + w\left(v_{k-1} , v_{k}\right) = \delta\left(s,v_{k-1}\right) + w\left(v_{k-1, v}\right) > \delta\left(s, v\right)
+    \end{equation*}
+
+    \noindent Esto contradice lo que habiamos supuesto , que $\left(v_0,v_1.\dots, v_k\right)$ era un camino de costo m\'inimo en $G$ , luego queda demostrado que para un k arbitrario se cumple. (por inducci\'on )
+    \\*
+    Luego tenemos que un camino de costo m\'inimo de $s$ a $v$ en $G$ corresponde a un camino de $s$ a $v$ en $G'$ 
+    
+    \vspace*{1cm} 
+    Lema 3:\\En $G$ $\forall v \in V(G) v\neq s$  est\'an todos los caminos de costo m\'inimo de s a v.\\
+    Demostraci\'on:\\
+    Como por el Lema1 todo  camino de costo m\'inimo de G es un camino simple y por el lema 2 todo camino simple de
+    costo m\'inimo  de G est\'a en $G'$ entonces en $G'$ est\'an  todos los caminos de costo m\'inimo de desde s hacia 
+    cualquier otro v\'ertice de G .Luego en $G'$  est\'an todos los caminos de costo m\'inmo de s a v. 
+    $\forall v\in V(G)$\\
+
+    Por el Lema3 tenemos que todo \'arbol de caminos de costo m\'inimo que esta en $G$ tambi\'en esta en $G'$  y viceversa.\\
+    Luego como el algoritmo de Prim nos
+    
+    Proposici\'on:\\
+    Un AACT de $G'$ con raiz s cumple lo siguiente:\\
+    % \item 
+    devuelve el \'arbol abarcador de costo m\'inimo tomando como ra\'iz el v\'ertice $s$ . el cual se aplica sobre el grafo $G'$ donde todo camino desde $s$ es un camino de  costo m\'inimo.
+    Entonces tenemos que el \'arbol abarcador devuelto por el algoritmo de Prim es un \'arbol de caminos de costo m\'inimo ,(porque se aplica sobre el grafo $G'$ ) y adem\'as la suma de las aristas es la 
+    menor posible, por ser un \'arbol abarcador de costo m\'inimo de $G'$ . 
+    \\*
+    Ahora por el teorema enunciado arriba podemos afirmar que el algoritmo devuelve el \'arbol de  caminos m\'inimos con ra\'iz en $s$ tal que la suma del peso de sus aristas es la menor posible . 
+    \\
+    En generar la correctitud esta dada por el algoritmo de Dijkstra (que utilizamos para deteminar $G'$), la correctitud del algoritmo de Prim (que lo utilizamos para saber cual es el \'arbol de costo m\'inimo de $G'$) y el Teorema 1 el cual nos 
+    garantiza que todo \'arbol de caminos m\'inimo  en $G$ esta tambi\'en en $G'$ y viceversa . 
+
+    \section{Pseudoc\'odigo del Algoritmo }
 
     \begin{algorithm}[H]
         \caption{Determinar el \'arbol de caminos m\'inimos desde $s$ de menor peso }
@@ -62,6 +150,8 @@
         8-\hspace*{0.5em} \textbf{return } $T$ 
     \end{algorithm}
     
+    
+
     \section{Complejidad temporal}
 
     \noindent La complejidad temporal del algoritmo esta dada por la complejidad Temporal de algoritmo de Dijkstra 
@@ -70,77 +160,4 @@
     ejecuta $|E|$ veces  y a\~nadir la arista que cuple la propiedad (linea 6 )es $O(1)$ por lo que El tiempo de ejecucion del algoritmo 
     de la linea 4-8 es $O(|E|)$ . En la linea 9 se llama al algoritmo de Prim (visto en conferencia) que tiene una complejidad temporal
     $O(|E|\log |V|)$ . Luego por la regla de la suma la complejidad temporal del algoritmo es  $O(|E|\log |V|)$
-
-    \section{Demostraci\'on  de la correctitud del algoritmo}
-
-    \noindent La correctitud del algoritmo se basa en la correctitud del algoritmo de Dijkstra visto en conferencia 
-    y en la correctitud del algorimo de Prim visto en Conferencia tambi\'en. Ademas hay que demostrar que el arbol $T$ 
-    devuelto por el algoritmo es un \'arbol de caminos de costo m\'inimo y que la suma del peso de sus aristas es la menor posible  
-    
-    \noindent \textbf{Nota } 
-
-    \begin{itemize}
-        \item Vamos a denotar $\delta\left(u,v\right)$ como la distancia m\'inima de $u$ a $v$ 
-        \item vamos a denotar a $w(u,v)$ como el peso de la arista $e= <u,v>$ 
-        \item Sea $G = <V,E>$ un Grafo  vamos a denotar a $G' = <V',E'>$ como un subgrafo de $G$ que solo contiene las aristas $ u \xrightarrow[]{e} v$ 
-        que cumplen que $\delta\left(s,u\right) + w \left(u,v\right) = \delta\left(s,v\right)$   
-    \end{itemize}
-
-    
-    \newtheorem{thm}{Teorema}
-    \begin{thm}
-        Sea $P = \left(v_0,v_1,\dots , v_k \right)$ con $v_0 = s$ y $v_k = v$ un camino simple de $s$ a $v$ .Entonces $P$ es un 
-        camino de costo m\'inimo de $s$ a $v$  en $G$ si solo si $P$ es un camino de $s$ a $v$ $G'$
-    \end{thm}
-    
-    \noindent \textbf{Demostraci\'on} 
-    
-    \noindent $ \Leftarrow $ Sea $P = \left(v_0,v_1,\dots , v_k \right)$  un camino en $G'$ . 
-    Vomos a hacer la demostraci\'on por inducci\'on en la cantidad de aristas del camino $P$ (vamos a denotar a $k$ como la cantidad de aristas en el camino $P$ )
-    \\
-    Para el caso base tenemos que si $k=0$ entonces el camino $P$ no tiene aristas por lo que es un camino de costo m\'inimo en $G$ 
-    \\
-    Para el paso inductivo vamos a suponer que se cumple que para todo camino de $k-1$ aristas que pertenece a  $G'$ es un camino de costo m\'inimo en $G$. 
-    Entonces vamos a suponer que tenemos un camino $P = \left(v_{0},\dots,v_{k}\right)$  de $k$ aristas en $G'$. En particular tenemos que el subcamino $\left(v_0,\dots,v_{k-1}\right)$ es un camino de 
-    costo m\'inimo en $G$ (por hip\'otesis de inducci\'on ). Ahora si $P$ no fuera un camino de costo m\'inimo entonces: 
-    
-    \begin{equation*}
-        \delta \left(s,v_k\right) < \sum_{i=1}^{k} w\left(v_{i-1,v_i}\right) = \sum_{i=1}^{k-1} w\left(v_{i-1}, v_{i}\right) + w\left(v_{k-1}, v_{k}\right)  = \delta\left(s,v_{k-1}\right) + w\left(v_{k-1}, v_{k}\right)
-    \end{equation*}
-
-    \noindent esto contradice que $<v_{k-1}, v_{k}> \in E'$ . Entonces un camino $P$  en $G'$ que tiene $k$ aristas es un camino de costo m\'inimo en $G$ 
-    \\
-    Luego todo camino $P = \left(v_0,v_1,\dots , v_k \right)$ donde $v_{0}=s$ y $v_{k}=v$ de $G'$ es un camino  de costo m\'inimo en $G$ de $s$ a $v$ 
-    
-    \vspace*{1cm} 
-
-    \noindent $\Rightarrow$Ahora sea $P = \left(v_0,\dots,v_k \right)$ un camino de costo m\'inimo de $v_0 = s $ a  $v_k = v$ en $G$ que tiene $k$ aristas (la demostraci\'on la vamos a hacer por inducci\'on en $k$).
-    \\
-    Si $k=0$ entonces el camino no contine aristas y por lo tanto es un camino en $G'$ que comienza en $s$ .
-    \\
-    ahora en el paso inductivo tenemos para $k>0$ .Si todos los caminos de costo m\'inimo que comienzan en $s$  que tienen $k-1$ aristas en $G$ corresponden a un camino que comienza en $s$ en $G'$ (por el paso inductivo), entonces en particular  $\left(v_0,\dots,v_{k-1}\right)$
-    pertenece a $G'$ , esto quiere decir que $<v_{i-1},v_i> \in E'$ para toda $i \in \{1,2,\dots, k-1\}$. Si el camino hasta $v$ no pertenes a $G'$ entoces esto solo puede suceder porque la arista  $<v_{k-1}, v_{k}> \notin E'$ .Entonces tenemos:
-
-    \begin{equation*}
-        \sum_{i=1}^{k} w\left(v_{i-1},v_{i}\right) = \sum_{i=1}^{k-1} w\left(v_{i-1},v_{i}\right) + w\left(v_{k-1} , v_{k}\right) = \delta\left(s,v_{k-1}\right) + w\left(v_{k-1, v}\right) > \delta\left(s, v\right)
-    \end{equation*}
-
-    \noindent Esto contradice lo que habiamos supuesto , que $\left(v_0,v_1.\dots, v_k\right)$ era un camino de costo m\'inimo en $G$ , luego queda demostrado que para un k arbitrario se cumple. (por inducci\'on )
-    \\*
-    Luego tenemos que un camino de costo m\'inimo de $s$ a $v$ en $G$ corresponde a un camino de $s$ a $v$ en $G'$ 
-    
-    \vspace*{1cm} 
-
-    \subsection*{Conclusi\'on } 
-
-    \noindent Ahora por el resultado anterior sabemos que todo \'arbol de caminos de costo m\'inimo que esta en $G$ tambi\'en esta en $G'$  y viceverza .Luego como el algoritmo de Prim nos 
-    devuelve el \'arbol abarcador de costo m\'inimo tomando como ra\'iz el v\'ertice $s$ . el cual se aplica sobre el grafo $G'$ donde todo camino desde $s$ es un camino de  costo m\'inimo.
-    Entonces tenemos que el \'arbol abarcador devuelto por el algoritmo de Prim es un \'arbol de caminos de costo m\'inimo ,(porque se aplica sobre el grafo $G'$ ) y adem\'as la suma de las aristas es la 
-    menor posible, por ser un \'arbol abarcador de costo m\'inimo de $G'$ . 
-    \\*
-    Ahora por el teorema enunciado arriba podemos afirmar que el algoritmo devuelve el \'arbol de  caminos m\'inimos con ra\'iz en $s$ tal que la suma del peso de sus aristas es la menor posible . 
-    \\
-    En generar la correctitud esta dada por el algoritmo de Dijkstra (que utilizamos para deteminar $G'$), la correctitud del algoritmo de Prim (que lo utilizamos para saber cual es el \'arbol de costo m\'inimo de $G'$) y el Teorema 1 el cual nos 
-    garantiza que todo \'arbol de caminos m\'inimo  en $G$ esta tambi\'en en $G'$ y viceversa . 
-
 \end{document}
