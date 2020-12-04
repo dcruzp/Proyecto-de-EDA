@@ -52,14 +52,17 @@
 
     \subsection*{Lema 1:}
 
-    \textit{Sean u,v v\'ertices de G .Si el costo de las aristas es positivo todo camino de costo m\'inimo de u a v es un camino simple de u a v.}
+    \textit{Sean u,v v\'ertices de G  .Si el costo de las aristas es positivo todo camino de costo m\'inimo de u a v es un camino simple de u a v.}
     
     \vspace*{0.3cm} 
 
     \noindent \textbf{Demostraci\'on:}
     \\*
-    Si $p_{m}$un camino de costo m\'inimo de u a v no fuera simple es porque tiene al menos un ciclo c .Como todas las aristas que participan en ese
-    camino tienen costo positivo quita el ciclo c y tendr\'ias un camino de u a v cuyo costo ser\'ia m\'as chico que el costo de $p_{m}$ lo cual generar
+    Si $p_{m}$un camino de costo m\'inimo de u a v de longitud 1 entonces en el camino participan 2 v\'ertices y la \'unica arista $<u,v>$
+    que forma parte del camino es un camino simple\\ 
+    Si $p_{m},$un camino de costo m\'inimo de u a v con longitud $>=2$$($al menos 3 v\'ertices participan en el camino $)$, no fuera simple es 
+    porque tiene al menos un ciclo c .Como todas las aristas que participan en ese camino tienen costo positivo quita el ciclo c y tendr\'ias 
+    un camino de u a v cuyo costo ser\'ia m\'as chico que el costo de $p_{m}$ lo cual generar
     una contradicci\'on pues $p_{m}$ es un camino de costo m\'inimo de u a v.\\
     
     \subsection*{Lema 2:}
