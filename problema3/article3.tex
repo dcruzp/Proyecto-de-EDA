@@ -123,7 +123,7 @@
 
     \vspace*{0.3cm} 
 
-    \noindent  Por el Lema3 tenemos que todo \'arbol de caminos de costo m\'inimo que esta en $G$ tambi\'en esta en $G'$  y viceversa.\\
+    \noindent  Por el Lema3 tenemos que todo \'arbol de caminos de costo m\'inimo que est\'a en $G$ tambi\'en esta en $G'$  y viceversa.\\
     Luego como el algoritmo de Prim nos
     
     \vspace*{0.5cm}
@@ -132,20 +132,23 @@
     \noindent \textit{Sea T un  AACM en G' con ra\'iz en s entonces cumple lo siguiente:}
 
     \begin{enumerate}
-        \item T es un \'arbol con ra\'iz en s
-        \item Todo v\'ertice $v$ alcanzable por s en G est\'a en $G'$
+        \item  \textbf{T es un \'arbol con ra\'iz en $s$}
+        
+        \vspace*{0.3cm}
+
+        \item \textbf{Todo v\'ertice $v$ alcanzable desde s en G est\'a en $G'$}
         \\*
         \\*
         \textbf{Demostracion } 
         \\*
         Como el grafo $G$ es conexo , entonces existe al menos un camino de $s$ a $v$ y por lo tanto existe un camino de costo minimo 
-        de $s$ a $v$ en $G$ y por el Lema 2 . Tenemos que todo camino de costo m\'inimo en $G$ esta tambi\'en en $G'$ . Luego todo v\'ertice 
+        de $s$ a $v$ en $G$ y por el Lema 2, tenemos que todo camino de costo m\'inimo en $G$ esta tambi\'en en $G'$ . Luego todo v\'ertice 
         $v$ alcanzable desde $s$ en $G$ esta tambien en $G'$ . 
         
         \vspace*{0.3cm} 
 
-        \item $\forall v$ si v es alcanzable desde s entonces el camino simple u\'nico de $s$ a $v$ es un camino de costo m\'inimo
-        \item T es un arb\'ol de caminos de costo mı\'inimo tal que la suma de los pesos de las aristas de T sea lo menor posible.
+        \item \textbf{Para todo $v$, si $v$ es alcanzable desde $s$ entonces el camino simple \'unico de $s$ a $v$ es un camino de costo m\'inimo}
+        \item  \textbf{T es un arb\'ol de caminos de costo mı\'inimo tal que la suma de los pesos de las aristas de T sea la menor posible.}
     \end{enumerate}
     
     
