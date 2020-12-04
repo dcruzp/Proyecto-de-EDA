@@ -12,7 +12,7 @@
     \date{}
     \maketitle  
 
-    \section{Descripci\'on del problema} 
+    \section{\underline{Orden del Problema}} 
 
     Sea $G = <V,E>$ un grafo no dirigido y conexo con pesos positivos en las aristas, y un v\'ertice $s \in V$ . Un \'arbol de 
     caminos de costo m\'inimos con ra\'iz en s es un subgrafo $T = <V^{'} , E^{'}> $ donde $V^{'} \subseteq  V $     y $E^{'} \subseteq  E $ tal que: 
@@ -28,7 +28,7 @@
     $O(|E|log|V|)$.
 
 
-    \section{ Explicaci\'on de la soluci\'on }
+    \section{\underline{Soluci\'on}}
 
     \noindent La soluci\'on al problema es aplicar el algoritmo de  Dijkstra visto en conferencias.
     Para encontrar un subgrafo $G^{'}$ que contenga todas las aristas que forman parte de algun camino de 
@@ -36,13 +36,13 @@
     costo m\'inimo en $G^{'}$ , $T$ es el \'arbol que estamos buscando 
 
 
-    \section{Demostraci\'on  de la correctitud del algoritmo}
+    \section{\underline{Correctitud}}
 
     \noindent La correctitud del algoritmo se basa en la correctitud del algoritmo de Dijkstra visto en conferencia 
     y en la correctitud del algorimo de Prim visto en Conferencia tambi\'en. Ademas hay que demostrar que el \'arbol $T$ 
     devuelto por el algoritmo es un \'arbol de caminos de costo m\'inimo y que la suma del peso de sus aristas es la menor posible  
     
-    \subsection*{Proposiciones }
+    \subsection*{Proposiciones}
     \begin{itemize}
         \item Vamos a denotar $\delta\left(u,v\right)$ como la distancia m\'inima de $u$ a $v$ 
         \item vamos a denotar a $w(u,v)$ como el peso de la arista $e= <u,v>$ 
@@ -176,7 +176,7 @@
     En generar la correctitud esta dada por el algoritmo de Dijkstra (que utilizamos para deteminar $G'$), la correctitud del algoritmo de Prim (que lo utilizamos para saber cual es el \'arbol de costo m\'inimo de $G'$) y el Teorema 1 el cual nos 
     garantiza que todo \'arbol de caminos m\'inimo  en $G$ esta tambi\'en en $G'$ y viceversa . 
 
-    \section{Pseudoc\'odigo del Algoritmo }
+    \section{\underline{Pseudoc\'odigo}}
 
     \begin{algorithm}[H]
         \caption{Determinar el \'arbol de caminos m\'inimos desde $s$ de menor peso }
@@ -203,9 +203,7 @@
         8-\hspace*{0.5em} \textbf{return } $T$ 
     \end{algorithm}
     
-    
-
-    \section{Complejidad temporal}
+    \section{\underline{Complejidad temporal}}
 
     \noindent La complejidad temporal del algoritmo esta dada por la complejidad Temporal de algoritmo de Dijkstra 
     que es $O(|E|\log |V|)$ , mas la complejidad de encontrar el subgrafo que tiene solo las aristas que estan en al menos 
