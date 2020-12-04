@@ -65,7 +65,7 @@
     \subsection*{Lema 2:}
         
     \noindent \textit{Sea $P = \left(v_0,v_1,\dots , v_k \right)$ con $v_0 = s$ y $v_k = v$ un camino simple de $s$ a $v$. Entonces $P$ es un 
-            camino de costo m\'inimo de $s$ a $v$  en $G$ $\Longleftrightarrow$  $P$ es un camino de $s$ a $v$ $G'$}
+            camino de costo m\'inimo de $s$ a $v$  en $G$ $\Longleftrightarrow$  $P$ es un camino de $s$ a $v$ en $G'$}
     
     
     \vspace{0.3cm}
@@ -131,22 +131,24 @@
     
     \noindent \textit{Sea T un  AACM en G' con ra\'iz en s entonces cumple lo siguiente:}
 
-    \begin{itemize}
-        \item T es un \'arbol con ra\'iz en s
-        \item Todo v\'ertice $v$ alcanzable por s en G est\'a en $G'$
-        \item $\forall v$ si v es alcanzable desde s entonces el camino simple u\'nico de $s$ a $v$ es un camino de costo m\'inimo
-        \item T es un arb\'ol de caminos de costo mı\'inimo tal que la suma de los pesos de las aristas de T sea lo menor posible.
-    \end{itemize}
-
-    -------otra forma de ponerlo ------- (la de abajo)
-
     \begin{enumerate}
         \item T es un \'arbol con ra\'iz en s
         \item Todo v\'ertice $v$ alcanzable por s en G est\'a en $G'$
+        \\*
+        \\*
+        \textbf{Demostracion } 
+        \\*
+        Como el grafo $G$ es conexo , entonces existe al menos un camino de $s$ a $v$ y por lo tanto existe un camino de costo minimo 
+        de $s$ a $v$ en $G$ y por el Lema 2 . Tenemos que todo camino de costo m\'inimo en $G$ esta tambi\'en en $G'$ . Luego todo v\'ertice 
+        $v$ alcanzable desde $s$ en $G$ esta tambien en $G'$ . 
+        
+        \vspace*{0.3cm} 
+
         \item $\forall v$ si v es alcanzable desde s entonces el camino simple u\'nico de $s$ a $v$ es un camino de costo m\'inimo
         \item T es un arb\'ol de caminos de costo mı\'inimo tal que la suma de los pesos de las aristas de T sea lo menor posible.
     \end{enumerate}
     
+<<<<<<< HEAD
     1-:\\
     La primera proposici\'on sale de la propia definic\'on de AACT $($ \'arbol abarcador de costo m\'inimo$)$\\
     2-:\\
@@ -158,6 +160,10 @@
     4-:\\
     Como en $G'$ est\'an todos los caminos de costo m\'inimo de s a v  al hacer el AACM T desde s voy a obtener un \'arbol abarcador de
     caminos de costo m\'inimo donde la suma de los costos de las aristas es la menor posible.\\
+=======
+    
+
+>>>>>>> 3aabb23b9164d7ba2d0458db5138ec8e717074bb
     \vspace*{0.5cm} 
 
     % \item 
