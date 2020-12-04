@@ -126,13 +126,30 @@
     \noindent  Por el Lema3 tenemos que todo \'arbol de caminos de costo m\'inimo que esta en $G$ tambi\'en esta en $G'$  y viceversa.\\
     Luego como el algoritmo de Prim nos
     
+    \vspace*{0.5cm}
     \noindent \textbf{Proposici\'on:}
-    \\*
-    Un AACT T de $G'$ con ra\'iz s cumple lo siguiente:\\
-    1-T un \'arbol con ra\'iz en s\\
-    2-Todo v\'ertice alcanzable por s en G est\'a en $G'$\\
-    3-Todo $\forall v$ si v es alcanzable por s entonces el camino simple u\'nico de s a v es un camino de costo m\'inimo\\
-    4-T es un arb\'ol de caminos de costo mı́nimo tal que la suma de los pesos de las aristas de T sea lo menor posible.\\
+    
+    \noindent \textit{Sea T un  AACM en G' con ra\'iz en s entonces cumple lo siguiente:}
+
+    \begin{itemize}
+        \item T es un \'arbol con ra\'iz en s
+        \item Todo v\'ertice $v$ alcanzable por s en G est\'a en $G'$
+        \item $\forall v$ si v es alcanzable desde s entonces el camino simple u\'nico de $s$ a $v$ es un camino de costo m\'inimo
+        \item T es un arb\'ol de caminos de costo mı\'inimo tal que la suma de los pesos de las aristas de T sea lo menor posible.
+    \end{itemize}
+
+    -------otra forma de ponerlo ------- (la de abajo)
+
+    \begin{enumerate}
+        \item T es un \'arbol con ra\'iz en s
+        \item Todo v\'ertice $v$ alcanzable por s en G est\'a en $G'$
+        \item $\forall v$ si v es alcanzable desde s entonces el camino simple u\'nico de $s$ a $v$ es un camino de costo m\'inimo
+        \item T es un arb\'ol de caminos de costo mı\'inimo tal que la suma de los pesos de las aristas de T sea lo menor posible.
+    \end{enumerate}
+    
+
+    \vspace*{0.5cm} 
+
     % \item 
     devuelve el \'arbol abarcador de costo m\'inimo tomando como ra\'iz el v\'ertice $s$ . el cual se aplica sobre el grafo $G'$ donde todo camino desde $s$ es un camino de  costo m\'inimo.
     Entonces tenemos que el \'arbol abarcador devuelto por el algoritmo de Prim es un \'arbol de caminos de costo m\'inimo ,(porque se aplica sobre el grafo $G'$ ) y adem\'as la suma de las aristas es la 
