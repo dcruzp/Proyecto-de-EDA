@@ -52,17 +52,14 @@
 
     \subsection*{Lema 1:}
 
-    \textit{Sean u,v v\'ertices de G  .Si el costo de las aristas es positivo todo camino de costo m\'inimo de u a v es un camino simple de u a v.}
+    \textit{Sean u,v v\'ertices de G .Si el costo de las aristas es positivo todo camino de costo m\'inimo de u a v es un camino simple de u a v.}
     
     \vspace*{0.3cm} 
 
     \noindent \textbf{Demostraci\'on:}
     \\*
-    Si $p_{m}$un camino de costo m\'inimo de u a v de longitud 1 entonces en el camino participan 2 v\'ertices y la \'unica arista $<u,v>$
-    que forma parte del camino es un camino simple\\ 
-    Si $p_{m},$un camino de costo m\'inimo de u a v con longitud $>=2$$($al menos 3 v\'ertices participan en el camino $)$, no fuera simple es 
-    porque tiene al menos un ciclo c .Como todas las aristas que participan en ese camino tienen costo positivo quita el ciclo c y tendr\'ias 
-    un camino de u a v cuyo costo ser\'ia m\'as chico que el costo de $p_{m}$ lo cual generar
+    Si $p_{m}$un camino de costo m\'inimo de u a v no fuera simple es porque tiene al menos un ciclo c .Como todas las aristas que participan en ese
+    camino tienen costo positivo quita el ciclo c y tendr\'ias un camino de u a v cuyo costo ser\'ia m\'as chico que el costo de $p_{m}$ lo cual generar
     una contradicci\'on pues $p_{m}$ es un camino de costo m\'inimo de u a v.\\
     
     \subsection*{Lema 2:}
@@ -126,7 +123,7 @@
 
     \vspace*{0.3cm} 
 
-    \noindent  Por el Lema3 tenemos que todo \'arbol de caminos de costo m\'inimo que esta en $G$ tambi\'en esta en $G'$  y viceversa.\\
+    \noindent  Por el Lema3 tenemos que todo \'arbol de caminos de costo m\'inimo que est\'a en $G$ tambi\'en esta en $G'$  y viceversa.\\
     Luego como el algoritmo de Prim nos
     
     \vspace*{0.5cm}
@@ -135,46 +132,52 @@
     \noindent \textit{Sea T un  AACM en G' con ra\'iz en s entonces cumple lo siguiente:}
 
     \begin{enumerate}
-        \item T es un \'arbol con ra\'iz en s
-        \item Todo v\'ertice $v$ alcanzable por s en G est\'a en $G'$
+        \item  \textit{T es un \'arbol con ra\'iz en $s$}
+        \\*
+        Esto sale de la propia definic\'on de AACT $($ \'arbol abarcador de costo m\'inimo$)$
+        
+        \vspace*{0.3cm}
+
+        \item \textit{Todo v\'ertice $v$ alcanzable desde s en G est\'a en $G'$}
         \\*
         \\*
         \textbf{Demostracion } 
         \\*
         Como el grafo $G$ es conexo , entonces existe al menos un camino de $s$ a $v$ y por lo tanto existe un camino de costo minimo 
-        de $s$ a $v$ en $G$ y por el Lema 2 . Tenemos que todo camino de costo m\'inimo en $G$ esta tambi\'en en $G'$ . Luego todo v\'ertice 
-        $v$ alcanzable desde $s$ en $G$ esta tambien en $G'$ . 
+        de $s$ a $v$ en $G$ y por el Lema 2, tenemos que todo camino de costo m\'inimo en $G$ esta tambi\'en en $G'$ . Luego todo v\'ertice 
+        $v$ alcanzable desde $s$ en $G$ est\'a tambien en $G'$ . 
         
         \vspace*{0.3cm} 
 
-        \item $\forall v$ si v es alcanzable desde s entonces el camino simple u\'nico de $s$ a $v$ es un camino de costo m\'inimo
-        \item T es un arb\'ol de caminos de costo mı\'inimo tal que la suma de los pesos de las aristas de T sea lo menor posible.
-    \end{enumerate}
-    
-    1-:\\
-    La primera proposici\'on sale de la propia definic\'on de AACT $($ \'arbol abarcador de costo m\'inimo$)$\\
-    2-:\\
-    3-:\\
-    En $G'$ todo camino  de s a v $\forall v$si v es alcanzable desde s es un camino de costo m\'inimo por tanto en el AACT T con ra\'iz s obtenido
-    de $G'$ el camino que va de s a v es un camino de costo m\'inimo y como T es un \'arbol y en un \'arbol todo camino entre cualquier 
-    par de v\'ertices de T es un camino simple y \'unico .Luego todo camino desde s a v\'ertice v de T es un camino simple de costo m\'inimo 
-    \'unico.\\
-    4-:\\
-    Como en $G'$ est\'an todos los caminos de costo m\'inimo de s a v  al hacer el AACM T desde s voy a obtener un \'arbol abarcador de
-    caminos de costo m\'inimo donde la suma de los costos de las aristas es la menor posible.\\
-    
+        \item \textit{Para todo $v$, si $v$ es alcanzable desde $s$ entonces el camino simple \'unico de $s$ a $v$ es un camino de costo m\'inimo}
+        \\*
+        \\*
+        \textbf{Demostracion } 
+        \\*
+        En $G'$ todo camino  de s a v $\forall v$si v es alcanzable desde s es un camino de costo m\'inimo por tanto en el AACT T con ra\'iz s obtenido
+        de $G'$ el camino que va de s a v es un camino de costo m\'inimo y como T es un \'arbol y en un \'arbol todo camino entre cualquier 
+        par de v\'ertices de T es un camino simple y \'unico .Luego todo camino desde s a v\'ertice v de T es un camino simple de costo m\'inimo 
+        \'unico.
+        \item  \textit{T es un arb\'ol de caminos de costo mı\'inimo tal que la suma de los pesos de las aristas de T sea la menor posible.}
+        \\*
+        \\*
+        \textbf{Demostracion } 
+        \\*
+        Como en $G'$ est\'an todos los caminos de costo m\'inimo de s a v  al hacer el AACM T desde s voy a obtener un \'arbol abarcador de
+        caminos de costo m\'inimo donde la suma de los costos de las aristas es la menor posible.\\
+    \end{enumerate}    
 
     \vspace*{0.5cm} 
 
-    % \item 
-    devuelve el \'arbol abarcador de costo m\'inimo tomando como ra\'iz el v\'ertice $s$ . el cual se aplica sobre el grafo $G'$ donde todo camino desde $s$ es un camino de  costo m\'inimo.
-    Entonces tenemos que el \'arbol abarcador devuelto por el algoritmo de Prim es un \'arbol de caminos de costo m\'inimo ,(porque se aplica sobre el grafo $G'$ ) y adem\'as la suma de las aristas es la 
-    menor posible, por ser un \'arbol abarcador de costo m\'inimo de $G'$ . 
-    \\*
-    Ahora por el teorema enunciado arriba podemos afirmar que el algoritmo devuelve el \'arbol de  caminos m\'inimos con ra\'iz en $s$ tal que la suma del peso de sus aristas es la menor posible . 
-    \\
-    En generar la correctitud esta dada por el algoritmo de Dijkstra (que utilizamos para deteminar $G'$), la correctitud del algoritmo de Prim (que lo utilizamos para saber cual es el \'arbol de costo m\'inimo de $G'$) y el Teorema 1 el cual nos 
-    garantiza que todo \'arbol de caminos m\'inimo  en $G$ esta tambi\'en en $G'$ y viceversa . 
+    % % \item 
+    % devuelve el \'arbol abarcador de costo m\'inimo tomando como ra\'iz el v\'ertice $s$ . el cual se aplica sobre el grafo $G'$ donde todo camino desde $s$ es un camino de  costo m\'inimo.
+    % Entonces tenemos que el \'arbol abarcador devuelto por el algoritmo de Prim es un \'arbol de caminos de costo m\'inimo ,(porque se aplica sobre el grafo $G'$ ) y adem\'as la suma de las aristas es la 
+    % menor posible, por ser un \'arbol abarcador de costo m\'inimo de $G'$ . 
+    % \\*
+    % Ahora por el teorema enunciado arriba podemos afirmar que el algoritmo devuelve el \'arbol de  caminos m\'inimos con ra\'iz en $s$ tal que la suma del peso de sus aristas es la menor posible . 
+    % \\
+    % En generar la correctitud esta dada por el algoritmo de Dijkstra (que utilizamos para deteminar $G'$), la correctitud del algoritmo de Prim (que lo utilizamos para saber cual es el \'arbol de costo m\'inimo de $G'$) y el Teorema 1 el cual nos 
+    % garantiza que todo \'arbol de caminos m\'inimo  en $G$ esta tambi\'en en $G'$ y viceversa . 
 
     \section{\underline{Pseudoc\'odigo}}
 
