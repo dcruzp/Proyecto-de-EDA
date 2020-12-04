@@ -209,11 +209,11 @@
     Sea $G = <V,E>$ grafo no dirigido con costo en las aristas, $x$, $y$ $\in V(G)$, $y$ alcanzable desde $x$, \textbraceleft$p_1, p_2,..., p_t$\textbraceright 
     los caminos de costo m\'inimo de $x$ a $y$ en $G$, \textbraceleft$e_1, e_2,..., e_t$\textbraceright las aristas de costo m\'aximo en cada uno de los caminos $p_i$, $1 \leq i \leq t$, y
     $E'$ = \textbraceleft $e \in E(G) |\hspace{0.2em} w(e)$ = min \textbraceleft $w(e_i) |\hspace{0.2em} 1 \leq i \leq t$ \textbraceright \textbraceright, el conjunto
-    de las aristas de menor costo entre las $e_i$. Entonces el algoritmo de PRIM tomando como v\'ertice inicial $x$, devuelve un AACM T de G, tal que $\exists\hspace{0.2em}
-    e' \in E', e' \in E(T)$ y el \'unico camino de $x$ a $y$ en el AACM T pasa por $e'$.\\\\
+    de las aristas de menor costo entre las $e_i$. Entonces el algoritmo de PRIM tomando como v\'ertice inicial $x$, devuelve un AACM $T$ de $G$, tal que $\exists\hspace{0.2em}
+    e' \in E', e' \in E(T)$ y el \'unico camino de $x$ a $y$ en el AACM $T$ pasa por $e'$.\\\\
     
     Inicialmente, como es\'a descrito en conferencia en la cola con prioridad que mantiene el corte(o sea el conjunto de v\'ertices a\'un no visitados por el algoritmo)est\'an todos los 
-    v\'ertices del grafo G. En cada paso del algoritmo se a\~nade una nueva arista de forma tal que siempre se mantiene un conjunto de aristas que son un subcojunto de alg\'un AACM T de G,
+    v\'ertices del grafo G. En cada paso del algoritmo se a\~nade una nueva arista de forma tal que siempre se mantiene un conjunto de aristas que son un subcojunto de alg\'un AACM $T$ de $G$,
     como se describe en la conferencia. Por esto, en alg\'un momento del algoritmo $\exists\hspace{0.2em} e'' = \hspace{0.2em}<u,v>\hspace{0.2em} \in E'$ que ser\'a la arista candidata a 
     a\~nadir al conjunto de aristas que se tiene hasta el momento, y puede ocurrir dos cosas :\\\\
     
@@ -226,14 +226,14 @@
     fue alcanzado usando $p_k$. Por tanto la \'unica posiblidad es que $e_k \in E'$, o sea $e_k$ es una de las aristas que tiene costo m\'inimo entre todas las aristas
     de mayor costo en cada camino de $x$ a $y$ ($w(e_k) = w(e''))$, y por tanto se cumple que $e_k \in E', e_k \in E(T)$ donde $T$ es el AACM resultante al terminar el algoritmo de PRIM.\\\\
 
-    $\Rightarrow$ Por tanto al finalizar el algoritmo de PRIM, ejecutado sobre  el grafo G, iniciando en el v\'ertice x, se cumple que 
+    $\Rightarrow$ Por tanto al finalizar el algoritmo de PRIM, ejecutado sobre  el grafo $G$, iniciando en el v\'ertice x, se cumple que 
     $\exists e' \in E', e' \in E(T)$, siendo $T$ el AACM resultante al terminar el algoritmo de PRIM.\\\\
 
     Sea $e' = <u,v>$, hay un \'unico camino de $x$ a $u$ en $T$, y hay un \'unico camino de $v$ a $y$ en $T$, y como consecuencia de que esta arista est\'a en todo AACM $T$ de $G$
     $\Rightarrow$ hay un \'unico camino de $x$ a $y$ en $T$ que pasa por la arista $e'$\\\\
 
     $\bullet$ Por tanto se cumple la proposici\'on 1\\\\
-    \newpage
+    %\newpage
     \subsection*{\underline{Pseudoc\'odigo}}
     \begin{algorithm}
         \caption{Determinar el costo de la arista de menor costo entre las aristas de mayor costo en cada camino de $x$ a $y$ en un grafo $G$ con funci\'on de costo $w$}
@@ -254,18 +254,15 @@
     La correctitud del algoritmo se basa principalmente en la de los algoritmos de DFS y PRIM vistos en conferencia, y en esencia en 
     la aplicaci\'on de la proposici\'on 1 previamente demostrada, una vez verificado que $y$ es alcanzable desde $x$, utilizando el array 
     $\pi$, que computa el propio algoritmo de PRIM al construir el AACM empezando en x, solo resta quedarse con la arista de mayor costo 
-    en el camino de $x$ a $y$ en $T$, operaci\'on que realizan las l\'ineas 5-9 del pseudoc\'odigo usando el array $\pi$.
+    en el camino de $x$ a $y$ en $T$, operaci\'on que realizan las l\'ineas 3-7 del pseudoc\'odigo usando el array $\pi$.
 
     \subsection*{\underline{Complejidad Temporal}}
     La complejidad temporal del algoritmo es:\\ $O(|E|\log{|V|}) + O(|V|) = O(max(|E|\log{|V|}, |V|)) = O(|E|\log{|V|})$
 
-
     \newpage 
-
-
     \section*{Ejercicio 3} 
 
-    \subsection*{Descripci\'on del problema} 
+    \subsection*{\underline{Descripci\'on del problema}} 
 
     Sea $G = <V,E>$ un grafo no dirigido y conexo con pesos positivos en las aristas, y un v\'ertice $s \in V$ . Un \'arbol de 
     caminos de costo m\'inimos con ra\'iz en s es un subgrafo $T = <V^{'} , E^{'}> $ donde $V^{'} \subseteq  V $     y $E^{'} \subseteq  E $ tal que: 
@@ -281,7 +278,7 @@
     $O(|E|log|V|)$.
 
 
-    \subsection*{ Explicaci\'on de la soluci\'on }
+    \subsection*{\underline{Explicaci\'on de la soluci\'on }}
 
     \noindent La soluci\'on al problema es aplicar el algoritmo de  Dijkstra visto en conferencias.
     Para encontrar un subgrafo $G^{'}$ que contenga todas las aristas que forman parte de algun camino de 
@@ -289,37 +286,37 @@
     costo m\'inimo en $G^{'}$ , $T$ es el \'arbol que estamos buscando 
 
 
-    \subsection*{Demostraci\'on  de la correctitud del algoritmo}
+    \subsection*{\underline{Demostraci\'on  de la correctitud del algoritmo}}
 
     \noindent La correctitud del algoritmo se basa en la correctitud del algoritmo de Dijkstra visto en conferencia 
-    y en la correctitud del algorimo de Prim visto en Conferencia tambi\'en. Ademas hay que demostrar que el \'arbol $T$ 
-    devuelto por el algoritmo es un \'arbol de caminos de costo m\'inimo y que la suma del peso de sus aristas es la menor posible  
+    y en la correctitud del algorimo de Prim visto en Conferencia tambi\'en. Adem\'as hay que demostrar que el \'arbol $T$, 
+    devuelto por el algoritmo, es un \'arbol de caminos de costo m\'inimo, y que la suma del peso de sus aristas es la menor posible.
     
     \subsubsection*{Proposiciones }
     \begin{itemize}
         \item Vamos a denotar $\delta\left(u,v\right)$ como la distancia m\'inima de $u$ a $v$ 
-        \item vamos a denotar a $w(u,v)$ como el peso de la arista $e= <u,v>$ 
-        \item Sea $G = <V,E>$ un Grafo  vamos a denotar a $G' = <V',E'>$ como un subgrafo de $G$ que solo contiene las aristas $ u \xrightarrow[]{e} v$ 
+        \item Vamos a denotar a $w(u,v)$ como el peso de la arista $e= <u,v>$ 
+        \item Sea $G = <V,E>$ un grafo, vamos a denotar a $G' = <V',E'>$ como un subgrafo de $G$ que solo contiene las aristas $ u \xrightarrow[]{e} v$, 
         que cumplen que $\delta\left(s,u\right) + w \left(u,v\right) = \delta\left(s,v\right)$   
     \end{itemize}
 
-    \subsection*{Lema 1:}
+    \subsubsection*{Lema 1:}
 
-    \textit{Sean u,v v\'ertices de G .Si el costo de las aristas es positivo todo camino de costo m\'inimo de u a v es un camino simple de u a v.}
+    \textit{Sean u,v v\'ertices de G. Si el costo de las aristas es positivo todo camino de costo m\'inimo de u a v es un camino simple de u a v.}
     
     \vspace*{0.3cm} 
 
     
     \noindent \textbf{Demostraci\'on:}
     \\*
-    Si $p_{m}$un camino de costo m\'inimo de u a v de longitud 1 entonces en el camino participan 2 v\'ertices y la \'unica arista $<u,v>$
-    que forma parte del camino es un camino simple\\ 
-    Si $p_{m},$un camino de costo m\'inimo de u a v con longitud $>=2$$($al menos 3 v\'ertices participan en el camino $)$, no fuera simple es 
-    porque tiene al menos un ciclo c .Como todas las aristas que participan en ese camino tienen costo positivo quita el ciclo c y tendr\'ias 
-    un camino de u a v cuyo costo ser\'ia m\'as chico que el costo de $p_{m}$ lo cual generar
+    Si $p_{m}$ que es un camino de costo m\'inimo de u a v de longitud 1 entonces en el camino participan 2 v\'ertices, y la \'unica arista $<u,v>$
+    que forma parte del camino es un camino simple.\\ 
+    Si $p_{m}$, que es un camino de costo m\'inimo de u a v con longitud $>=2$$($al menos 3 v\'ertices participan en el camino$)$, no fuera simple, es 
+    porque tiene al menos un ciclo c. Como todas las aristas que participan en ese camino tienen costo positivo, quitemos el ciclo c y tendr\'iamos 
+    un camino de u a v cuyo costo ser\'ia menor que el costo de $p_{m}$, lo cual genera
     una contradicci\'on pues $p_{m}$ es un camino de costo m\'inimo de u a v.\\
     
-    \subsection*{Lema 2:}
+    \subsubsection*{Lema 2:}
         
     \noindent \textit{Sea $P = \left(v_0,v_1,\dots , v_k \right)$ con $v_0 = s$ y $v_k = v$ un camino simple de $s$ a $v$. Entonces $P$ es un 
             camino de costo m\'inimo de $s$ a $v$  en $G$ $\Longleftrightarrow$  $P$ es un camino de $s$ a $v$ en $G'$}
@@ -359,7 +356,7 @@
     \begin{equation*}
         \sum_{i=1}^{k} w\left(v_{i-1},v_{i}\right) = \sum_{i=1}^{k-1} w\left(v_{i-1},v_{i}\right) + w\left(v_{k-1} , v_{k}\right) = \delta\left(s,v_{k-1}\right) + w\left(v_{k-1, v}\right) > \delta\left(s, v\right)
     \end{equation*}
-    \noindent Esto contradice lo que habiamos supuesto , que $\left(v_0,v_1.\dots, v_k\right)$ era un camino de costo m\'inimo en $G$ , luego queda demostrado que para un k arbitrario se cumple. (por inducci\'on )
+    \noindent Esto contradice lo que habiamos supuesto , que $\left(v_0,v_1.\dots, v_k\right)$ era un camino de costo m\'inimo en $G$ , luego queda demostrado que para un k arbitrario se cumple. (por inducci\'on)
     \\*
     Luego tenemos que un camino de costo m\'inimo de $s$ a $v$ en $G$ corresponde a un camino de $s$ a $v$ en $G'$ 
     
@@ -373,7 +370,7 @@
      
     \noindent \textbf{Demostraci\'on:}
     \\*
-    Como por el Lema1 todo  camino de costo m\'inimo de G es un camino simple y por el lema 2 todo camino simple de
+    Como por el Lema 1 todo  camino de costo m\'inimo de G es un camino simple y por el lema 2 todo camino simple de
     costo m\'inimo  de G est\'a en $G'$ entonces en $G'$ est\'an  todos los caminos de costo m\'inimo de desde s hacia 
     cualquier otro v\'ertice de G .Luego en $G'$  est\'an todos los caminos de costo m\'inmo de s a v. 
     $\forall v\in V(G)$
@@ -393,17 +390,17 @@
     de ese camino de costo m\'inimo ella es la de menor costo luego como todo subcamino de un camino de costo m\'inimo es un camino de costo 
     m\'inimo entonces$\delta\left(s,u\right) + w \left(u,v\right) = \delta\left(s,v\right)$ \\
 
-    \noindent  Por el Lema3 tenemos que todo \'arbol de caminos de costo m\'inimo que est\'a en $G$ tambi\'en esta en $G'$  y viceversa.\\
+    \noindent  Por el Lema 3 tenemos que todo \'arbol de caminos de costo m\'inimo que est\'a en $G$ tambi\'en esta en $G'$  y viceversa.\\
     Luego como el algoritmo de Prim nos
     
     \subsection*{Proposiciones:}
     
-    \noindent \textit{Sea T un  AACM en G' con ra\'iz en s entonces cumple lo siguiente:}
+    \noindent \textit{Sea T un AACM de G' con ra\'iz en s, entonces cumple lo siguiente:}
 
     \begin{enumerate}
         \item  \textit{T es un \'arbol con ra\'iz en $s$}
         \\*
-        Esto sale de la propia definic\'on de AACT $($ \'arbol abarcador de costo m\'inimo$)$
+        Esto sale de la propia definic\'on de AACM $($\'arbol abarcador de costo m\'inimo$)$
         
         \vspace*{0.3cm}
 
@@ -418,22 +415,21 @@
         
         \vspace*{0.3cm} 
 
-        \item \textit{Para todo $v$, si $v$ es alcanzable desde $s$ entonces el camino simple \'unico de $s$ a $v$ es un camino de costo m\'inimo}
+        \item \textit{$\forall v$, si $v$ es alcanzable desde $s$ en G', entonces el camino simple \'unico de $s$ a $v$ en dicho grafo es un camino de costo m\'inimo}
         \\*
         \\*
         \textbf{Demostraci\'on } 
         \\*
-        En $G'$ todo camino  de s a v $\forall v$si v es alcanzable desde s es un camino de costo m\'inimo por tanto en el AACT T con ra\'iz s obtenido
-        de $G'$ el camino que va de s a v es un camino de costo m\'inimo y como T es un \'arbol y en un \'arbol todo camino entre cualquier 
-        par de v\'ertices de T es un camino simple y \'unico .Luego todo camino desde s a v\'ertice v de T es un camino simple de costo m\'inimo 
-        \'unico.
+        En $G'$ todo camino  de s a $v \hspace{0.2em}\forall v$, si $v$ es alcanzable desde s, es un camino de costo m\'inimo, por tanto en el AACM $T$ con ra\'iz s obtenido
+        de $G'$, el camino que va de s a $v$ es un camino de costo m\'inimo, y como $T$ es un \'arbol, y en un \'arbol todo camino entre cualquier 
+        par de v\'ertices es un camino simple y \'unico, entonces todo camino desde s a $v$ en $T$ es un camino simple de costo m\'inimo y es \'unico.
         \item  \textit{T es un arb\'ol de caminos de costo mı\'inimo tal que la suma de los pesos de las aristas de T sea la menor posible.}
         \\*
         \\*
         \textbf{Demostraci\'on } 
         \\*
-        Como en $G'$ est\'an todos los caminos de costo m\'inimo de s a v  al hacer el AACM T desde s voy a obtener un \'arbol abarcador de
-        caminos de costo m\'inimo donde la suma de los costos de las aristas es la menor posible.\\
+        Como en $G'$ est\'an todos los caminos de costo m\'inimo de s a $v$, al hacer el AACM $T$ desde s, obtendremos un \'arbol abarcador de
+        caminos de costo m\'inimo, donde la suma de los costos de las aristas es la menor posible.\\
     \end{enumerate}    
 
     \vspace*{0.5cm} 
@@ -448,10 +444,10 @@
     % En generar la correctitud esta dada por el algoritmo de Dijkstra (que utilizamos para deteminar $G'$), la correctitud del algoritmo de Prim (que lo utilizamos para saber cual es el \'arbol de costo m\'inimo de $G'$) y el Teorema 1 el cual nos 
     % garantiza que todo \'arbol de caminos m\'inimo  en $G$ esta tambi\'en en $G'$ y viceversa . 
 
-    \subsection*{Pseudoc\'odigo del Algoritmo }
+    \subsection*{\underline{Pseudoc\'odigo del Algoritmo }}
 
     \begin{algorithm}[H]
-        \caption{Determinar el \'arbol de caminos m\'inimos desde $s$ de menor peso }
+        \caption{Determinar el \'arbol de caminos de costo m\'inimo $T$ desde $s$, tal que la suma de los pesos las aristas en $T$ sea m\'inima}
         %\begin{algorithmic}[1] 
         %    \State $d[\hspace*{0.1cm}]$ $\leftarrow $ Dijkstra $\left(G,s\right)$   
         %    \State $E (G^{'})$ $\leftarrow$ $\emptyset$
@@ -477,7 +473,7 @@
     
     
 
-    \subsection*{Complejidad temporal}
+    \subsection*{\underline{Complejidad temporal}}
 
     \noindent La complejidad temporal del algoritmo esta dada por la complejidad Temporal de algoritmo de Dijkstra 
     que es $O(|E|\log |V|)$ , mas la complejidad de encontrar el subgrafo que tiene solo las aristas que estan en al menos 
@@ -524,12 +520,12 @@
     \end{figure}
     \noindent Sea G un grafo donde $\forall\; u,v\in V(G)\; d(u,v)=k>1$. Entonces en G existe un camino de longitud k entre 
     cualquier par de v\'ertices u,v. Sea z el \'ultimo v\'ertice anterior a v en el camino de de longitud k que va de
-    u a v . Obtenemos $d(u,z)=d(u,v)-1=k-1$ . Por hip\'otesis de inducci\'on existen dos caminos disjuntos en v\'ertices 
+    u a v . Obtenemos $d(u,z)=d(u,v)-1=k-1$. Por hip\'otesis de inducci\'on existen dos caminos disjuntos en v\'ertices 
     $P_{1},P_{2}$ de u a v. Dado que G-z es conexo pues G es biconexo ,entonces existe un camino $P_{q}$ que va de u a v
     y no contiene a z. Si $P_{q}$ no intercepta con $P_{1}$ o con $P_{2}$,tenemos los dos caminos disjuntos en v\'ertices
     de u a v: $P_{q}$ y $P_{1}$ o $P_{2}$(uno de los 2 con el que no tiene intercepci\'on) + $<z,v>$. Digamos que $P_{q}$ intersecta 
     con $P_{1}$ o con $P_{2}$(posiblemente en m\'as de una ocasi\'on y posiblemente a ambos), vamos a crear un camino que comienza en v sigue por $P_{q}$ hasta la primera intersecci\'on con
-    $P_{1}$ o $P_{2}$ y sigue por uno de estos dos hasta u ,este camino no contiene a z. Ahora creamos  otro camino que vaya 
+    $P_{1}$ o $P_{2}$ y sigue por uno de estos dos hasta u, este camino no contiene a z. Ahora creamos  otro camino que vaya 
     desde u, por el camino que que no tomamos entre $P_{1}$ y $P_{2}$ en el camino previamente construido,  hasta z y con la arista $<z,v>$ llega 
     a v. Encontramos dos caminos disjuntos en v\'ertices que van de u a v $(fig4.1)$.\\\\
     Luego en G hay dos caminos disjuntos en v\'ertices de u a v $\forall u,v \in V(G)$\\\\
@@ -545,6 +541,7 @@
     Si G no tiene puntos de articulaci\'on entonces no existe ning\'un  v\'ertice v que quite de G que lo separe en
     2 o m\'as componentes conexas. Entonces G-v sigue siendo conexo. Luego G es biconexo.\\\\
   
+    \newpage
     Lema 3:\\
     $\forall x,y\in V(G)$ existen dos caminos disjuntos en v\'ertices $\Longleftrightarrow$ G no tiene puntos de articulaci\'on\\\\
     Demostraci\'on:\newline
@@ -555,8 +552,8 @@
    
     \subsection*{\underline{Correctitud}} 
     Por lo expuesto con anterioridad en los lemas 1,2 y 3 y por la correctitud del algoritmo de detecci\'on de puntos de 
-    articulaci\'on, podemos asegurar la correctitud de nuestro algoritmo para detectar si un grafo G cumple la propiedad 
-    de que cada par de v\'ertices existen dos caminos disjuntos en v\'ertices entre ellos, o sea con almacenar en una lista
+    articulaci\'on, podemos asegurar la correctitud de nuestro algoritmo para detectar si un grafo $G$ cumple la propiedad 
+    de para que cada par de v\'ertices existen dos caminos disjuntos en v\'ertices entre ellos, o sea con almacenar en una lista
     los puntos de articulaci\'on detectados por el algoritmo y verificar si la lista contiene alg\'un v\'ertice es suficiente.
     La modificaci\'on al algoritmo visto en conferencia es, en vez de imprimir el punto de articulaci\'on, simplemente lo
     almacenamos en una lista, lo que no afecta la correctitud del algoritmo. \\\\
@@ -576,7 +573,7 @@
         \caption{Determinar si un grafo G cumple $\forall x,y\in V(G)$  existen dos caminos disjuntos en v\'ertices de x a y }
         \textbf{Solve($G$)\\}
         $answer=[\;]$ -lista para almacenar los puntos de articulaci\'on\\
-        $childrens=[\;]$- array para saber cuantos hijos un v\'ertice que pertenece al \'arbol resultado de hacer DFS-Visit\\
+        $childrens=[\;]$- array para saber cuantos hijos tiene un v\'ertice que pertenece al \'arbol resultado de hacer DFS-Visit\\
         1-\hspace*{1em}DFS-Visit-PA($G,u$) \\ 
         2-\hspace*{2em}u $\leftarrow$ visited \\
         3-\hspace*{2em}$time=time+1$ \\
@@ -586,11 +583,11 @@
         7-\hspace*{3em}do if v not visited\\
         9-\hspace*{4em}$\pi[v] \leftarrow u$\\
         9-\hspace*{4em}$childrens[u] \leftarrow childrens[u]+1$\\
-        10-\hspace*{4em}DFS-PA(G)\\
+        10-\hspace*{4em}DFS-PA($G$)\\
         11-\hspace*{4em}$low[u]=min(low[u],low[v])$\\
         12-\hspace*{4em}if $low[v]\ge d[u]$\\
         13-\hspace*{5em}answer.add(u)\\
-        14-\hspace*{3em}else if $pi[u]\ne v$\\
+        14-\hspace*{3em}else if $\pi[u]\ne v$\\
         15-\hspace*{4em}$low[u]=min(low[u],d[v])$\\ 
         15-\hspace*{2em}return\\\\
         17-\hspace*{1em}DFS-PA($G$)\\
@@ -602,7 +599,7 @@
         24-\hspace*{2em}return \\\\
         25-\hspace*{1em}ArtPoint($G$)\\
         25-\hspace*{2em}DFS-PA($G$)\\
-        26-\hspace*{2em}if $size(anwser) >0$\\
+        26-\hspace*{2em}if $size(anwser) > 0$\\
         27-\hspace*{3em}return False\\
         28-\hspace*{2em}else\\
         29-\hspace*{3em}return True\\
