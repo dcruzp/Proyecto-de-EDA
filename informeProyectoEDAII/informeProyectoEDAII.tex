@@ -233,7 +233,7 @@
     $\Rightarrow$ hay un \'unico camino de $x$ a $y$ en $T$ que pasa por la arista $e'$\\\\
 
     $\bullet$ Por tanto se cumple la proposici\'on 1\\\\
-    \newpage
+    %\newpage
     \subsection*{\underline{Pseudoc\'odigo}}
     \begin{algorithm}
         \caption{Determinar el costo de la arista de menor costo entre las aristas de mayor costo en cada camino de $x$ a $y$ en un grafo $G$ con funci\'on de costo $w$}
@@ -265,7 +265,7 @@
 
     \section*{Ejercicio 3} 
 
-    \subsection*{Descripci\'on del problema} 
+    \subsection*{\underline{Descripci\'on del problema}} 
 
     Sea $G = <V,E>$ un grafo no dirigido y conexo con pesos positivos en las aristas, y un v\'ertice $s \in V$ . Un \'arbol de 
     caminos de costo m\'inimos con ra\'iz en s es un subgrafo $T = <V^{'} , E^{'}> $ donde $V^{'} \subseteq  V $     y $E^{'} \subseteq  E $ tal que: 
@@ -281,7 +281,7 @@
     $O(|E|log|V|)$.
 
 
-    \subsection*{ Explicaci\'on de la soluci\'on }
+    \subsection*{\underline{Explicaci\'on de la soluci\'on }}
 
     \noindent La soluci\'on al problema es aplicar el algoritmo de  Dijkstra visto en conferencias.
     Para encontrar un subgrafo $G^{'}$ que contenga todas las aristas que forman parte de algun camino de 
@@ -289,7 +289,7 @@
     costo m\'inimo en $G^{'}$ , $T$ es el \'arbol que estamos buscando 
 
 
-    \subsection*{Demostraci\'on  de la correctitud del algoritmo}
+    \subsection*{\underline{Demostraci\'on  de la correctitud del algoritmo}}
 
     \noindent La correctitud del algoritmo se basa en la correctitud del algoritmo de Dijkstra visto en conferencia 
     y en la correctitud del algorimo de Prim visto en Conferencia tambi\'en. Ademas hay que demostrar que el \'arbol $T$ 
@@ -303,7 +303,7 @@
         que cumplen que $\delta\left(s,u\right) + w \left(u,v\right) = \delta\left(s,v\right)$   
     \end{itemize}
 
-    \subsection*{Lema 1:}
+    \subsubsection*{Lema 1:}
 
     \textit{Sean u,v v\'ertices de G .Si el costo de las aristas es positivo todo camino de costo m\'inimo de u a v es un camino simple de u a v.}
     
@@ -319,7 +319,7 @@
     un camino de u a v cuyo costo ser\'ia m\'as chico que el costo de $p_{m}$ lo cual generar
     una contradicci\'on pues $p_{m}$ es un camino de costo m\'inimo de u a v.\\
     
-    \subsection*{Lema 2:}
+    \subsubsection*{Lema 2:}
         
     \noindent \textit{Sea $P = \left(v_0,v_1,\dots , v_k \right)$ con $v_0 = s$ y $v_k = v$ un camino simple de $s$ a $v$. Entonces $P$ es un 
             camino de costo m\'inimo de $s$ a $v$  en $G$ $\Longleftrightarrow$  $P$ es un camino de $s$ a $v$ en $G'$}
@@ -435,7 +435,7 @@
     % En generar la correctitud esta dada por el algoritmo de Dijkstra (que utilizamos para deteminar $G'$), la correctitud del algoritmo de Prim (que lo utilizamos para saber cual es el \'arbol de costo m\'inimo de $G'$) y el Teorema 1 el cual nos 
     % garantiza que todo \'arbol de caminos m\'inimo  en $G$ esta tambi\'en en $G'$ y viceversa . 
 
-    \subsection*{Pseudoc\'odigo del Algoritmo }
+    \subsection*{\underline{Pseudoc\'odigo del Algoritmo }}
 
     \begin{algorithm}[H]
         \caption{Determinar el \'arbol de caminos m\'inimos desde $s$ de menor peso }
@@ -464,7 +464,7 @@
     
     
 
-    \subsection*{Complejidad temporal}
+    \subsection*{\underline{Complejidad temporal}}
 
     \noindent La complejidad temporal del algoritmo esta dada por la complejidad Temporal de algoritmo de Dijkstra 
     que es $O(|E|\log |V|)$ , mas la complejidad de encontrar el subgrafo que tiene solo las aristas que estan en al menos 
