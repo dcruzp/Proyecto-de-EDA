@@ -286,11 +286,6 @@
     costo m\'inimo en $G^{'}$ , $T$ es el \'arbol que estamos buscando 
 
 
-    \subsection*{\underline{Demostraci\'on  de la correctitud del algoritmo}}
-
-    \noindent La correctitud del algoritmo se basa en la correctitud del algoritmo de Dijkstra visto en conferencia 
-    y en la correctitud del algorimo de Prim visto en Conferencia tambi\'en. Adem\'as hay que demostrar que el \'arbol $T$, 
-    devuelto por el algoritmo, es un \'arbol de caminos de costo m\'inimo, y que la suma del peso de sus aristas es la menor posible.
     
     \subsubsection*{Proposiciones }
     \begin{itemize}
@@ -479,6 +474,12 @@
         8-\hspace*{0.5em} \textbf{return } $T$ 
     \end{algorithm}
     
+    \subsection*{\underline{Correctitud del algoritmo}}
+
+    \noindent La correctitud del algoritmo se basa en la correctitud  de Dijkstra  
+    y en la correctitud de Prim asi como en los lemas y proposiciones demostrados previamente 
+    que permiten garantizar  que el \'arbol $T$ devuelto por el algoritmo, es un \'arbol de caminos de costo m\'inimo, 
+    y que la suma del peso de sus aristas es la menor posible.
     
 
     \subsection*{\underline{Complejidad temporal}}
@@ -557,22 +558,6 @@
     Por Lema 2 G es biconexo $\Longleftrightarrow$ G no tiene puntos de articulaci\'on.
     Entonces por transitividad $\forall x,y\in V(G)$ existen dos caminos disjuntos en v\'ertices 
     $\Longleftrightarrow$ G no tiene puntos de articulaci\'on\\\\
-   
-    \subsection*{\underline{Correctitud}} 
-    Por lo expuesto con anterioridad en los lemas 1,2 y 3 y por la correctitud del algoritmo de detecci\'on de puntos de 
-    articulaci\'on, podemos asegurar la correctitud de nuestro algoritmo para detectar si un grafo $G$ cumple la propiedad 
-    de para que cada par de v\'ertices existen dos caminos disjuntos en v\'ertices entre ellos, o sea con almacenar en una lista
-    los puntos de articulaci\'on detectados por el algoritmo y verificar si la lista contiene alg\'un v\'ertice es suficiente.
-    La modificaci\'on al algoritmo visto en conferencia es, en vez de imprimir el punto de articulaci\'on, simplemente lo
-    almacenamos en una lista, lo que no afecta la correctitud del algoritmo. \\\\
-
-    \subsection*{\underline{Complejidad Temporal}} 
-    La complejidad temporal de nuestro algoritmo es la complejidad temporal del algoritmo de detecci\'on de puntos 
-    de articulaci\'on que es $O(|V|+|E|)$. La modificaci\'on que hicimos del c\'odigo de conferencia no afecta la 
-    complejidad del algoritmo pues solo cambia imprimir el v\'ertice por agregar el v\'ertice a una lista, que es una
-    operaci\'on $O(1)$. Luego, preguntar por el size de la lista para saber si se encontraron puntos de articulaci\'on 
-    es O(1), por lo que la complejidad del algoritmo sigue siendo $O(|V|+|E|)$.
-    \newline
     
     \subsection*{\underline{Pseudoc\'odigo}}
     
@@ -601,8 +586,8 @@
         17-\hspace*{1em}DFS-PA($G$)\\
         18-\hspace*{2em}for each v $\in$ V(G)\\
         19-\hspace*{3em}do if not visited\\
-        22-\hspace*{4em}DFS=DFS-Visit-PA(G,v)\\
-        20-\hspace*{4em}if $childrens[v] \ge 2$ -en caso de que la ra\'iz v de ese \'arbol de DFS sea art point \\
+        22-\hspace*{4em}DFS-Visit-PA(G,v)\\
+        20-\hspace*{4em}if $childrens[v] \ge 2$ -en caso de que la ra\'iz v  sea art point \\
         21-\hspace*{5em}anwser.add(v)\\
         24-\hspace*{2em}return \\\\
         25-\hspace*{1em}ArtPoint($G$)\\
@@ -613,5 +598,23 @@
         29-\hspace*{3em}return True\\
                 
     \end{algorithm}
+
+    \subsection*{\underline{Correctitud}} 
+    Por lo expuesto con anterioridad en los lemas 1,2 y 3 y por la correctitud del algoritmo de detecci\'on de puntos de 
+    articulaci\'on, podemos asegurar la correctitud de nuestro algoritmo para detectar si un grafo $G$ cumple la propiedad 
+    de  que cada par de v\'ertices existen dos caminos disjuntos en v\'ertices entre ellos, o sea con almacenar en una lista
+    los puntos de articulaci\'on detectados por el algoritmo y verificar si la lista contiene alg\'un v\'ertice es suficiente.
+    La modificaci\'on al algoritmo visto en conferencia es, en vez de imprimir el punto de articulaci\'on, simplemente lo
+    almacenamos en una lista, lo que no afecta la correctitud del algoritmo de puntos de articulaci\'on visto en conferencia. \\\\
+
+    \subsection*{\underline{Complejidad Temporal}} 
+    La complejidad temporal de nuestro algoritmo es la complejidad temporal del algoritmo de detecci\'on de puntos 
+    de articulaci\'on que es $O(|V|+|E|)$. La modificaci\'on que hicimos del c\'odigo de conferencia no afecta la 
+    complejidad del algoritmo pues solo cambia imprimir el v\'ertice por agregar el v\'ertice a una lista, que es una
+    operaci\'on $O(1)$. Luego, preguntar por el size de la lista para saber si se encontraron puntos de articulaci\'on 
+    es O(1), por lo que la complejidad del algoritmo sigue siendo $O(|V|+|E|)$.
+    \newline
+    
+    
 
 \end{document} 
