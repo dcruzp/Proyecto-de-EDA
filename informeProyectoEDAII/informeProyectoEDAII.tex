@@ -574,7 +574,7 @@
         5-\hspace*{2em}$low[u]=d[u]$\\ 
         6-\hspace*{2em}for each v $\in$ $Adj[u]$\\
         7-\hspace*{3em}do if v not visited\\
-        9-\hspace*{4em}$\pi[v] \leftarrow u$\\
+        8-\hspace*{4em}$\pi[v] \leftarrow u$\\
         9-\hspace*{4em}$childrens[u] \leftarrow childrens[u]+1$\\
         10-\hspace*{4em}DFS-PA($G$)\\
         11-\hspace*{4em}$low[u]=min(low[u],low[v])$\\
@@ -582,15 +582,15 @@
         13-\hspace*{5em}answer.add(u)\\
         14-\hspace*{3em}else if $\pi[u]\ne v$\\
         15-\hspace*{4em}$low[u]=min(low[u],d[v])$\\ 
-        15-\hspace*{2em}return\\\\
+        16-\hspace*{2em}return\\\\
         17-\hspace*{1em}DFS-PA($G$)\\
         18-\hspace*{2em}for each v $\in$ V(G)\\
         19-\hspace*{3em}do if not visited\\
-        22-\hspace*{4em}DFS-Visit-PA(G,v)\\
-        20-\hspace*{4em}if $childrens[v] \ge 2$ -en caso de que la ra\'iz v  sea art point \\
-        21-\hspace*{5em}anwser.add(v)\\
-        24-\hspace*{2em}return \\\\
-        25-\hspace*{1em}ArtPoint($G$)\\
+        20-\hspace*{4em}DFS-Visit-PA(G,v)\\
+        21-\hspace*{4em}if $childrens[v] \ge 2$ -en caso de que la ra\'iz v  sea art point \\
+        22-\hspace*{5em}anwser.add(v)\\
+        23-\hspace*{2em}return \\\\
+        24-\hspace*{1em}ArtPoint($G$)\\
         25-\hspace*{2em}DFS-PA($G$)\\
         26-\hspace*{2em}if $size(anwser) > 0$\\
         27-\hspace*{3em}return False\\
