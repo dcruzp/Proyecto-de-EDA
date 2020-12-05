@@ -1,7 +1,7 @@
 \documentclass{article}
 \usepackage{algpseudocode,algorithm,algorithmicx}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref} 
 \usepackage{graphicx}
 \usepackage{amsmath} 
 
@@ -9,14 +9,38 @@
     \title{\textcolor{blue}{\textbf{Informe Proyecto de EDA II \\Temario 7}}\\}
     
     \author{\\David Orlando De Quesada Oliva C211\\Daniel de la Cruz Prieto C211\\ Javier Dominguez C212} 
-    \date{}
+    \date{\today} 
     \maketitle  
-    
+
+    \begin{abstract}
+        \noindent En este proyecto articulo vamos a resolver los 4 problemas para el proyecto final de EDA (Estructura de Datos y Algoritmos)
+        Para cada problema vamos a dar  una explicaci\'on breve de como se resuleve el problema (cual es el camino para obtener la solucion del problema ) 
+        despues vamos a hacer una explici\'on  de todo el marco te\'orico necesario para la soluci\'on del problema . Para despu\'es poner 
+        el pseudoc\'odigo del algoritmo . y por \'ultimo la complejidad temporal del algoritmo . El trabajo esta en un repositorio de GitHub en el siguiente enlace 
+        \href{ https://github.com/dcruzp/Proyecto-de-EDA}{\textcolor{blue}{click aqui}} . El temario a resolver es el Temario 7 . Y los integrantes del proyecto somos : 
+        \begin{itemize}
+            \item David Orlando de Quesada Oliva  C-211
+            \item Daniel de la Cruz Prieto C-211
+            \item Javier Dominguez C-212
+        \end{itemize}
+        La Bibliografia fundamental fue las conferencias de Clases , Ademas de algunos libros de Teorias de Grafos como son : 
+        \begin{itemize}
+            \item Introducti\'on to Algorithm 3er Edition
+            \item Graph Algoritm 2nd Edition , Shimon Even 
+        \end{itemize}
+       
+    \end{abstract}
+
     \newpage 
 
-    \section*{Problema 1}
+    \tableofcontents
+
+    \newpage 
+
+
+    \section{Problema 1}
     
-    \subsection*{\underline{Orden del problema}} 
+    \subsection{\underline{Orden del problema}} 
 
     Sean n casas en un vecindario y m tuber\'ias. Las tuber\'ias de agua subterr\'aneas conectan estas casas. Cada
     tuberı\'ia tiene cierta direcci\'on (el agua puede fluir solo en esta direcci\'on y no al rev\'es) y di\'ametro (que caracteriza
@@ -36,8 +60,7 @@
     m\'axima de agua que se puede trasnportar de forma segura desde cada tanque hasta su grifo correspondiente.
     La complejidad temporal de su algoritmo debe ser de \textit{O(n + m)}.
     
-    \newpage
-    \subsection*{\underline{Soluci\'on}}
+    \subsection{\underline{Soluci\'on}}
 
     Primero que todo consideremos el conjunto de casas del vecindario como los v\'ertices, y las tuber\'ias como las aristas de un grafo
     dirigido  $G$, las aristas tienen una funci\'on de capacidad (di\'ametro de la tuber\'ia) y los v\'ertices tienen a lo sumo $indegree = 1$
@@ -146,7 +169,7 @@
     tener en cuenta los v\'ertices $u \in V(G), indegree(u) = 0$ y $outdegree(u) = 0$ pues dichos v\'ertices(en caso de que existan) no aportan nada al c\'omputo que estamos realizando, pues no son 
     alcanzables desde ning\'un otro v\'ertice, ni alcanzan a ning\'un otro v\'ertice en $G$.\\\\ 
 
-    \subsection*{\underline{Pseudoc\'odigo}}
+    \subsection{\underline{Pseudoc\'odigo}}
     \begin{algorithm}
         \caption{Calcular la capacidad máxima de agua que se puede transportar de forma segura desde cada tanque hasta su grifo correspondiente}
         \textbf{Solve($G$)\\}
@@ -176,12 +199,12 @@
         
     \end{algorithm}
 
-    \subsection*{\underline{Correctitud}}
+    \subsection{\underline{Correctitud}}
 
     La correctitud de nuestro algoritmo, se debe a la correctitud del DFS demostrada en conferencia, y al cumplimiento de las proposiciones 
     1, 2 y 3 previamente demostradas, y que son una consecuencia de las restricciones impuestas en la orden del problema.\\
 
-    \subsection*{\underline{Complejidad Temporal}}
+    \subsection{\underline{Complejidad Temporal}}
     La complejidad de nuestro algoritmo se basa en la complejidad del DFS $O(n + m)$. Lo \'unico que le agregamos al DFS
     es ir actualizando  el m\'inimo de las capacidad de las aristas que participan en un camino desde un tanque hasta un 
     grifo lo cual no afecta la complejidad temporal del mismo. Construir la red de flujo $G'$ es $O(n)$ y hacer un recorrido por el array max
@@ -193,16 +216,16 @@
 
     \newpage 
 
-    \section*{Problema 2} 
+    \section{Problema 2} 
 
-    \subsection*{\underline{Orden del Problema}}
+    \subsection{\underline{Orden del Problema}}
     
     Disene un algoritmo que dado un grafo no dirigido con costo en las aristas $G = <V, E>$ y los v\'ertices x, $y \in  V$ ,
     determine el costo de la arista de menor costo entre las aristas de mayor costo en cada camino de x a y. Esto
     quiere decir que si de x a y existen dos caminos $P_1$ , $P_2$ y la arista de mayor costo en $P_1$ es 5 y la de mayor costo
     en $P_2$ es 4, entonces deben devolver 4. La complejidad temporal de su algoritmo debe ser de $O(|E|log(|V|))$.\\
 
-    \subsection*{\underline{Soluci\'on}}
+    \subsection{\underline{Soluci\'on}}
 
     Proposici\'on 1 : \\
     
@@ -234,7 +257,7 @@
 
     $\bullet$ Por tanto se cumple la proposici\'on 1\\\\
     %\newpage
-    \subsection*{\underline{Pseudoc\'odigo}}
+    \subsection{\underline{Pseudoc\'odigo}}
     \begin{algorithm}
         \caption{Determinar el costo de la arista de menor costo entre las aristas de mayor costo en cada camino de $x$ a $y$ en un grafo $G$ con funci\'on de costo $w$}
         \textbf{Solve($G,x,y,w$)\\} 
@@ -249,20 +272,22 @@
         l\'ineas 3-7 Quedarse con el mayor de los costos de las aristas en el camino de $x$ a $y$ en $T$
     \end{algorithm}
 
-    \subsection*{\underline{Correctitud del Algoritmo}}
+    \subsection{\underline{Correctitud}}
 
     La correctitud del algoritmo se basa principalmente en la de los algoritmos de DFS y PRIM vistos en conferencia, y en esencia en 
     la aplicaci\'on de la proposici\'on 1 previamente demostrada, una vez verificado que $y$ es alcanzable desde $x$, utilizando el array 
     $\pi$, que computa el propio algoritmo de PRIM al construir el AACM empezando en x, solo resta quedarse con la arista de mayor costo 
     en el camino de $x$ a $y$ en $T$, operaci\'on que realizan las l\'ineas 3-7 del pseudoc\'odigo usando el array $\pi$.
 
-    \subsection*{\underline{Complejidad Temporal}}
+    \subsection{\underline{Complejidad Temporal}}
     La complejidad temporal del algoritmo es:\\ $O(|E|\log{|V|}) + O(|V|) = O(max(|E|\log{|V|}, |V|)) = O(|E|\log{|V|})$
 
     \newpage 
-    \section*{Ejercicio 3} 
 
-    \subsection*{\underline{Descripci\'on del problema}} 
+
+    \section{Problema 3} 
+
+    \subsection{\underline{Orden del problema}} 
 
     Sea $G = <V,E>$ un grafo no dirigido y conexo con pesos positivos en las aristas, y un v\'ertice $s \in V$ . Un \'arbol de 
     caminos de costo m\'inimos con ra\'iz en s es un subgrafo $T = <V^{'} , E^{'}> $ donde $V^{'} \subseteq  V $     y $E^{'} \subseteq  E $ tal que: 
@@ -278,7 +303,7 @@
     $O(|E|log|V|)$.
 
 
-    \subsection*{\underline{Explicaci\'on de la soluci\'on }}
+    \subsection{\underline{Soluci\'on }}
 
     \noindent La soluci\'on al problema es aplicar el algoritmo de  Dijkstra visto en conferencias.
     Para encontrar un subgrafo $G^{'}$ que contenga todas las aristas que forman parte de algun camino de 
@@ -287,7 +312,7 @@
 
 
     
-    \subsubsection*{Proposiciones }
+    \subsubsection{Proposiciones }
     \begin{itemize}
         \item Vamos a denotar $\delta\left(u,v\right)$ como la distancia m\'inima de $u$ a $v$ 
         \item Vamos a denotar a $w(u,v)$ como el peso de la arista $e= <u,v>$ 
@@ -295,7 +320,7 @@
         que cumplen que $\delta\left(s,u\right) + w \left(u,v\right) = \delta\left(s,v\right)$   
     \end{itemize}
 
-    \subsubsection*{Lema 1:}
+    \subsubsection{Lema 1:}
 
     \textit{Sean u,v v\'ertices de G. Si el costo de las aristas es positivo todo camino de costo m\'inimo de u a v es un camino simple de u a v.}
     
@@ -311,7 +336,7 @@
     un camino de u a v cuyo costo ser\'ia menor que el costo de $p_{m}$, lo cual genera
     una contradicci\'on pues $p_{m}$ es un camino de costo m\'inimo de u a v.\\
     
-    \subsubsection*{Lema 2:}
+    \subsubsection{Lema 2:}
         
     \noindent \textit{Sea $P = \left(v_0,v_1,\dots , v_k \right)$ con $v_0 = s$ y $v_k = v$ un camino simple de $s$ a $v$. Entonces $P$ es un 
             camino de costo m\'inimo de $s$ a $v$  en $G$ $\Longleftrightarrow$  $P$ es un camino de $s$ a $v$ en $G'$}
@@ -357,7 +382,7 @@
     
     \vspace*{0.5cm} 
 
-    \subsubsection*{Lema 3:}
+    \subsubsection{Lema 3:}
     
     \textit{En el grafo $G'$ $\forall v \in V(G) $ con $v\neq s$  est\'an todos los caminos de costo m\'inimo de $s$ a $v$ que hay en $G$}
     
@@ -371,7 +396,7 @@
     $\forall v\in V(G)$
 
      
-    \subsubsection*{Lema 4:}
+    \subsubsection{Lema 4:}
     \textit{Sea $<u,v>$ una arista de un Grafo entonces se cumple que :\\
     $\delta\left(s,u\right) + w \left(u,v\right) = \delta\left(s,v\right)$ $\Longleftrightarrow$ la arista $<u,v>$ pertenece 
     a alg\'un camino de costo m\'inimo de s a v}
@@ -396,7 +421,7 @@
     %\noindent  Por el Lema 3 tenemos que todo \'arbol de caminos de costo m\'inimo que est\'a en $G$ tambi\'en esta en $G'$  y viceversa.\\
     %Luego como el algoritmo de Prim nos
     
-    \subsection*{Proposiciones:}
+    \subsection{Proposiciones:}
     
     \noindent \textit{Sea T un AACM de G' con ra\'iz en s, entonces cumple lo siguiente:}
 
@@ -447,7 +472,7 @@
     % En generar la correctitud esta dada por el algoritmo de Dijkstra (que utilizamos para deteminar $G'$), la correctitud del algoritmo de Prim (que lo utilizamos para saber cual es el \'arbol de costo m\'inimo de $G'$) y el Teorema 1 el cual nos 
     % garantiza que todo \'arbol de caminos m\'inimo  en $G$ esta tambi\'en en $G'$ y viceversa . 
 
-    \subsection*{\underline{Pseudoc\'odigo del Algoritmo }}
+    \subsection{\underline{Pseudoc\'odigo}}
 
     \begin{algorithm}[H]
         \caption{Determinar el \'arbol de caminos de costo m\'inimo $T$ desde $s$, tal que la suma de los pesos las aristas en $T$ sea m\'inima}
@@ -474,7 +499,7 @@
         8-\hspace*{0.5em} \textbf{return } $T$ 
     \end{algorithm}
     
-    \subsection*{\underline{Correctitud del algoritmo}}
+    \subsection{\underline{Correctitud}}
 
     \noindent La correctitud del algoritmo se basa en la correctitud  de Dijkstra  
     y en la correctitud del algoritmo de Prim, as\'i como en los lemas y proposiciones demostrados previamente 
@@ -482,7 +507,7 @@
     m\'inimo de ra\'iz en $s$ tal que la suma del peso de sus aristas es la menor posible.
     
 
-    \subsection*{\underline{Complejidad temporal}}
+    \subsection{\underline{Complejidad temporal}}
 
     \noindent La complejidad temporal del algoritmo esta dada por la complejidad Temporal de algoritmo de Dijkstra 
     que es $O(|E|\log |V|)$ , mas la complejidad de encontrar el subgrafo que tiene solo las aristas que est\'an en al menos 
@@ -494,15 +519,15 @@
     \newpage
 
 
-    \section*{Ejercicio 4} 
+    \section{Problema 4} 
 
-    \subsection*{\underline{Orden del problema}} 
+    \subsection{\underline{Orden del problema}} 
     Sea $G = <V, E>$ un grafo no dirigido y conexo, se desea saber si G cumple la propiedad de que cada par de
     v\'ertices existen dos caminos disjuntos en v\'ertices entre ellos. La complejidad temporal de su algoritmo debe
     ser $O(|V| + |E|)$.
     \newline
     \newline
-    \subsection*{\underline{Soluci\'on}} 
+    \subsection{\underline{Soluci\'on}} 
     Lema 1:\newline
     $\forall x,y\in V(G)$ existen dos caminos disjuntos en v\'ertices $\Longleftrightarrow$ G es biconexo \newline
     \newline
@@ -559,7 +584,7 @@
     Entonces por transitividad $\forall x,y\in V(G)$ existen dos caminos disjuntos en v\'ertices 
     $\Longleftrightarrow$ G no tiene puntos de articulaci\'on\\\\
     
-    \subsection*{\underline{Pseudoc\'odigo}}
+    \subsection{\underline{Pseudoc\'odigo}}
     
     \begin{algorithm}[H] 
         Pseudoc\'odigo:
@@ -599,7 +624,7 @@
                 
     \end{algorithm}
 
-    \subsection*{\underline{Correctitud}} 
+    \subsection{\underline{Correctitud}} 
     Por lo expuesto con anterioridad en los lemas 1,2 y 3 y por la correctitud del algoritmo de detecci\'on de puntos de 
     articulaci\'on, podemos asegurar la correctitud de nuestro algoritmo para detectar si un grafo $G$ cumple la propiedad 
     de  que cada par de v\'ertices existen dos caminos disjuntos en v\'ertices entre ellos, o sea con almacenar en una lista
@@ -607,7 +632,7 @@
     La modificaci\'on al algoritmo visto en conferencia es, en vez de imprimir el punto de articulaci\'on, simplemente lo
     almacenamos en una lista, lo que no afecta la correctitud del algoritmo de puntos de articulaci\'on visto en conferencia. \\\\
 
-    \subsection*{\underline{Complejidad Temporal}} 
+    \subsection{\underline{Complejidad Temporal}} 
     La complejidad temporal de nuestro algoritmo es la complejidad temporal del algoritmo de detecci\'on de puntos 
     de articulaci\'on que es $O(|V|+|E|)$. La modificaci\'on que hicimos del c\'odigo de conferencia no afecta la 
     complejidad del algoritmo pues solo cambia imprimir el v\'ertice por agregar el v\'ertice a una lista, que es una
