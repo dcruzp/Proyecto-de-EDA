@@ -178,36 +178,38 @@
     \begin{algorithm}[H]
         \caption{Calcular la capacidad máxima de agua que se puede transportar de forma segura desde cada tanque hasta su grifo correspondiente}
         \textbf{Solve($G$)\\}
-        1-\hspace*{1em}$max \leftarrow$ [$\infty]$*$|V(G')|$ - lista donde tendremos para cada v\'ertice quee sea tanque la cantidad m\'axima de flujo que puede enviar a su grifo.\\
-        2-\hspace*{1em}$min \leftarrow \infty$ - esta variable la usaremos para computar lo que nos pide el ejercicio\\
-        3-\hspace*{1em}visited $\leftarrow$ [$false$]*$|V(G')|$, $\pi \leftarrow$ [$Null$]*$|V(G')|$\\
-        3-\hspace*{1em}$G'$ = Build\textunderscore Flow\textunderscore Network($G$) - Este m\'etodo en $O(V)$ agrega los v\'ertices fictios a $G$.\\
-        4-\hspace*{1em}DFS($G'$, $x$)\\
-        5-\hspace*{2em}$min \leftarrow \infty$\\
-        6-\hspace*{2em}foreach $u \in Ady[x]$ do:\\
-        7-\hspace*{3em}DFS-Visit($G'$, $u$)\\
-        8-\hspace*{3em}$max$[$u$] $\leftarrow min$\\
-        9-\hspace*{3em}$min \leftarrow \infty$\\
+        1-\hspace*{1em}$G'$ = Build\textunderscore Flow\textunderscore Network($G$) - Este m\'etodo en $O(V)$ agrega los v\'ertices fictios a $G$ .\\
+        2-\hspace*{1em}$max \leftarrow$ [$\infty]$*$|V(G')|$ - lista donde tendremos para cada v\'ertice quee sea tanque la cantidad m\'axima de flujo que puede enviar a su grifo.\\
+        3-\hspace*{1em}$min \leftarrow \infty$ - esta variable la usaremos para computar lo que nos pide el ejercicio\\
+        4-\hspace*{1em}visited $\leftarrow$ [$false$]*$|V(G')|$, $\pi \leftarrow$ [$Null$]*$|V(G')|$\\
+        5-\hspace*{1em}\\
+        6-\hspace*{1em}\textbf{DFS($G'$, $x$)}\\
+        7-\hspace*{2em}$min \leftarrow \infty$\\
+        8-\hspace*{2em}\textbf{for each} $u \in Ady[x]$ do:\\
+        9-\hspace*{3em}DFS-Visit($G'$, $u$)\\
+        10-\hspace*{3em}$max$[$u$] $\leftarrow min$\\
+        11-\hspace*{3em}$min \leftarrow \infty$\\
 
-        10-\hspace*{1em}DFS-Visit($G,u)$\\ 
-        11-\hspace*{2em}u $\leftarrow$ visited \\  
-        12-\hspace*{2em}for each v $\in$ $Adj[u]$\\
-        13-\hspace*{3em}do if v not visited\\
-        14-\hspace*{4em}$\pi[v] \leftarrow u$\\
-        15-\hspace*{4em}do if $c(u,v)< min$\\
-        16-\hspace*{4em}$min=c(u,v)$\\
-        17-\hspace*{4em}DFS-Visit($G$,$v$)\\
+        12-\hspace*{1em}\textbf{DFS-Visit$(G,u)$}\\ 
+        13-\hspace*{2em}u $\leftarrow$ visited \\  
+        14-\hspace*{2em}\textbf{for each} v $\in$ $Adj[u]$\\
+        15-\hspace*{3em}do \textbf{if} v not visited\\
+        16-\hspace*{4em}$\pi[v] \leftarrow u$\\
+        17-\hspace*{4em}do \textbf{if} $c(u,v)< min$\\
+        18-\hspace*{5em}$min=c(u,v)$\\
+        19-\hspace*{4em}DFS-Visit($G$,$v$)\\
         
-        19-\hspace*{1em}for each $u \in V(G')$\\
-        20-\hspace*{2em}if $max$[$u$] != $\infty$\\
-        21-\hspace*{3em}print($u$,$max$[$u$])\\
+        20-\hspace*{1em}\textbf{for each} $u \in V(G')$\\
+        21-\hspace*{2em}\textbf{if} $max$[$u$] != $\infty$\\
+        22-\hspace*{3em}\textbf{print}($u$,$max$[$u$]) - la capacidad m\'axima de agua que puede transportar el tanque u a su correspondiente grifo es $max[u]$\\
         
     \end{algorithm}
 
     \subsection{\underline{Correctitud}}
 
     La correctitud de nuestro algoritmo, se debe a la correctitud del DFS demostrada en conferencia, y al cumplimiento de las proposiciones 
-    1, 2 y 3 previamente demostradas, y que son una consecuencia de las restricciones impuestas en la orden del problema.\\
+    1, 2 y 3 previamente demostradas, y que son una consecuencia de las restricciones impuestas en la orden del problema. Lo que
+    agregamos al DFS para actualizar min y max no afecta para nada la corretitud del mismo.\\
 
     \subsection{\underline{Complejidad Temporal}}
     La complejidad de nuestro algoritmo se basa en la complejidad del DFS $O(n + m)$. Lo \'unico que le agregamos al DFS
@@ -215,7 +217,7 @@
     grifo lo cual no afecta la complejidad temporal del mismo. Construir la red de flujo $G'$ es $O(n)$ y hacer un recorrido por el array max
     para imprimir las casas que son tanque, con la m\'axima capacidad correspondiente que se puede transportar de forma segura 
     desde el mismo hasta su grifo, tiene complejidad $O(n)$. La complejidad temporal de nuestro algoritmo, por tanto, quedar\'ia $O(n) + O(n + m) + O(n) 
-    = O(max(n + m, n) = O(n + m)$.
+    = O(max(n + m, n)) = O(n + m)$.
 
 
 
