@@ -16,13 +16,16 @@
         \noindent En este informe  vamos a resolver los 4 problemas del proyecto final de 
         EDA~2. Para cada problema vamos a dar  una explicaci\'on breve de como se resuelve el mismo,demostrar todo el marco te\'orico necesario 
         ,pseudoc\'odigo , correctitud y complejidad temporal del algoritmo . \\\\
+        \\\\
+        \\\\
+        \\\\
         % El trabajo esta en un repositorio de GitHub en el siguiente enlace 
         % \href{ https://github.com/dcruzp/Proyecto-de-EDA}{\textcolor{blue}{click aqui}}.\\\\
-        {\large{ \textcolor{blue}{Integrantes :}}}
+        {\large{ \textcolor{blue}{\textbf{Integrantes :}}}}
         \begin{itemize}
-            \item David Orlando De Quesada Oliva  C-211
-            \item Daniel de la Cruz Prieto C-211
-            \item Javier Dominguez C-212
+            \item \textbf{David Orlando De Quesada Oliva}  C-211
+            \item \textbf{Daniel de la Cruz Prieto} C-211
+            \item \textbf{Javier Dominguez} C-212
         \end{itemize}
         % La Bibliografia fundamental fue las conferencias de Clases , Ademas de algunos libros de Teorias de Grafos como son : 
         % \begin{itemize}
@@ -530,10 +533,14 @@
     \newline
     \newline
     \subsection{\underline{Soluci\'on}} 
-    Lema 1:\newline
+    Aplicar el algoritmo de detecci\'on de punto de articulaci\'on  .En caso que no  existan puntos de articulaci\'on
+    en G entonces se dice que G cumple la propiedad de que para cada par de v\'ertices  existen dos caminos disjuntos
+    en v\'ertices entre ellos.\\ 
+
+    \noindent \textbf{Lema 1:}\\
     $\forall x,y\in V(G)$ existen dos caminos disjuntos en v\'ertices $\Longleftrightarrow$ G es biconexo \newline
     \newline
-    Demostraci\'on:\\\\
+    \noindent \textbf{Demostraci\'on:}\\\\
     $\Longrightarrow$\\
     Sea x un v\'ertice arbitrario de G. En el grafo G-x(resultado de remover el v\'ertice x del grafo G)
     sigue habiendo un camino entre cualquier par de v\'ertices u,v pues como en G existen dos caminos disjuntos en v\'ertices
@@ -564,17 +571,17 @@
     cualquier par de v\'ertices u,v. Sea z el \'ultimo v\'ertice anterior a v en el camino de de longitud k que va de
     u a v . Obtenemos $d(u,z)=d(u,v)-1=k-1$. Por hip\'otesis de inducci\'on existen dos caminos disjuntos en v\'ertices 
     $P_{1},P_{2}$ de u a v. Dado que G-z es conexo pues G es biconexo ,entonces existe un camino $P_{q}$ que va de u a v
-    y no contiene a z. Si $P_{q}$ no intercepta con $P_{1}$ o con $P_{2}$,tenemos los dos caminos disjuntos en v\'ertices
-    de u a v: $P_{q}$ y $P_{1}$ o $P_{2}$(uno de los 2 con el que no tiene intercepci\'on) + $<z,v>$. Digamos que $P_{q}$ intersecta 
-    con $P_{1}$ o con $P_{2}$(posiblemente en m\'as de una ocasi\'on y posiblemente a ambos), vamos a crear un camino que comienza en v sigue por $P_{q}$ hasta la primera intersecci\'on con
+    y no contiene a z. Si $P_{q}$ no intersecta con $P_{1}$ o con $P_{2}$,tenemos los dos caminos disjuntos en v\'ertices
+    de u a v: $P_{q}$ y $P_{1}$ o $P_{2}$(uno de los 2 con el que no tiene intersecci\'on) + $<z,v>$. Digamos que $P_{q}$ intersecta 
+    con $P_{1}$ y con $P_{2}$(posiblemente en m\'as de una ocasi\'on  a ambos), vamos a crear un camino que comienza en v sigue por $P_{q}$ hasta la primera intersecci\'on con
     $P_{1}$ o $P_{2}$ y sigue por uno de estos dos hasta u, este camino no contiene a z. Ahora creamos  otro camino que vaya 
     desde u, por el camino que que no tomamos entre $P_{1}$ y $P_{2}$ en el camino previamente construido,  hasta z y con la arista $<z,v>$ llega 
     a v. Encontramos dos caminos disjuntos en v\'ertices que van de u a v $(fig4.1)$.\\\\
     Luego en G hay dos caminos disjuntos en v\'ertices de u a v $\forall u,v \in V(G)$\\\\
  
-    Lema 2:\\
+    \noindent \textbf{Lema 2:}\\
     G es biconexo $\Longleftrightarrow$ G no tiene puntos de articulaci\'on \\\\
-    Demostraci\'on:\\
+    \noindent \textbf{Demostraci\'on:}\\
     $\Longrightarrow$\\
     Si G es biconexo entonces al quitar cualquier v\'ertice v de G, y las aristas incidentes al mismo,  
     G sigue siendo conexo por que lo no se divide en 2 o m\'as de componentes conexas. Por tanto G no
@@ -583,10 +590,10 @@
     Si G no tiene puntos de articulaci\'on entonces no existe ning\'un  v\'ertice v que quite de G que lo separe en
     2 o m\'as componentes conexas. Entonces G-v sigue siendo conexo. Luego G es biconexo.\\\\
   
-    \newpage
-    Lema 3:\\
+    
+    \noindent \textbf{Lema 3:}\\
     $\forall x,y\in V(G)$ existen dos caminos disjuntos en v\'ertices $\Longleftrightarrow$ G no tiene puntos de articulaci\'on\\\\
-    Demostraci\'on:\newline
+    \noindent \textbf{Demostraci\'on:}\\
     Por Lema 1  $\forall x,y\in V(G)$ existen dos caminos disjuntos en v\'ertices $\Longleftrightarrow$ G es biconexo. 
     Por Lema 2 G es biconexo $\Longleftrightarrow$ G no tiene puntos de articulaci\'on.
     Entonces por transitividad $\forall x,y\in V(G)$ existen dos caminos disjuntos en v\'ertices 
@@ -598,47 +605,48 @@
         Pseudoc\'odigo:
         \caption{Determinar si un grafo G cumple $\forall x,y\in V(G)$  existen dos caminos disjuntos en v\'ertices de x a y }
         \textbf{Solve($G$)\\}
-        $answer=[\;]$ -lista para almacenar los puntos de articulaci\'on\\
-        $childrens=[\;]$- array para saber cuantos hijos tiene un v\'ertice que pertenece al \'arbol resultado de hacer DFS-Visit\\
-        1-\hspace*{1em}DFS-Visit-PA($G,u$) \\ 
+        $answer=[\;]$ - lista para almacenar los puntos de articulaci\'on\\
+        $childrens=[\;]$ - array para saber cuantos hijos tiene un v\'ertice que pertenece al \'arbol resultado de hacer DFS-Visit\\
+        1-\hspace*{1em}\noindent \textbf{DFS-Visit-PA($G,u$)} \\ 
         2-\hspace*{2em}u $\leftarrow$ visited \\
         3-\hspace*{2em}$time=time+1$ \\
-        4-\hspace*{2em}$d[u]=tome$\\
+        4-\hspace*{2em}$d[u]=time$\\
         5-\hspace*{2em}$low[u]=d[u]$\\ 
-        6-\hspace*{2em}for each v $\in$ $Adj[u]$\\
-        7-\hspace*{3em}do if v not visited\\
+        6-\hspace*{2em}\noindent \textbf{for each} v $\in$ $Adj[u]$\\
+        7-\hspace*{3em}do \noindent \textbf{if} v not visited\\
         8-\hspace*{4em}$\pi[v] \leftarrow u$\\
         9-\hspace*{4em}$childrens[u] \leftarrow childrens[u]+1$\\
         10-\hspace*{4em}DFS-PA($G$)\\
         11-\hspace*{4em}$low[u]=min(low[u],low[v])$\\
-        12-\hspace*{4em}if $low[v]\ge d[u]$\\
+        12-\hspace*{4em}\noindent \textbf{if} $low[v]\ge d[u]$\\
         13-\hspace*{5em}answer.add(u)\\
-        14-\hspace*{3em}else if $\pi[u]\ne v$\\
+        14-\hspace*{3em}\noindent \textbf{else if} $\pi[u]\ne v$\\
         15-\hspace*{4em}$low[u]=min(low[u],d[v])$\\ 
         16-\hspace*{2em}return\\\\
-        17-\hspace*{1em}DFS-PA($G$)\\
-        18-\hspace*{2em}for each v $\in$ V(G)\\
-        19-\hspace*{3em}do if not visited\\
+        17-\hspace*{1em}\noindent \textbf{DFS-PA($G$)}\\
+        18-\hspace*{2em}\noindent \textbf{for each} v $\in$ V(G)\\
+        19-\hspace*{3em}do \noindent \textbf{if} not visited\\
         20-\hspace*{4em}DFS-Visit-PA(G,v)\\
-        21-\hspace*{4em}if $childrens[v] \ge 2$ -en caso de que la ra\'iz v  sea art point \\
+        21-\hspace*{4em}\noindent \textbf{if} $childrens[v] \ge 2$ -en caso de que la ra\'iz v  sea art point \\
         22-\hspace*{5em}anwser.add(v)\\
         23-\hspace*{2em}return \\\\
-        24-\hspace*{1em}ArtPoint($G$)\\
+        24-\hspace*{1em}\noindent \textbf{ArtPoint($G$)}\\
         25-\hspace*{2em}DFS-PA($G$)\\
-        26-\hspace*{2em}if $size(anwser) > 0$\\
+        26-\hspace*{2em}\noindent \textbf{if} $size(anwser) > 0$\\
         27-\hspace*{3em}return False\\
-        28-\hspace*{2em}else\\
+        28-\hspace*{2em}\noindent \textbf{else}\\
         29-\hspace*{3em}return True\\
                 
     \end{algorithm}
 
     \subsection{\underline{Correctitud}} 
-    Por lo expuesto con anterioridad en los lemas 1,2 y 3 y por la correctitud del algoritmo de detecci\'on de puntos de 
+    Por lo expuesto con anterioridad en los lemas 1,2,3 y por la correctitud del algoritmo de detecci\'on de puntos de 
     articulaci\'on, podemos asegurar la correctitud de nuestro algoritmo para detectar si un grafo $G$ cumple la propiedad 
-    de  que cada par de v\'ertices existen dos caminos disjuntos en v\'ertices entre ellos, o sea con almacenar en una lista
+    de  que para cada par de v\'ertices existen dos caminos disjuntos en v\'ertices entre ellos, o sea con almacenar en una lista
     los puntos de articulaci\'on detectados por el algoritmo y verificar si la lista contiene alg\'un v\'ertice es suficiente.
     La modificaci\'on al algoritmo visto en conferencia es, en vez de imprimir el punto de articulaci\'on, simplemente lo
-    almacenamos en una lista, lo que no afecta la correctitud del algoritmo de puntos de articulaci\'on visto en conferencia. \\\\
+    almacenamos en una lista,lo que no afecta la correctitud del algoritmo.
+    \\\\
 
     \subsection{\underline{Complejidad Temporal}} 
     La complejidad temporal de nuestro algoritmo es la complejidad temporal del algoritmo de detecci\'on de puntos 
