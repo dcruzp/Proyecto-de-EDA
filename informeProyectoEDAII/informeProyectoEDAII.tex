@@ -377,21 +377,29 @@
 
      
     \subsubsection*{Lema 4:}
+    \textit{Sea $<u,v>$ una arista de un Grafo entonces se cumple que :\\
     $\delta\left(s,u\right) + w \left(u,v\right) = \delta\left(s,v\right)$ $\Longleftrightarrow$ la arista $<u,v>$ pertenece 
-    a alg\'un camino de costo m\'inimo de s a v\\
-    Demostraci\'on:\\
+    a alg\'un camino de costo m\'inimo de s a v}
+    \\*
+    \\*
+    \noindent \textbf{Demostraci\'on:}
+    \\*
     $\Longrightarrow$\\
-    Supongamos que la arista $<u,v>$ no pertenezca a alg\'un camino de costo m\'inimo de  que va de u a v entonces es
-    porque existe arista $<u',v>$  costo menor que ella que pertenece al camino en cuyo caso   
-    $\delta\left(s,u\right) + w \left(u,v\right)$ tendr\'ia  costo menor que el camino de costo m\'inimo lo cual es una contradicci\'on.\\
-    
+    Vamos a suponer que  se cumple que $\delta\left(s,u\right) + w \left(u,v\right) = \delta\left(s,v\right)$ y que la arista $<u,v>$ no pertenezca 
+    a ning\'un camino de costo m\'inimo  de $s$ a $v$ pero como sabemos que existe al menos un camino $P$ de costo m\'inimo de $s$ a $u$  y que los caminos de costo m\'inimo de 
+    $s$ a $v$ tienen costo $\delta\left(s,v\right)$ entonces si tomamos el camino $P$  y le unimos la arista $<u,v>$ entonces tenemos un camino $P'$ desde $s$ hasta $v$ en el cual participa la arista $<u,v>$ , 
+    adem\'as sabemos que la longitud de $P'$ es $\delta\left(s,u\right) + w \left(u,v\right) = \delta\left(s,v\right)$ . Luego hemos encontrado una contradicci\'on porque hab\'iamos supuesto que la 
+    arista $<u,v>$ no pertenec\'ia a ning\'un camino de costo m\'inimo. Por lo tanto se cumple que si $\delta\left(s,u\right) + w \left(u,v\right) = \delta\left(s,v\right)$ entonces la arista $<u,v>$ 
+    pertenece al menos a un camino de costo m\'inimo de $s$~a~$v$ . 
+    \\*
+    \\*
     \noindent $\Longleftarrow $\\
     Si la arista $<u,v>$pertence a alg\'un camino de costo m\'inimo de s a v  entonces es porque de todas las aristas que terminan en v en un 
     de ese camino de costo m\'inimo ella es la de menor costo luego como todo subcamino de un camino de costo m\'inimo es un camino de costo 
     m\'inimo entonces$\delta\left(s,u\right) + w \left(u,v\right) = \delta\left(s,v\right)$ \\
 
-    \noindent  Por el Lema 3 tenemos que todo \'arbol de caminos de costo m\'inimo que est\'a en $G$ tambi\'en esta en $G'$  y viceversa.\\
-    Luego como el algoritmo de Prim nos
+    %\noindent  Por el Lema 3 tenemos que todo \'arbol de caminos de costo m\'inimo que est\'a en $G$ tambi\'en esta en $G'$  y viceversa.\\
+    %Luego como el algoritmo de Prim nos
     
     \subsection*{Proposiciones:}
     
