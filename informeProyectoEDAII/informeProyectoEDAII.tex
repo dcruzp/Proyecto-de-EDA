@@ -71,17 +71,17 @@
     dirigido  $G$, las aristas tienen una funci\'on de capacidad (di\'ametro de la tuber\'ia) y los v\'ertices tienen a lo sumo $indegree = 1$
     y a lo sumo $outdegree$ = 1 por las restricciones del problema.\\\\
 
-    Definici\'on: Una casa con tanque $u$ en el grafo $G$ es un $u \in V(G)$,\\ $indegree(u) = 0 \wedge outdegree(u) = 1$\\
+    \noindent \textbf{Definici\'on:} Una casa con tanque $u$ en el grafo $G$ es un $u \in V(G)$,\\ $indegree(u) = 0 \wedge outdegree(u) = 1$\\
 
-    Definici\'on: Una casa con grifo $u$ en el grafo $G$ es un $u \in V(G)$,\\ $indegree(u) = 1 \wedge outdegree(v) = 0$\\
+    \noindent \textbf{Definici\'on:} Una casa con grifo $u$ en el grafo $G$ es un $u \in V(G)$,\\ $indegree(u) = 1 \wedge outdegree(v) = 0$\\
 
-    Definici\'on: Diremos que a la casa con tanque $u$, en el grafo $G$, le corresponde la casa con grifo
+    \noindent \textbf{Definici\'on:} Diremos que a la casa con tanque $u$, en el grafo $G$, le corresponde la casa con grifo
      $v$, si existe un camino de $u$ a $v$ en $G$.\\
 
-    Definici\'on: Diremos que a la casa con grifo $u$ en el 
+     \noindent \textbf{Definici\'on:} Diremos que a la casa con grifo $u$ en el 
     grafo $G$, le corresponde la casa con tanque $v$, si existe un camino de $u$ a $v$ en $G$.\\\\
 
-    Proposici\'on 1: A cada casa con tanque $u \in V(G)$ le corresponde una \'unica casa con grifo $v \in V(G)$.\\
+    \noindent \textbf{Proposici\'on 1:} A cada casa con tanque $u \in V(G)$ le corresponde una \'unica casa con grifo $v \in V(G)$.\\
 
     Supongamos que a una casa con tanque $u \in V(G)$ le corresponde al menos dos casas con grifo, eso quiere decir
     que hay un camino de $u$ a cada una de dichas casas. Tomemos dos de dichas casas y los caminos $p_1, p_2$ de $u$
@@ -98,7 +98,7 @@
     En ambos casos llegamos a una contradicci\'on con las restricciones del problema, que es que $\forall x \in V(G), outdegree(x) \leq 1$. 
     Por tanto a cada casa con tanque $u$ le corresponde una \'unica casa con grifo $v$.\\\\
 
-    Proposici\'on 2: A cada casa con grifo $u \in V(G)$ le corresponde una \'unica casa con tanque $v \in V(G)$.\\
+    \noindent \textbf{Proposici\'on 2:} A cada casa con grifo $u \in V(G)$ le corresponde una \'unica casa con tanque $v \in V(G)$.\\
 
     Supongamos que a la casa con grifo $u$ le corresponden al menos dos casas con tanque, eso quiere decir que hay al menos dos casas
     con tanque tal que hay un camino de cada una de ellas a la casa con grifo $u$. Tomemos dos de dichas casas y los caminos $p_1, p_2$,
@@ -118,7 +118,7 @@
     Por las Proposiciones 1 y 2 se deduce que cada casa con grifo recibe agua de una sola casa con tanque, y una casa con tanque env\'ia agua a
     una sola casa con grifo. Que esto es que los pares $u,v \in V(G)$ tal que $u$ env\'ia agua a $v$, no tienen elementos repetidos\\\\\
 
-    Proposici\'on 3: Entre cada casa tanque $u \in V(G)$ y su grifo correspondiente, $v \in V(G)$ hay un \'unico camino
+    \noindent \textbf{Proposici\'on 3:} Entre cada casa tanque $u \in V(G)$ y su grifo correspondiente, $v \in V(G)$ hay un \'unico camino
     que va de $u$ a $v$ en $G$ y es un camino simple.\\
 
     Supongamos que hay al menos dos caminos que van de $u$ a $v$ en $G$. Tomemos dos de dichos caminos, $p_1$ y $p_2$, ambos caminos pueden cumplir solo las 
@@ -133,7 +133,7 @@
 
     Ahora supongamos que ese camino que denotaremos como $p_i$ no es simple, eso quiere decir que hay un ciclo en dicho camino, empezemos a recorrer $p_i$ hasta 
     que lleguemos al primer v\'ertice $x$ que est\'a en dicho ciclo, la arista que usamos para llegar a \'el no estaba en el ciclo y aporta 1 de $indegree$ a $x$,
-     y la otra arista, que cierra el ciclo en $x$ aporta 1 de $indegree$, por lo que $indegree(x) = 2$, lo que es una contradicci\'on con las restricciones del problema.\\\\
+    y la otra arista, que cierra el ciclo en $x$ aporta 1 de $indegree$, por lo que $indegree(x) = 2$, lo que es una contradicci\'on con las restricciones del problema.\\\\
 
     Por tanto, el \'unico camino entre $u$ y $v$ en $G$, es simple.\\\\
 
@@ -234,7 +234,7 @@
 
     \subsection{\underline{Soluci\'on}}
 
-    Proposici\'on 1 : \\
+    \noindent \textbf{Proposici\'on 1 :} \\
     
     Sea $G = <V,E>$ grafo no dirigido con costo en las aristas, $x$, $y$ $\in V(G)$, $y$ alcanzable desde $x$, \textbraceleft$p_1, p_2,..., p_t$\textbraceright 
     los caminos de costo m\'inimo de $x$ a $y$ en $G$, \textbraceleft$e_1, e_2,..., e_t$\textbraceright las aristas de costo m\'aximo en cada uno de los caminos $p_i$, $1 \leq i \leq t$, y
@@ -540,7 +540,7 @@
     en v\'ertices entre ellos.\\ 
 
     \noindent \textbf{Lema 1:}\\
-    $\forall x,y\in V(G)$ existen dos caminos disjuntos en v\'ertices $\Longleftrightarrow$ G es biconexo \newline
+    Sea G un grafo con $|V(G)|\ge 3$ $\forall x,y\in V(G)$ existen dos caminos disjuntos en v\'ertices $\Longleftrightarrow$ G es biconexo \newline
     \newline
     \noindent \textbf{Demostraci\'on:}\\\\
     $\Longrightarrow$\\
@@ -594,13 +594,19 @@
   
     
     \noindent \textbf{Lema 3:}\\
-    $\forall x,y\in V(G)$ existen dos caminos disjuntos en v\'ertices $\Longleftrightarrow$ G no tiene puntos de articulaci\'on\\\\
+    Sea G un grafo con $V(G)\ge 3$ $\forall x,y\in V(G)$ existen dos caminos disjuntos en v\'ertices $\Longleftrightarrow$ G no tiene puntos de articulaci\'on\\\\
     \noindent \textbf{Demostraci\'on:}\\
-    Por Lema 1  $\forall x,y\in V(G)$ existen dos caminos disjuntos en v\'ertices $\Longleftrightarrow$ G es biconexo. 
+    Por Lema 1  $\forall x,y\in V(G)$ con $|V(G)|\ge 3$ existen dos caminos disjuntos en v\'ertices $\Longleftrightarrow$ G es biconexo. 
     Por Lema 2 G es biconexo $\Longleftrightarrow$ G no tiene puntos de articulaci\'on.
-    Entonces por transitividad $\forall x,y\in V(G)$ existen dos caminos disjuntos en v\'ertices 
+    Entonces por transitividad $\forall x,y\in V(G)$ $|V(G)|\ge 3$ existen dos caminos disjuntos en v\'ertices 
     $\Longleftrightarrow$ G no tiene puntos de articulaci\'on\\\\
     
+    \noindent \textbf{Caso  $|V(G)|\le 2$:}\\
+    Si $|V(G)| = 2$ entonces el \'unico camino que puede existir entre los \'unicos dos v\'ertices u,v que tiene el grafo es la
+    arista $<u,v>$ por lo que no cumple la condici\'on que nos pide en el problema.En este caso G nunca tiene puntos de articulaci\'on,
+    pues cualquiera de los 2 v\'ertices que quite siempre me quedar\'ia un grafo conexo de un solo v\'ertice,por lo que tengo que considerarlo
+    aparte en el algoritmo.
+
     \subsection{\underline{Pseudoc\'odigo}}
     
     \begin{algorithm}[H] 
@@ -632,12 +638,14 @@
         21-\hspace*{4em}\noindent \textbf{if} $childrens[v] \ge 2$ -en caso de que la ra\'iz v  sea art point \\
         22-\hspace*{5em}anwser.add(v)\\
         23-\hspace*{2em}return \\\\
-        24-\hspace*{1em}\noindent \textbf{ArtPoint($G$)}\\
-        25-\hspace*{2em}DFS-PA($G$)\\
-        26-\hspace*{2em}\noindent \textbf{if} $size(anwser) > 0$\\
-        27-\hspace*{3em}return False\\
-        28-\hspace*{2em}\noindent \textbf{else}\\
-        29-\hspace*{3em}return True\\
+        24-\hspace*{1em}\noindent \textbf{Solve($G$)}\\
+        25-\hspace*{1em}\noindent \textbf{if} $|V(G)| < 3$ \\ -caso aparte si G tiene menos de 3 v\'ertices 
+        26-\hspace*{2em}return False\\
+        27-\hspace*{2em}DFS-PA($G$)\\
+        28-\hspace*{2em}\noindent \textbf{if} $size(anwser) > 0$\\
+        29-\hspace*{3em}return False\\
+        30-\hspace*{2em}\noindent \textbf{else}\\
+        31-\hspace*{3em}return True\\
                 
     \end{algorithm}
 
