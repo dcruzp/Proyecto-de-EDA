@@ -477,18 +477,18 @@
     \subsection*{\underline{Correctitud del algoritmo}}
 
     \noindent La correctitud del algoritmo se basa en la correctitud  de Dijkstra  
-    y en la correctitud de Prim asi como en los lemas y proposiciones demostrados previamente 
-    que permiten garantizar  que el \'arbol $T$ devuelto por el algoritmo, es un \'arbol de caminos de costo m\'inimo, 
-    y que la suma del peso de sus aristas es la menor posible.
+    y en la correctitud del algoritmo de Prim, as\'i como en los lemas y proposiciones demostrados previamente 
+    que permiten garantizar  que el \'arbol $T$ devuelto por el algoritmo, es un \'arbol de caminos de costo
+    m\'inimo de ra\'iz en $s$ tal que la suma del peso de sus aristas es la menor posible.
     
 
     \subsection*{\underline{Complejidad temporal}}
 
     \noindent La complejidad temporal del algoritmo esta dada por la complejidad Temporal de algoritmo de Dijkstra 
-    que es $O(|E|\log |V|)$ , mas la complejidad de encontrar el subgrafo que tiene solo las aristas que estan en al menos 
-    un camino minimo de $s$ a algun otro v\'ertice del grafo $G$ , esto se hace en las lineas de la 4-8 , y vemos que el for se 
-    ejecuta $|E|$ veces  y a\~nadir la arista que cuple la propiedad (linea 6 )es $O(1)$ por lo que El tiempo de ejecucion del algoritmo 
-    de la linea 4-8 es $O(|E|)$ . En la linea 9 se llama al algoritmo de Prim (visto en conferencia) que tiene una complejidad temporal
+    que es $O(|E|\log |V|)$ , mas la complejidad de encontrar el subgrafo que tiene solo las aristas que est\'an en al menos 
+    un camino m\'inimo de $s$ a alg\'un otro v\'ertice del grafo $G$ , esto se hace en las l\'ineas de la 2-6 , y vemos que el for se 
+    ejecuta $|E|$ veces  y a\~nadir la arista que cuple la propiedad (l\'inea 5 )es $O(1)$ por lo que El tiempo de ejecuci\'on del algoritmo 
+    de la linea 2-6 es $O(|E|)$ . En la l\'inea 7 se llama al algoritmo de Prim (visto en conferencia) que tiene una complejidad temporal
     $O(|E|\log |V|)$ . Luego por la regla de la suma la complejidad temporal del algoritmo es  $O(|E|\log |V|)$
 
     \newpage
