@@ -222,7 +222,7 @@
 
     \subsection{\underline{Orden del Problema}}
     
-    Dise\~{n}e un algoritmo que dado un grafo no dirigido con costo en las aristas $G = <V, E>$ y los v\'ertices x, $y \in  V$ ,
+    Dise\~ne un algoritmo que dado un grafo no dirigido con costo en las aristas $G = <V, E>$ y los v\'ertices x, $y \in  V$ ,
     determine el costo de la arista de menor costo entre las aristas de mayor costo en cada camino de x a y. Esto
     quiere decir que si de x a y existen dos caminos $P_1$ , $P_2$ y la arista de mayor costo en $P_1$ es 5 y la de mayor costo
     en $P_2$ es 4, entonces deben devolver 4. La complejidad temporal de su algoritmo debe ser de $O(|E|log(|V|))$.\\
@@ -423,7 +423,7 @@
     %\noindent  Por el Lema 3 tenemos que todo \'arbol de caminos de costo m\'inimo que est\'a en $G$ tambi\'en esta en $G'$  y viceversa.\\
     %Luego como el algoritmo de Prim nos
     
-    \subsection{Proposiciones:}
+    \subsubsection{Proposiciones:}
     
     \noindent \textit{Sea T un AACM de G' con ra\'iz en s, entonces cumple lo siguiente:}
 
@@ -434,12 +434,12 @@
         
         \vspace*{0.3cm}
 
-        \item \textit{Todo v\'ertice $v$ alcanzable desde s en G est\'a en $G'$}
+        \item \textit{Todo v\'ertice $v$ alcanzable desde $s$ en G est\'a en $G'$}
         \\*
         \\*
         \textbf{Demostraci\'on } 
         \\*
-        Como el grafo $G$ es conexo , entonces existe al menos un camino de $s$ a $v$ y por lo tanto existe un camino de costo minimo 
+        Como el grafo $G$ es conexo, entonces existe al menos un camino de $s$ a $v$ y por lo tanto existe un camino de costo m\'inimo 
         de $s$ a $v$ en $G$ y por el Lema 2, tenemos que todo camino de costo m\'inimo en $G$ esta tambi\'en en $G'$ . Luego todo v\'ertice 
         $v$ alcanzable desde $s$ en $G$ est\'a tambien en $G'$ . 
         
@@ -550,7 +550,7 @@
     Si $d(u,v)=1$ entonces la arista $<u,v>$ es uno de los caminos que conectan a u con v. Como G es biconexo entonces 
     G-u y G-v son conexos y por tanto si quitamos la  arista $<u,v>$  como el grafo no se desconecta sigue existiendo
     un camino que conecta a u con v y que no contiene a $<u,v>$ , este ser\'ia nuestro segundo camino.\\
-    
+
     \noindent \textbf{Hip\'otesis:}\\
     Sea G un grafo biconexo donde $\forall\; u,v\in V(G)\; d(u,v)=k-1>1$ entonces existen dos caminos 
     disjuntos en v\'ertices entre u y v $\forall\; u,v\in V(G)\;$\\
