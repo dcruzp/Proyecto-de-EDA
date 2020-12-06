@@ -242,7 +242,7 @@
     de las aristas de menor costo entre las $e_i$. Entonces el algoritmo de PRIM tomando como v\'ertice inicial $x$, devuelve un AACM $T$ de $G$, tal que $\exists\hspace{0.2em}
     e' \in E', e' \in E(T)$ y el \'unico camino de $x$ a $y$ en el AACM $T$ pasa por $e'$.\\\\
     
-    Inicialmente, como es\'a descrito en conferencia en la cola con prioridad que mantiene el corte(o sea el conjunto de v\'ertices a\'un no visitados por el algoritmo)est\'an todos los 
+    Inicialmente, como est\'a descrito en conferencia en la cola con prioridad que mantiene el corte(o sea el conjunto de v\'ertices a\'un no visitados por el algoritmo)est\'an todos los 
     v\'ertices del grafo G. En cada paso del algoritmo se a\~nade una nueva arista de forma tal que siempre se mantiene un conjunto de aristas que son un subcojunto de alg\'un AACM $T$ de $G$,
     como se describe en la conferencia. Por esto, en alg\'un momento del algoritmo $\exists\hspace{0.2em} e'' = \hspace{0.2em}<u,v>\hspace{0.2em} \in E'$ que ser\'a la arista candidata a 
     a\~nadir al conjunto de aristas que se tiene hasta el momento, y puede ocurrir dos cosas :\\\\
@@ -252,7 +252,7 @@
     menor o igual que dicha arista, el propio algortimo a\~nadir\'a el resto de las aristas en el camino\\\\
 
     $\bullet$ Que no se a\~nada dicha arista, o sea, que el v\'ertice $v$ haya sido alcanzado por el algoritmo, usando otro de los caminos que van de $x$ a $y$.
-    Digamos q ese camino fue $p_k$, entonces $e_k$ no puede tener costo mayor que $e''$, pues, en dicho caso, el propio algortimo garantiza que se tome la arista de menor costo
+    Digamos q ese camino fue $p_k$, entonces $e_k$ no puede tener costo mayor que $e''$, pues, en dicho caso, el propio algoritmo garantiza que se tome la arista de menor costo
     de todas las que cruzan el corte y en dicho caso ser\'ia $e''$, por lo tanto $v$ no puede haber sido alcanzado usando $p_k$, lo que es una contradicci\'on pues asumimos que $v$
     fue alcanzado usando $p_k$. Por tanto la \'unica posiblidad es que $e_k \in E'$, o sea $e_k$ es una de las aristas que tiene costo m\'inimo entre todas las aristas
     de mayor costo en cada camino de $x$ a $y$ ($w(e_k) = w(e''))$, y por tanto se cumple que $e_k \in E', e_k \in E(T)$ donde $T$ es el AACM resultante al terminar el algoritmo de PRIM.\\\\
@@ -340,9 +340,9 @@
     
     \noindent \textbf{Demostraci\'on:}
     \\*
-    Si $p_{m}$ que es un camino de costo m\'inimo de $u$ a $v$ de longitud 1 entonces en el camino participan 2 v\'ertices, y la \'unica arista $<u,v>$
+    Si $p_{m}$, que es un camino de costo m\'inimo de $u$ a $v$, tiene longitud 1 entonces en el camino participan 2 v\'ertices, y la \'unica arista $<u,v>$
     que forma parte del camino es un camino simple.\\ 
-    Si $p_{m}$, que es un camino de costo m\'inimo de $u$ a $v$ con longitud $>=2$$($al menos 3 v\'ertices participan en el camino$)$, no fuera simple, es 
+    Si $p_{m}$, que es un camino de costo m\'inimo de $u$ a $v$ con longitud $>=2$$($al menos 3 v\'ertices participan en el camino$)$, no fuera simple  es 
     porque tiene al menos un ciclo c. Como todas las aristas que participan en ese camino tienen costo positivo, quitemos el ciclo c y tendr\'iamos 
     un camino de $u$ a $v$ cuyo costo ser\'ia menor que el costo de $p_{m}$, lo cual genera
     una contradicci\'on pues $p_{m}$ es un camino de costo m\'inimo de $u$ a $v$.\\
@@ -372,7 +372,7 @@
     \\*
     \\*
     \noindent \textbf{Hip\'otesis : }\\
-    Sea P un camino de $k-1$ aristas que pertenece a $G'$ que parte de s entonces P es un camino de costo m\'inimo en $G$.\\
+    Sea $P=\left(v_0,\dots,v_{k-1}\right)$ un camino de $k-1$ aristas que pertenece a $G'$ que parte de s entonces P es un camino de costo m\'inimo en $G$.\\
 
     \noindent \textbf{Paso inductivo:}\\ 
     Sea $P = \left(v_{0},\dots,v_{k}\right)$ un camino desde $s$ de $k$ aristas en $G'$. Por hip\'otesis de inducci\'on el subcamino $\left(v_0,\dots,v_{k-1}\right)$ es un camino de 
@@ -401,7 +401,7 @@
     \\*
     \\*
     \noindent \textbf{Hip\'otesis : }\\
-    Sea P es un camino de costo m\'inimo en $G$ desde $s$ que tiene k-1 aristas entonces P es un camino que est\'a en $G'$\\ \\
+    Sea $P=\left(v_0,\dots,v_{k-1}\right)$  un camino de costo m\'inimo en $G$ desde $s$ que tiene k-1 aristas entonces P es un camino que est\'a en $G'$\\ \\
     \noindent \textbf{Paso inductivo :}
     \\*
     Sea P un camino de longitud m\'inima desde $s$ en $G$ que tiene k aristas.
