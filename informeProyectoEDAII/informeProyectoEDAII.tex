@@ -360,20 +360,21 @@
     Vamos a hacer la demostraci\'on por inducci\'on en la cantidad de aristas del camino $P$ (vamos a denotar a $k$ como la cantidad de aristas en el camino $P$ )
     \\*
     \\*
-    \noindent \textbf{caso base:} 
+    \noindent \textbf{Caso base: k=1} 
     \\*
     %Para el caso base tenemos que si $k=0$ entonces el camino $P$ no tiene aristas por lo que es un camino de costo m\'inimo en $G$ 
     %\\
-    Para el caso $K=1$ tenemos que el camino $P$ tiene una sola arista, la arista $<s,v>$. Pero como toda arista de $G'$ cumple que 
+    Para el caso $k=1$ tenemos que el camino $P$ tiene una sola arista, la arista $<s,v>$. Pero como toda arista de $G'$ cumple que 
     $\delta\left(s,u\right) + w \left(u,v\right) = \delta\left(s,v\right)$, entonces el camino $P$ (que esta conformado solo por la 
-    arista $<u,v>$) ser\'ia un camino de costo m\'inimo en $G$
+    arista $<u,v>$) ser\'ia un camino de costo m\'inimo en $G$.
     \\*
     \\*
-    \noindent \textbf{paso inductivo:} 
-    \\*
-    Para el paso inductivo vamos a suponer que se cumple que para todo camino de $k-1$ aristas que pertenece a  $G'$ es un camino de costo m\'inimo en $G$. 
-    Entonces vamos a suponer que tenemos un camino $P = \left(v_{0},\dots,v_{k}\right)$  de $k$ aristas en $G'$. En particular tenemos que el subcamino $\left(v_0,\dots,v_{k-1}\right)$ es un camino de 
-    costo m\'inimo en $G$ (por hip\'otesis de inducci\'on ). Ahora si $P$ no fuera un camino de costo m\'inimo entonces: 
+    \noindent \textbf{Hip\'otesis : }\\
+    Sea P un camino de $k-1$ aristas que pertenece a $G'$ que parte de s entonces P es un camino de costo m\'inimo en G.\\
+
+    \noindent \textbf{Paso inductivo:}\\ 
+    Sea $P = \left(v_{0},\dots,v_{k}\right)$ un camino desde s de $k$ aristas en $G'$. Por hip\'otesis de inducci\'on el subcamino $\left(v_0,\dots,v_{k-1}\right)$ es un camino de 
+    costo m\'inimo en $G$. Ahora si $P$ no fuera un camino de costo m\'inimo en G tenemos: 
     \begin{equation*}
         \delta \left(s,v_k\right) < \sum_{i=1}^{k} w\left(v_{i-1,v_i}\right) = \sum_{i=1}^{k-1} w\left(v_{i-1}, v_{i}\right) + w\left(v_{k-1}, v_{k}\right)  = \delta\left(s,v_{k-1}\right) + w\left(v_{k-1}, v_{k}\right)
     \end{equation*}
@@ -389,17 +390,20 @@
     Ahora sea $P = \left(v_0,\dots,v_k \right)$ un camino de costo m\'inimo de $v_0 = s $ a  $v_k = v$ en $G$ que tiene $k$ aristas (la demostraci\'on la vamos a hacer por inducci\'on en $k$).
     \\*
     \\*
-    \noindent \textbf{caso base:}
+    \noindent \textbf{Caso base : k=1}
     \\*
     %Si $k=0$ entonces el camino no contine aristas y por lo tanto es un camino en $G'$ que comienza en $s$ .
     %\\*
     Si $k=1$ entonces el camino $P$ tiene una sola arista, la arista $<s,v>$ y adem\'as es un camino de costo m\'inimo entonces se cumple que $w\left(s,v\right) = \delta\left(s,v\right)$, luego la 
-    arista $<s,v>$ est\'a en $G'$. Entonces se cumple que $P$ es un camino de $s$ a $v$ en $G'$  
+    arista $<s,v>$ est\'a en $G'$. Entonces se cumple que $P$ es un camino de $s$ a $v$ en $G'$.  
     \\*
     \\*
-    \noindent \textbf{paso inductivo:}
+    \noindent \textbf{Hip\'otesis : }\\
+    Sea P es un camino de costo m\'inimo en G desde s que tiene k-1 aristas entonces P es un camino que est\'a en G'\\ \\
+    \noindent \textbf{Paso inductivo :}
     \\*
-    ahora en el paso inductivo tenemos para $k>0$ .Si todos los caminos de costo m\'inimo que comienzan en $s$  que tienen $k-1$ aristas en $G$ corresponden a un camino que comienza en $s$ en $G'$ (por el paso inductivo), entonces en particular  $\left(v_0,\dots,v_{k-1}\right)$
+    Sea P un camino de longitud m\'inima desde s en G que tiene k aristas.
+    Por hip\'otesis de inducci\'on los caminos de costo m\'inimo que comienzan en $s$  que tienen $k-1$ aristas en $G$ corresponden a un camino que comienza en $s$ en $G'$, entonces en particular  $\left(v_0,\dots,v_{k-1}\right)$
     pertenece a $G'$ , esto quiere decir que $<v_{i-1},v_i> \in E'$ para toda $i \in \{1,2,\dots, k-1\}$. Si el camino hasta $v$ no pertenes a $G'$ entoces esto solo puede suceder porque la arista  $<v_{k-1}, v_{k}> \notin E'$ .Entonces tenemos:
     \begin{equation*}
         \sum_{i=1}^{k} w\left(v_{i-1},v_{i}\right) = \sum_{i=1}^{k-1} w\left(v_{i-1},v_{i}\right) + w\left(v_{k-1} , v_{k}\right) = \delta\left(s,v_{k-1}\right) + w\left(v_{k-1, v}\right) > \delta\left(s, v\right)
