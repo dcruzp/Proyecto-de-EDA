@@ -338,12 +338,12 @@
     
     \noindent \textbf{Demostraci\'on:}
     \\*
-    Si $p_{m}$ que es un camino de costo m\'inimo de u a v de longitud 1 entonces en el camino participan 2 v\'ertices, y la \'unica arista $<u,v>$
+    Si $p_{m}$ que es un camino de costo m\'inimo de $u$ a $v$ de longitud 1 entonces en el camino participan 2 v\'ertices, y la \'unica arista $<u,v>$
     que forma parte del camino es un camino simple.\\ 
-    Si $p_{m}$, que es un camino de costo m\'inimo de u a v con longitud $>=2$$($al menos 3 v\'ertices participan en el camino$)$, no fuera simple, es 
+    Si $p_{m}$, que es un camino de costo m\'inimo de $u$ a $v$ con longitud $>=2$$($al menos 3 v\'ertices participan en el camino$)$, no fuera simple, es 
     porque tiene al menos un ciclo c. Como todas las aristas que participan en ese camino tienen costo positivo, quitemos el ciclo c y tendr\'iamos 
-    un camino de u a v cuyo costo ser\'ia menor que el costo de $p_{m}$, lo cual genera
-    una contradicci\'on pues $p_{m}$ es un camino de costo m\'inimo de u a v.\\
+    un camino de $u$ a $v$ cuyo costo ser\'ia menor que el costo de $p_{m}$, lo cual genera
+    una contradicci\'on pues $p_{m}$ es un camino de costo m\'inimo de $u$ a $v$.\\
     
     \subsubsection{Lema 2:}
         
@@ -370,11 +370,11 @@
     \\*
     \\*
     \noindent \textbf{Hip\'otesis : }\\
-    Sea P un camino de $k-1$ aristas que pertenece a $G'$ que parte de s entonces P es un camino de costo m\'inimo en G.\\
+    Sea P un camino de $k-1$ aristas que pertenece a $G'$ que parte de s entonces P es un camino de costo m\'inimo en $G$.\\
 
     \noindent \textbf{Paso inductivo:}\\ 
-    Sea $P = \left(v_{0},\dots,v_{k}\right)$ un camino desde s de $k$ aristas en $G'$. Por hip\'otesis de inducci\'on el subcamino $\left(v_0,\dots,v_{k-1}\right)$ es un camino de 
-    costo m\'inimo en $G$. Ahora si $P$ no fuera un camino de costo m\'inimo en G tenemos: 
+    Sea $P = \left(v_{0},\dots,v_{k}\right)$ un camino desde $s$ de $k$ aristas en $G'$. Por hip\'otesis de inducci\'on el subcamino $\left(v_0,\dots,v_{k-1}\right)$ es un camino de 
+    costo m\'inimo en $G$. Ahora si $P$ no fuera un camino de costo m\'inimo en $G$ tenemos: 
     \begin{equation*}
         \delta \left(s,v_k\right) < \sum_{i=1}^{k} w\left(v_{i-1,v_i}\right) = \sum_{i=1}^{k-1} w\left(v_{i-1}, v_{i}\right) + w\left(v_{k-1}, v_{k}\right)  = \delta\left(s,v_{k-1}\right) + w\left(v_{k-1}, v_{k}\right)
     \end{equation*}
@@ -399,12 +399,12 @@
     \\*
     \\*
     \noindent \textbf{Hip\'otesis : }\\
-    Sea P es un camino de costo m\'inimo en G desde s que tiene k-1 aristas entonces P es un camino que est\'a en G'\\ \\
+    Sea P es un camino de costo m\'inimo en $G$ desde $s$ que tiene k-1 aristas entonces P es un camino que est\'a en $G'$\\ \\
     \noindent \textbf{Paso inductivo :}
     \\*
-    Sea P un camino de longitud m\'inima desde s en G que tiene k aristas.
+    Sea P un camino de longitud m\'inima desde $s$ en $G$ que tiene k aristas.
     Por hip\'otesis de inducci\'on los caminos de costo m\'inimo que comienzan en $s$  que tienen $k-1$ aristas en $G$ corresponden a un camino que comienza en $s$ en $G'$, entonces en particular  $\left(v_0,\dots,v_{k-1}\right)$
-    pertenece a $G'$ , esto quiere decir que $<v_{i-1},v_i> \in E'$ para toda $i \in \{1,2,\dots, k-1\}$. Si el camino hasta $v$ no pertenes a $G'$ entoces esto solo puede suceder porque la arista  $<v_{k-1}, v_{k}> \notin E'$ .Entonces tenemos:
+    pertenece a $G'$ , esto quiere decir que $<v_{i-1},v_i> \in E'$ para toda $i \in \{1,2,\dots, k-1\}$. Si el camino hasta $v$ no pertenes a $G'$ entoces esto solo puede suceder porque la arista  $<v_{k-1}, v_{k}> \notin E'$. Entonces tenemos:
     \begin{equation*}
         \sum_{i=1}^{k} w\left(v_{i-1},v_{i}\right) = \sum_{i=1}^{k-1} w\left(v_{i-1},v_{i}\right) + w\left(v_{k-1} , v_{k}\right) = \delta\left(s,v_{k-1}\right) + w\left(v_{k-1, v}\right) > \delta\left(s, v\right)
     \end{equation*}
@@ -422,9 +422,9 @@
      
     \noindent \textbf{Demostraci\'on:}
     \\*
-    Como por el Lema 1 todo  camino de costo m\'inimo de G es un camino simple y por el lema 2 todo camino simple de
-    costo m\'inimo  de G est\'a en $G'$ entonces en $G'$ est\'an  todos los caminos de costo m\'inimo de desde s hacia 
-    cualquier otro v\'ertice de G .Luego en $G'$  est\'an todos los caminos de costo m\'inmo de s a v. 
+    Como por el Lema 1 todo  camino de costo m\'inimo de $G$ es un camino simple y por el lema 2 todo camino simple de
+    costo m\'inimo  de $G$ est\'a en $G'$ entonces en $G'$ est\'an  todos los caminos de costo m\'inimo de desde s hacia 
+    cualquier otro v\'ertice de G .Luego en $G'$  est\'an todos los caminos de costo m\'inmo de s a $v$. 
     $\forall v\in V(G)$
 
      
