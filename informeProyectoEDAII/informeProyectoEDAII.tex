@@ -271,7 +271,7 @@
         1-\hspace*{1em}$T$ $\leftarrow$ PRIM($G,x,w$) --------- Construir un AACM de $G$ empezando en $x$. $O(|E|\log{|V|})$\\
         2-\hspace*{1em} \textbf{if} $\pi$[y] != NULL:\\
         3-\hspace*{2em}start $\leftarrow y$, answer $\leftarrow$ $w(\pi[y],y)$. $O(1)$\\ 
-        4-\hspace*{2em}\textbf{while} start != $x$ do:  $O(|V|)$\\
+        4-\hspace*{2em}\textbf{while} start != $x$ do:  $O(|E|)$\\
         5-\hspace*{3em}start $\leftarrow$ $\pi$[start] $O(1)$\\
         6-\hspace*{3em}answer $\leftarrow$ m\'ax(answer,w($\pi$[start],start)) $O(1)$\\
         7-\hspace*{2em} return answer\\\\
