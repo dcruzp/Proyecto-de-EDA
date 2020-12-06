@@ -176,7 +176,7 @@
 
     \subsection{\underline{Pseudoc\'odigo}}
     \begin{algorithm}[H]
-        \caption{Calcular la capacidad máxima de agua que se puede transportar de forma segura desde cada tanque hasta su grifo correspondiente}
+        \caption{Calcular la capacidad m\'axima de agua que se puede transportar de forma segura desde cada tanque hasta su grifo correspondiente}
         \textbf{Solve($G$)\\}
         1-\hspace*{1em}$G'$ = Build\textunderscore Flow\textunderscore Network($G$) - Este m\'etodo en $O(V)$ agrega los v\'ertices fictios a $G$ .\\
         2-\hspace*{1em}$max \leftarrow$ [$\infty]$*$|V(G')|$ - lista donde tendremos para cada v\'ertice que sea tanque la cantidad m\'axima de flujo que puede enviar a su grifo.\\
@@ -237,7 +237,7 @@
     \noindent \textbf{Proposici\'on 1 :} \\
     
     Sea $G = <V,E>$ grafo no dirigido con costo en las aristas, $x$, $y$ $\in V(G)$, $y$ alcanzable desde $x$, \textbraceleft$p_1, p_2,..., p_t$\textbraceright 
-    los caminos de costo m\'inimo de $x$ a $y$ en $G$, \textbraceleft$e_1, e_2,..., e_t$\textbraceright las aristas de costo m\'aximo en cada uno de los caminos $p_i$, $1 \leq i \leq t$, y
+    los caminos de $x$ a $y$ en $G$, \textbraceleft$e_1, e_2,..., e_t$\textbraceright las aristas de costo m\'aximo en cada uno de los caminos $p_i$, $1 \leq i \leq t$, y
     $E'$ = \textbraceleft $e \in E(G) |\hspace{0.2em} w(e)$ = min \textbraceleft $w(e_i) |\hspace{0.2em} 1 \leq i \leq t$ \textbraceright \textbraceright, el conjunto
     de las aristas de menor costo entre las $e_i$. Entonces el algoritmo de PRIM tomando como v\'ertice inicial $x$, devuelve un AACM $T$ de $G$, tal que $\exists\hspace{0.2em}
     e' \in E', e' \in E(T)$ y el \'unico camino de $x$ a $y$ en el AACM $T$ pasa por $e'$.\\\\
@@ -604,12 +604,12 @@
     $\Longleftrightarrow$ G no tiene puntos de articulaci\'on\\\\
     
     \noindent \textbf{Caso  $|V(G)|\le 2$:}\\
-    Si $|V(G)| = 2$ entonces el \'unico camino que puede existir entre los \'unicos dos v\'ertices u,v que tiene el grafo es la
-    arista $<u,v>$ por lo que no cumple la condici\'on que nos pide en el problema.En este caso G nunca tiene puntos de articulaci\'on,
-    pues cualquiera de los 2 v\'ertices que quite siempre me quedar\'ia un grafo conexo de un solo v\'ertice,por lo que tengo que considerarlo
+    Si $|V(G)| = 2$, entonces el \'unico camino que puede existir entre los \'unicos dos v\'ertices u,v que tiene el grafo es la
+    arista $<u,v>$, por lo que no cumple la condici\'on que nos pide en el problema. En este caso G nunca tiene puntos de articulaci\'on,
+    pues cualquiera de los 2 v\'ertices que quitemos siempre quedar\'ia un grafo conexo de un solo v\'ertice, por lo que lo consideramos
     aparte en el algoritmo.\\
-    Si $|V(G)| = 1$ entonces como G tiene un solo v\'ertice no puede existir ning\'un camino en G por lo que tampoco safisface la condici\'on
-    que nos pide problema\\
+    Si $|V(G)| = 1$, entonces como G tiene un solo v\'ertice, no puede existir ning\'un camino en G, por lo que tampoco safisface la condici\'on
+    que nos pide problema.\\
 
     \subsection{\underline{Pseudoc\'odigo}}
     
@@ -659,7 +659,7 @@
     de  que para cada par de v\'ertices existen dos caminos disjuntos en v\'ertices entre ellos, o sea con almacenar en una lista
     los puntos de articulaci\'on detectados por el algoritmo y verificar si la lista contiene alg\'un v\'ertice es suficiente.
     La modificaci\'on al algoritmo visto en conferencia es, en vez de imprimir el punto de articulaci\'on, simplemente lo
-    almacenamos en una lista,lo que no afecta la correctitud del algoritmo.
+    almacenamos en una lista, lo que no afecta la correctitud del algoritmo.
     \\\\
 
     \subsection{\underline{Complejidad Temporal}} 
