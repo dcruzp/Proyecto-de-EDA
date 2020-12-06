@@ -131,7 +131,7 @@
     En ambos casos llegamos a una contradicci\'on con las restricciones del problema, que es que $\forall x \in V(G), outdegree(x) \leq 1$. 
     Por tanto para toda casa con tanque $u$ que env\'ia agua a su correspondiente casa con grifo $v$, se cumple que existe un \'unico camino de $u$ a $v$.\\\\
 
-    Ahora supongamos que ese camino que denotaremos como $p_i$ no es simple, eso quiere decir que hay un ciclo en dicho camino, empezemos a recorrer $p_i$ hasta 
+    Ahora supongamos que ese camino que denotaremos como $p_i$ no es simple, eso quiere decir que hay un ciclo en dicho camino, empecemos a recorrer $p_i$ hasta 
     que lleguemos al primer v\'ertice $x$ que est\'a en dicho ciclo, la arista que usamos para llegar a \'el no estaba en el ciclo y aporta 1 de $indegree$ a $x$,
     y la otra arista, que cierra el ciclo en $x$ aporta 1 de $indegree$, por lo que $indegree(x) = 2$, lo que es una contradicci\'on con las restricciones del problema.\\\\
 
@@ -150,7 +150,7 @@
 
     Nuestro problema, nos pide hallar la mayor cantidad de agua que se puede transportar desde cada tanque hacia su correspondiente grifo de forma segura, o sea 
     de forma que la cantidad de agua que transporta dicho tanque hacia su grifo, no exceda el di\'ametro de las tuber\'ias que conectan un tanque con su correspondiente
-    grifo, que esto es, en el grafo $G$ que representa nuetro vecindario, determinar para cada v\'ertice $w \in V(G)$, $indegree(w) = 0$ y $outdegree(w) = 1$, cual es la cantidad m\'axima
+    grifo, que esto es, en el grafo $G$ que representa nuestro vecindario, determinar para cada v\'ertice $w \in V(G)$, $indegree(w) = 0$ y $outdegree(w) = 1$, cual es la cantidad m\'axima
     de flujo que se puede enviar hacia su correspondiente $z \in V(G), outdegree(z) = 0$ y $indegree(z) = 1$, por supuesto, sobre este grafo es imposible  aplicar el concepto de flujo,
     pues no hay una fuente ni un destino, y es para eso que construiremos un nuevo grafo $G'$ de la siguiente forma: agregaremos un v\'ertice ficticio $x$, unido por un arco, a cada uno de los $u \in V(G), indegree(u) = 0$ y $outdegree(u) = 1$, y para cada 
     $<x,u> \in E(G'), c(<x,v>) = \infty$, y haremos un procedimiento parecido para los v\'ertices $v \in V(G), indegree(v) = 1$ y $outdegree(v) = 0$, que es conectarlos por un arco, a un v\'ertice ficticio $y$, y
@@ -179,7 +179,7 @@
         \caption{Calcular la capacidad máxima de agua que se puede transportar de forma segura desde cada tanque hasta su grifo correspondiente}
         \textbf{Solve($G$)\\}
         1-\hspace*{1em}$G'$ = Build\textunderscore Flow\textunderscore Network($G$) - Este m\'etodo en $O(V)$ agrega los v\'ertices fictios a $G$ .\\
-        2-\hspace*{1em}$max \leftarrow$ [$\infty]$*$|V(G')|$ - lista donde tendremos para cada v\'ertice quee sea tanque la cantidad m\'axima de flujo que puede enviar a su grifo.\\
+        2-\hspace*{1em}$max \leftarrow$ [$\infty]$*$|V(G')|$ - lista donde tendremos para cada v\'ertice que sea tanque la cantidad m\'axima de flujo que puede enviar a su grifo.\\
         3-\hspace*{1em}$min \leftarrow \infty$ - esta variable la usaremos para computar lo que nos pide el ejercicio\\
         4-\hspace*{1em}visited $\leftarrow$ [$false$]*$|V(G')|$, $\pi \leftarrow$ [$Null$]*$|V(G')|$\\
         5-\hspace*{1em}\\
