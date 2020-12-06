@@ -248,7 +248,8 @@
     a\~nadir al conjunto de aristas que se tiene hasta el momento, y puede ocurrir dos cosas :\\\\
     
     $\bullet$ Que se a\~nada dicha arista, o sea, que el v\'ertice $v$ a\'un no haya sido alcanzado por el algoritmo usando alg\'un otro camino de $x$ a $y$. En este caso ya tenemos que cuando 
-    se termine de ejecutar el algoritmo se cumplir\'a que $\exists e' \in E', e' \in E(T)$ donde $T$ es el AACM resultante al terminar el algoritmo de PRIM.\\\\
+    se termine de ejecutar el algoritmo se cumplir\'a que $\exists e' \in E', e' \in E(T)$ donde $T$ es el AACM resultante al terminar el algoritmo de PRIM. Y como el resto de las aristas tiene costo
+    menor o igual que dicha arista, el propio algortimo a\~nadir\'a el resto de las aristas en el camino\\\\
 
     $\bullet$ Que no se a\~nada dicha arista, o sea, que el v\'ertice $v$ haya sido alcanzado por el algoritmo, usando otro de los caminos que van de $x$ a $y$.
     Digamos q ese camino fue $p_k$, entonces $e_k$ no puede tener costo mayor que $e''$, pues, en dicho caso, el propio algortimo garantiza que se tome la arista de menor costo
@@ -259,8 +260,9 @@
     $\Rightarrow$ Por tanto al finalizar el algoritmo de PRIM, ejecutado sobre  el grafo $G$, iniciando en el v\'ertice $x$, se cumple que 
     $\exists e' \in E', e' \in E(T)$, siendo $T$ el AACM resultante al terminar el algoritmo de PRIM.\\\\
 
-    Sea $e' = <u,v>$, hay un \'unico camino de $x$ a $u$ en $T$, y hay un \'unico camino de $v$ a $y$ en $T$, y como consecuencia de que esta arista est\'a en todo AACM $T$ de $G$
-    $\Rightarrow$ hay un \'unico camino de $x$ a $y$ en $T$ que pasa por la arista $e'$\\\\
+    Como $y$ es alcanzable desde $x$, uno de los caminos que van de $x$ a $y$ en $G$ tienen que estar en el AACM $T$ resultante, ahora una de las
+    $e' \in E'$, de las cuales est\'an en $T$, tiene que estar en dicho camino, de lo contrario el algoritmo habr\'ia escogido un camino donde hay 
+    aristas con costo mayor que la propia $e'$ lo que es imposible por las caracter\'isticas del algoritmo.\\\\
 
     $\bullet$ Por tanto se cumple la proposici\'on 1\\\\
     %\newpage
