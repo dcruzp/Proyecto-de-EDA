@@ -247,7 +247,7 @@
     como se describe en la conferencia. Por esto, en alg\'un momento del algoritmo $\exists\hspace{0.2em} e'' = \hspace{0.2em}<u,v>\hspace{0.2em} \in E'$ que ser\'a la arista candidata a 
     a\~nadir al conjunto de aristas que se tiene hasta el momento, y puede ocurrir dos cosas :\\\\
     
-    $\bullet$ Que se a\~nada dicha arista, o sea, que el v\'ertice $v$ a\'un no haya sido alcanzado por el algortimo usando alg\'un otro camino de $x$ a $y$. En este caso ya tenemos que cuando 
+    $\bullet$ Que se a\~nada dicha arista, o sea, que el v\'ertice $v$ a\'un no haya sido alcanzado por el algoritmo usando alg\'un otro camino de $x$ a $y$. En este caso ya tenemos que cuando 
     se termine de ejecutar el algoritmo se cumplir\'a que $\exists e' \in E', e' \in E(T)$ donde $T$ es el AACM resultante al terminar el algoritmo de PRIM.\\\\
 
     $\bullet$ Que no se a\~nada dicha arista, o sea, que el v\'ertice $v$ haya sido alcanzado por el algoritmo, usando otro de los caminos que van de $x$ a $y$.
@@ -269,9 +269,9 @@
         \caption{Determinar el costo de la arista de menor costo entre las aristas de mayor costo en cada camino de $x$ a $y$ en un grafo $G$ con funci\'on de costo $w$}
         \textbf{Solve($G,x,y,w$)\\} 
         1-\hspace*{1em}$T$ $\leftarrow$ PRIM($G,x,w$) --------- Construir un AACM de $G$ empezando en $x$. $O(|E|\log{|V|})$\\
-        2-\hspace*{1em} if $\pi$[y] != NULL:\\
+        2-\hspace*{1em} \textbf{if} $\pi$[y] != NULL:\\
         3-\hspace*{2em}start $\leftarrow y$, answer $\leftarrow$ $w(\pi[y],y)$. $O(1)$\\ 
-        4-\hspace*{2em}while start != $x$ do:  $O(|V|)$\\
+        4-\hspace*{2em}\textbf{while} start != $x$ do:  $O(|V|)$\\
         5-\hspace*{3em}start $\leftarrow$ $\pi$[start] $O(1)$\\
         6-\hspace*{3em}answer $\leftarrow$ m\'ax(answer,w($\pi$[start],start)) $O(1)$\\
         7-\hspace*{2em} return answer\\\\
@@ -287,7 +287,9 @@
     en el camino de $x$ a $y$ en $T$, operaci\'on que realizan las l\'ineas 3-7 del pseudoc\'odigo usando el array $\pi$.
 
     \subsection{\underline{Complejidad Temporal}}
-    La complejidad temporal del algoritmo es:\\ $O(|E|\log{|V|}) + O(|V|) = O(max(|E|\log{|V|}, |V|)) = O(|E|\log{|V|})$
+    La complejidad temporal del algoritmo se base en la complejidad de PRIM que es $O(|E|\log{|V|})$.El recorrido 
+    que se hace por el array pi, para quedarse con la arista de mayor costo en el camino de x a y en T, tiene complejidad $ O(|V|)$. 
+    Entonces la complejidad temporal del algoritmo es:\\ $O(|E|\log{|V|}) + O(|V|) = O(max(|E|\log{|V|}, |V|)) = O(|E|\log{|V|})$
 
     \newpage 
 
@@ -313,7 +315,7 @@
     \subsection{\underline{Soluci\'on }}
 
     \noindent La soluci\'on al problema es aplicar el algoritmo de  Dijkstra visto en conferencias.
-    Para encontrar un subgrafo $G^{'}$ que contenga todas las aristas que forman parte de algun camino de 
+    Para encontrar un subgrafo $G^{'}$ que contenga todas las aristas que forman parte de alg\'un camino de 
     costo minimo desde $s$ hasta cualquier otro v\'ertice del grafo $G$. Luego encontramos un \'arbol $T$ abarcador de 
     costo m\'inimo en $G^{'}$ , $T$ es el \'arbol que estamos buscando 
 
@@ -516,12 +518,12 @@
 
     \subsection{\underline{Complejidad temporal}}
 
-    \noindent La complejidad temporal del algoritmo esta dada por la complejidad Temporal de algoritmo de Dijkstra 
-    que es $O(|E|\log |V|)$ , mas la complejidad de encontrar el subgrafo que tiene solo las aristas que est\'an en al menos 
-    un camino m\'inimo de $s$ a alg\'un otro v\'ertice del grafo $G$ , esto se hace en las l\'ineas de la 2-6 , y vemos que el for se 
-    ejecuta $|E|$ veces  y a\~nadir la arista que cuple la propiedad (l\'inea 5 )es $O(1)$ por lo que El tiempo de ejecuci\'on del algoritmo 
+    \noindent La complejidad temporal del algoritmo est\'a dada por  la complejidad temporal del algoritmo de Dijkstra 
+    que es $O(|E|\log |V|)$, la complejidad de encontrar el subgrafo que tiene solo las aristas que est\'an en al menos 
+    un camino de costo m\'inimo de $s$ a alg\'un otro v\'ertice del grafo $G$ , esto se hace en las l\'ineas de la 2-6 , y vemos que el for se 
+    ejecuta $|E|$ veces  y a\~nadir la arista que cuple la propiedad (l\'inea 5 )es $O(1)$ por lo que el tiempo de ejecuci\'on del algoritmo 
     de la linea 2-6 es $O(|E|)$ . En la l\'inea 7 se llama al algoritmo de Prim (visto en conferencia) que tiene una complejidad temporal
-    $O(|E|\log |V|)$ . Luego por la regla de la suma la complejidad temporal del algoritmo es  $O(|E|\log |V|)$
+    $O(|E|\log |V|)$ . Luego por la regla de la suma la complejidad temporal del algoritmo es  $O(|E|\log |V|)$.
 
     \newpage
 
@@ -605,7 +607,9 @@
     Si $|V(G)| = 2$ entonces el \'unico camino que puede existir entre los \'unicos dos v\'ertices u,v que tiene el grafo es la
     arista $<u,v>$ por lo que no cumple la condici\'on que nos pide en el problema.En este caso G nunca tiene puntos de articulaci\'on,
     pues cualquiera de los 2 v\'ertices que quite siempre me quedar\'ia un grafo conexo de un solo v\'ertice,por lo que tengo que considerarlo
-    aparte en el algoritmo.
+    aparte en el algoritmo.\\
+    Si $|V(G)| = 1$ entonces como G tiene un solo v\'ertice no puede existir ning\'un camino en G por lo que tampoco safisface la condici\'on
+    que nos pide problema\\
 
     \subsection{\underline{Pseudoc\'odigo}}
     
