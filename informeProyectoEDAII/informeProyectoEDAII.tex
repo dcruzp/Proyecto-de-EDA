@@ -182,26 +182,26 @@
         2-\hspace*{1em}$max \leftarrow$ [$\infty]$*$|V(G')|$ - lista donde tendremos para cada v\'ertice que sea tanque la cantidad m\'axima de flujo que puede enviar a su grifo.\\
         3-\hspace*{1em}$min \leftarrow \infty$ - esta variable la usaremos para computar lo que nos pide el ejercicio\\
         4-\hspace*{1em}visited $\leftarrow$ [$false$]*$|V(G')|$, $\pi \leftarrow$ [$Null$]*$|V(G')|$\\
-        5-\hspace*{1em}\\
-        6-\hspace*{1em}\textbf{DFS($G'$, $x$)}\\
-        7-\hspace*{2em}$min \leftarrow \infty$\\
-        8-\hspace*{2em}\textbf{for each} $u \in Ady[x]$ do:\\
-        9-\hspace*{3em}DFS-Visit($G'$, $u$)\\
-        10-\hspace*{3em}$max$[$u$] $\leftarrow min$\\
-        11-\hspace*{3em}$min \leftarrow \infty$\\
+    
+        5-\hspace*{1em}\textbf{DFS($G'$, $x$)}\\
+        6-\hspace*{2em}$min \leftarrow \infty$\\
+        7-\hspace*{2em}\textbf{for each} $u \in Ady[x]$ do:\\
+        8-\hspace*{3em}DFS-Visit($G'$, $u$)\\
+        9-\hspace*{3em}$max$[$u$] $\leftarrow min$\\
+        10-\hspace*{3em}$min \leftarrow \infty$\\
 
-        12-\hspace*{1em}\textbf{DFS-Visit$(G,u)$}\\ 
-        13-\hspace*{2em}u $\leftarrow$ visited \\  
-        14-\hspace*{2em}\textbf{for each} v $\in$ $Adj[u]$\\
-        15-\hspace*{3em}do \textbf{if} v not visited\\
-        16-\hspace*{4em}$\pi[v] \leftarrow u$\\
-        17-\hspace*{4em}do \textbf{if} $c(u,v)< min$\\
-        18-\hspace*{5em}$min=c(u,v)$\\
-        19-\hspace*{4em}DFS-Visit($G$,$v$)\\
+        11-\hspace*{1em}\textbf{DFS-Visit$(G,u)$}\\ 
+        12-\hspace*{2em}u $\leftarrow$ visited \\  
+        13-\hspace*{2em}\textbf{for each} v $\in$ $Adj[u]$\\
+        14-\hspace*{3em}do \textbf{if} v not visited\\
+        15-\hspace*{4em}$\pi[v] \leftarrow u$\\
+        16-\hspace*{4em}do \textbf{if} $c(u,v)< min$\\
+        17-\hspace*{5em}$min=c(u,v)$\\
+        18-\hspace*{4em}DFS-Visit($G$,$v$)\\
         
-        20-\hspace*{1em}\textbf{for each} $u \in V(G')$\\
-        21-\hspace*{2em}\textbf{if} $max$[$u$] != $\infty$\\
-        22-\hspace*{3em}\textbf{print}($u$,$max$[$u$]) - la capacidad m\'axima de agua que puede transportar el tanque u a su correspondiente grifo es $max[u]$\\
+        19-\hspace*{1em}\textbf{for each} $u \in V(G')$\\
+        20-\hspace*{2em}\textbf{if} $max$[$u$] != $\infty$\\
+        21-\hspace*{3em}\textbf{print}($u$,$max$[$u$]) - la capacidad m\'axima de agua que puede transportar el tanque u a su correspondiente grifo es $max[u]$\\
         
     \end{algorithm}
 
@@ -288,7 +288,7 @@
 
     \subsection{\underline{Complejidad Temporal}}
     La complejidad temporal del algoritmo se base en la complejidad de PRIM que es $O(|E|\log{|V|})$. El recorrido 
-    que se hace por el array $\pi$, para quedarse con la arista de mayor costo en el camino de x a y en T, tiene complejidad $ O(|V|)$. 
+    que se hace por el array $\pi$, para quedarse con la arista de mayor costo en el camino de $x$ a $y$ en $T$, tiene complejidad $ O(|V|)$. 
     Entonces la complejidad temporal del algoritmo es:\\ $O(|E|\log{|V|}) + O(|V|) = O(max(|E|\log{|V|}, |V|)) = O(|E|\log{|V|})$
 
     \newpage 
